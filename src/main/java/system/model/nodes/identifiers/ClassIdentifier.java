@@ -1,11 +1,13 @@
 package system.model.nodes.identifiers;
 
+import system.controller.Main;
 import utils.RegexGen;
 
 public class ClassIdentifier extends Identifier {
 //    TODO hardcoded string length
     public ClassIdentifier() {
-        this.generex = new RegexGen("[A-Z][a-zA-Z0-9]{6,}");
+        String len = Main.config.getIdentifier().get("len");
+        this.generex = new RegexGen("[A-Z][a-zA-Z0-9]{" + len + ",}");
     }
 
     @Override

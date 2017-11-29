@@ -1,7 +1,10 @@
 package system.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import system.model.nodes.Node;
 import system.model.nodes.classes.NormalClassDeclaration;
+import utils.Config;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,13 +14,27 @@ import java.util.List;
 
 public class Main {
 
+    public static Config config;
+
     public static void main(String[] args) {
+
+        initConfig();
+
         new File("generatedSrc/main/java").mkdirs();
 
         NormalClassDeclaration cl = new NormalClassDeclaration();
 
         save(cl);
 
+    }
+
+    private static void initConfig() {
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        try {
+            config = mapper.readValue(new File("src/main/resources/conf.yaml"), Config.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void save(Node node) {

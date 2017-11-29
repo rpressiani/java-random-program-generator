@@ -1,0 +1,4 @@
+# Configuration
+---
+identifier:
+  len: 5  #min len - 2+len for classes, 1+len for others
