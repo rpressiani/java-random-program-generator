@@ -7,6 +7,8 @@ package system.model.nodes.types;
 
 import system.model.nodes.Node;
 
+import java.util.Random;
+
 public class UnannPrimitiveType implements Node {
 
     NumericType numericType;
@@ -17,6 +19,14 @@ public class UnannPrimitiveType implements Node {
 
     @Override
     public String produce() {
-        return this.verify(this.numericType.produce());
+        
+        String prod;
+
+        if ((new Random()).nextInt(6) > 0) {
+            prod = this.verify(this.numericType.produce());
+        } else {
+            prod = "boolean ";
+        }
+        return this.verify(prod);
     }
 }
