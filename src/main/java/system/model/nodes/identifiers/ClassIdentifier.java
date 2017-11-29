@@ -1,10 +1,10 @@
-package system.model.nodes;
+package system.model.nodes.identifiers;
 
 import utils.RegexGen;
 
 public class ClassIdentifier extends Identifier {
 
-    ClassIdentifier() {
+    public ClassIdentifier() {
         this.generex = new RegexGen("[A-Z][a-zA-Z0-9]{6,}");
     }
 
