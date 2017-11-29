@@ -1,7 +1,7 @@
 package system.controller;
 
 import system.model.nodes.Node;
-import system.model.nodes.NormalClassDeclaration;
+import system.model.nodes.classes.NormalClassDeclaration;
 
 import java.io.File;
 import java.io.IOException;

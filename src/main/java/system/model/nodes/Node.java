@@ -6,5 +6,5 @@ public interface Node {
 
     default String verify(String prod) {
         return prod;
-    };
+    }
 }

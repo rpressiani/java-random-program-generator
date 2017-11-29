@@ -1,7 +1,8 @@
-package system.model.nodes;
+package system.model.nodes.classes;
 
 //classModifier* 'class' Identifier typeParameters? superclass? superinterfaces? classBody
 
+import system.model.nodes.Node;
 import system.model.nodes.identifiers.ClassIdentifier;
 
 public class NormalClassDeclaration implements Node {
