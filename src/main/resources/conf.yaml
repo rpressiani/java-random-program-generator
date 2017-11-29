@@ -2,3 +2,6 @@
 ---
 identifier:
   len: 5  #min len - 2+len for classes, 1+len for others
+fields:
+  min: 10
+  max: 20

@@ -4,6 +4,7 @@ package system.model.nodes.classes;
 //        :	'{' classBodyDeclaration* '}'
 //        ;
 
+import system.controller.Main;
 import system.model.nodes.Node;
 
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ public class Classbody implements Node {
     private String mainMethod;
     private List<ClassBodyDeclaration> classBodyDeclarations;
 
+    private int minNumberOfFields = Main.config.getFields().get("min");
+    private int maxNumberOfFields = Main.config.getFields().get("max");
+
     Classbody() {
 //TODO hardcoded main method
         this.mainMethod = "public static void main(String[] args) {\n" +
@@ -23,7 +27,7 @@ public class Classbody implements Node {
         this.classBodyDeclarations = new ArrayList<>();
 
 //TODO hardcoded random
-        for (int i = 0; i < (new Random()).nextInt(6) + 1; i++) {
+        for (int i = 0; i < (new Random()).nextInt(maxNumberOfFields-minNumberOfFields) + minNumberOfFields; i++) {
             this.classBodyDeclarations.add(new ClassBodyDeclaration());
         }
     }
