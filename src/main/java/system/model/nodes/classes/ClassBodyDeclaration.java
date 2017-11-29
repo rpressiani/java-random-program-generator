@@ -2,6 +2,13 @@ package system.model.nodes.classes;
 
 import system.model.nodes.Node;
 
+//classBodyDeclaration
+//        :	classMemberDeclaration
+//        |	instanceInitializer
+//        |	staticInitializer
+//        |	constructorDeclaration
+//        ;
+
 public class ClassBodyDeclaration implements Node {
 
     private ClassMemberDeclaration classMemberDeclaration;

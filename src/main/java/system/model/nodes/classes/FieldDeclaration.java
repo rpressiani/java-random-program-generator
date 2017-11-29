@@ -1,6 +1,8 @@
 package system.model.nodes.classes;
 
-//fieldModifier* unannType variableDeclaratorList ';'
+//fieldDeclaration
+//        :	fieldModifier* unannType variableDeclaratorList ';'
+//        ;
 
 import system.model.nodes.Node;
 import system.model.nodes.types.UnannType;

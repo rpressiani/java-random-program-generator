@@ -1,6 +1,8 @@
 package system.model.nodes.classes;
 
-//classModifier* 'class' Identifier typeParameters? superclass? superinterfaces? classBody
+//normalClassDeclaration
+//        :	classModifier* 'class' Identifier typeParameters? superclass? superinterfaces? classBody
+//        ;
 
 import system.model.nodes.Node;
 import system.model.nodes.identifiers.ClassIdentifier;

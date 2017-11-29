@@ -1,6 +1,8 @@
 package system.model.nodes.classes;
 
-//'{' classBodyDeclaration* '}'
+//classBody
+//        :	'{' classBodyDeclaration* '}'
+//        ;
 
 import system.model.nodes.Node;
 
