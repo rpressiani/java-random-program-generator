@@ -15,6 +15,7 @@ public class Main {
         new File("generatedSrc/main/java").mkdirs();
 
         NormalClassDeclaration cl = new NormalClassDeclaration();
+
         save(cl);
 
     }
@@ -22,7 +23,7 @@ public class Main {
     private static void save(Node node) {
 
         List<String> sourceLines = new ArrayList<>();
-        sourceLines.add(node.toString());
+        sourceLines.add(node.produce());
 
         File f = new File("generatedSrc/main/java/Main.java");
 

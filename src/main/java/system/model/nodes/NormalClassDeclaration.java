@@ -4,13 +4,19 @@ package system.model.nodes;
 
 public class NormalClassDeclaration implements Node {
 
-    String identifier = "Main";
-    String classbody = "{public static void main(String[] args) {\n" +
+    private ClassIdentifier identifier;
+
+    public NormalClassDeclaration() {
+        this.identifier = new ClassIdentifier();
+    }
+
+    private String classbody = "{public static void main(String[] args) {\n" +
             "        System.out.println(\"Test\");\n" +
             "    }}";
 
     @Override
-    public String toString() {
-        return "class " + identifier + classbody;
+    public String produce() {
+        return this.verify("class " + this.identifier.produce() + classbody);
     }
+
 }
