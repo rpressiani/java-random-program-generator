@@ -1,5 +1,4 @@
-bplist00ั_WebMainResourceี	
-_WebResourceFrameName_WebResourceData_WebResourceMIMEType_WebResourceTextEncodingName^WebResourceURLPO|<html><head><style>.pkt_added {text-decoration:none !important;}</style></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">/*
+/*
  * [The "BSD license"]
  *  Copyright (c) 2014 Terence Parr
  *  Copyright (c) 2014 Sam Harwell
@@ -55,7 +54,7 @@ Total lexer+parser time 30844ms.
 grammar Java8;
 
 /*
- * Productions from ยง3 (Lexical Structure)
+ * Productions from ง3 (Lexical Structure)
  */
 
 literal
@@ -68,7 +67,7 @@ literal
 	;
 
 /*
- * Productions from ยง4 (Types, Values, and Variables)
+ * Productions from ง4 (Types, Values, and Variables)
  */
 
 type
@@ -167,11 +166,11 @@ typeBound
 	;
 
 additionalBound
-	:	'&amp;' interfaceType
+	:	'&' interfaceType
 	;
 
 typeArguments
-	:	'&lt;' typeArgumentList '&gt;'
+	:	'<' typeArgumentList '>'
 	;
 
 typeArgumentList
@@ -193,7 +192,7 @@ wildcardBounds
 	;
 
 /*
- * Productions from ยง6 (Names)
+ * Productions from ง6 (Names)
  */
 
 packageName
@@ -226,7 +225,7 @@ ambiguousName
 	;
 
 /*
- * Productions from ยง7 (Packages)
+ * Productions from ง7 (Packages)
  */
 
 compilationUnit
@@ -271,7 +270,7 @@ typeDeclaration
 	;
 
 /*
- * Productions from ยง8 (Classes)
+ * Productions from ง8 (Classes)
  */
 
 classDeclaration
@@ -295,7 +294,7 @@ classModifier
 	;
 
 typeParameters
-	:	'&lt;' typeParameterList '&gt;'
+	:	'<' typeParameterList '>'
 	;
 
 typeParameterList
@@ -565,7 +564,7 @@ enumBodyDeclarations
 	;
 
 /*
- * Productions from ยง9 (Interfaces)
+ * Productions from ง9 (Interfaces)
  */
 
 interfaceDeclaration
@@ -698,7 +697,7 @@ singleElementAnnotation
 	;
 
 /*
- * Productions from ยง10 (Arrays)
+ * Productions from ง10 (Arrays)
  */
 
 arrayInitializer
@@ -710,7 +709,7 @@ variableInitializerList
 	;
 
 /*
- * Productions from ยง14 (Blocks and Statements)
+ * Productions from ง14 (Blocks and Statements)
  */
 
 block
@@ -950,7 +949,7 @@ resource
 	;
 
 /*
- * Productions from ยง15 (Expressions)
+ * Productions from ง15 (Expressions)
  */
 
 primary
@@ -1061,7 +1060,7 @@ classInstanceCreationExpression_lfno_primary
 
 typeArgumentsOrDiamond
 	:	typeArguments
-	|	'&lt;' '&gt;'
+	|	'<' '>'
 	;
 
 fieldAccess
@@ -1175,7 +1174,7 @@ expression
 	;
 
 lambdaExpression
-	:	lambdaParameters '-&gt;' lambdaBody
+	:	lambdaParameters '->' lambdaBody
 	;
 
 lambdaParameters
@@ -1215,10 +1214,10 @@ assignmentOperator
 	|	'%='
 	|	'+='
 	|	'-='
-	|	'&lt;&lt;='
-	|	'&gt;&gt;='
-	|	'&gt;&gt;&gt;='
-	|	'&amp;='
+	|	'<<='
+	|	'>>='
+	|	'>>>='
+	|	'&='
 	|	'^='
 	|	'|='
 	;
@@ -1235,7 +1234,7 @@ conditionalOrExpression
 
 conditionalAndExpression
 	:	inclusiveOrExpression
-	|	conditionalAndExpression '&amp;&amp;' inclusiveOrExpression
+	|	conditionalAndExpression '&&' inclusiveOrExpression
 	;
 
 inclusiveOrExpression
@@ -1250,7 +1249,7 @@ exclusiveOrExpression
 
 andExpression
 	:	equalityExpression
-	|	andExpression '&amp;' equalityExpression
+	|	andExpression '&' equalityExpression
 	;
 
 equalityExpression
@@ -1261,18 +1260,18 @@ equalityExpression
 
 relationalExpression
 	:	shiftExpression
-	|	relationalExpression '&lt;' shiftExpression
-	|	relationalExpression '&gt;' shiftExpression
-	|	relationalExpression '&lt;=' shiftExpression
-	|	relationalExpression '&gt;=' shiftExpression
+	|	relationalExpression '<' shiftExpression
+	|	relationalExpression '>' shiftExpression
+	|	relationalExpression '<=' shiftExpression
+	|	relationalExpression '>=' shiftExpression
 	|	relationalExpression 'instanceof' referenceType
 	;
 
 shiftExpression
 	:	additiveExpression
-	|	shiftExpression '&lt;' '&lt;' additiveExpression
-	|	shiftExpression '&gt;' '&gt;' additiveExpression
-	|	shiftExpression '&gt;' '&gt;' '&gt;' additiveExpression
+	|	shiftExpression '<' '<' additiveExpression
+	|	shiftExpression '>' '>' additiveExpression
+	|	shiftExpression '>' '>' '>' additiveExpression
 	;
 
 additiveExpression
@@ -1344,7 +1343,7 @@ castExpression
 
 // LEXER
 
-// ยง3.9 Keywords
+// ง3.9 Keywords
 
 ABSTRACT : 'abstract';
 ASSERT : 'assert';
@@ -1397,7 +1396,7 @@ VOID : 'void';
 VOLATILE : 'volatile';
 WHILE : 'while';
 
-// ยง3.10.1 Integer Literals
+// ง3.10.1 Integer Literals
 
 IntegerLiteral
 	:	DecimalIntegerLiteral
@@ -1547,7 +1546,7 @@ BinaryDigitOrUnderscore
 	|	'_'
 	;
 
-// ยง3.10.2 Floating-Point Literals
+// ง3.10.2 Floating-Point Literals
 
 FloatingPointLiteral
 	:	DecimalFloatingPointLiteral
@@ -1608,14 +1607,14 @@ BinaryExponentIndicator
 	:	[pP]
 	;
 
-// ยง3.10.3 Boolean Literals
+// ง3.10.3 Boolean Literals
 
 BooleanLiteral
 	:	'true'
 	|	'false'
 	;
 
-// ยง3.10.4 Character Literals
+// ง3.10.4 Character Literals
 
 CharacterLiteral
 	:	'\'' SingleCharacter '\''
@@ -1627,7 +1626,7 @@ SingleCharacter
 	:	~['\\\r\n]
 	;
 
-// ยง3.10.5 String Literals
+// ง3.10.5 String Literals
 
 StringLiteral
 	:	'"' StringCharacters? '"'
@@ -1644,7 +1643,7 @@ StringCharacter
 	|	EscapeSequence
 	;
 
-// ยง3.10.6 Escape Sequences for Character and String Literals
+// ง3.10.6 Escape Sequences for Character and String Literals
 
 fragment
 EscapeSequence
@@ -1671,13 +1670,13 @@ UnicodeEscape
     :   '\\' 'u'+  HexDigit HexDigit HexDigit HexDigit
     ;
 
-// ยง3.10.7 The Null Literal
+// ง3.10.7 The Null Literal
 
 NullLiteral
 	:	'null'
 	;
 
-// ยง3.11 Separators
+// ง3.11 Separators
 
 LPAREN : '(';
 RPAREN : ')';
@@ -1689,20 +1688,20 @@ SEMI : ';';
 COMMA : ',';
 DOT : '.';
 
-// ยง3.12 Operators
+// ง3.12 Operators
 
 ASSIGN : '=';
-GT : '&gt;';
-LT : '&lt;';
+GT : '>';
+LT : '<';
 BANG : '!';
 TILDE : '~';
 QUESTION : '?';
 COLON : ':';
 EQUAL : '==';
-LE : '&lt;=';
-GE : '&gt;=';
+LE : '<=';
+GE : '>=';
 NOTEQUAL : '!=';
-AND : '&amp;&amp;';
+AND : '&&';
 OR : '||';
 INC : '++';
 DEC : '--';
@@ -1710,26 +1709,26 @@ ADD : '+';
 SUB : '-';
 MUL : '*';
 DIV : '/';
-BITAND : '&amp;';
+BITAND : '&';
 BITOR : '|';
 CARET : '^';
 MOD : '%';
-ARROW : '-&gt;';
+ARROW : '->';
 COLONCOLON : '::';
 
 ADD_ASSIGN : '+=';
 SUB_ASSIGN : '-=';
 MUL_ASSIGN : '*=';
 DIV_ASSIGN : '/=';
-AND_ASSIGN : '&amp;=';
+AND_ASSIGN : '&=';
 OR_ASSIGN : '|=';
 XOR_ASSIGN : '^=';
 MOD_ASSIGN : '%=';
-LSHIFT_ASSIGN : '&lt;&lt;=';
-RSHIFT_ASSIGN : '&gt;&gt;=';
-URSHIFT_ASSIGN : '&gt;&gt;&gt;=';
+LSHIFT_ASSIGN : '<<=';
+RSHIFT_ASSIGN : '>>=';
+URSHIFT_ASSIGN : '>>>=';
 
-// ยง3.8 Identifiers (must appear after all keywords in the grammar)
+// ง3.8 Identifiers (must appear after all keywords in the grammar)
 
 Identifier
 	:	JavaLetter JavaLetterOrDigit*
@@ -1768,14 +1767,13 @@ ELLIPSIS : '...';
 // Whitespace and comments
 //
 
-WS  :  [ \t\r\n\u000C]+ -&gt; skip
+WS  :  [ \t\r\n\u000C]+ -> skip
     ;
 
 COMMENT
-    :   '/*' .*? '*/' -&gt; skip
+    :   '/*' .*? '*/' -> skip
     ;
 
 LINE_COMMENT
-    :   '//' ~[\r\n]* -&gt; skip
+    :   '//' ~[\r\n]* -> skip
     ;
-</pre></body></html>Ztext/plainUUTF-8_Ihttps://raw.githubusercontent.com/antlr/grammars-v4/master/java8/Java8.g4    ( ? Q g … ” •}#}.}4                           }€
