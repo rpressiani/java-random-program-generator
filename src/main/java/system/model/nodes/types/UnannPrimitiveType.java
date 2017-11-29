@@ -19,7 +19,7 @@ public class UnannPrimitiveType implements Node {
 
     @Override
     public String produce() {
-        
+
         String prod;
 
         if ((new Random()).nextInt(6) > 0) {
@@ -27,6 +27,7 @@ public class UnannPrimitiveType implements Node {
         } else {
             prod = "boolean ";
         }
+
         return this.verify(prod);
     }
 }
