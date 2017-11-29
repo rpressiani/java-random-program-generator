@@ -48,6 +48,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+# Custom
+.idea
+
 
 # JAVA
 # Compiled class file
