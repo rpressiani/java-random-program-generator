@@ -11,7 +11,7 @@ public class UnannPrimitiveType implements IUnannType {
 
     private IUnannType type;
 
-    public UnannPrimitiveType() {
+    UnannPrimitiveType() {
 
         if ((new Random()).nextInt(6) > 0) {
             this.type = new NumericType();

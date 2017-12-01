@@ -1,29 +1,17 @@
 package system.model.nodes.types;
 
-//integralType
-//        :	'byte'
-//        |	'short'
-//        |	'int'
-//        |	'long'
-//        |	'char'
-//        ;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class IntegralType implements INumericType {
-
+public class FloatingPointType implements INumericType {
     private String type;
 
-    IntegralType() {
+    FloatingPointType() {
 
         List<String> types = new ArrayList<String>() {{
-            add("byte");
-            add("short");
-            add("int");
-            add("long");
-            add("char");
+            add("float");
+            add("double");
         }};
 
         this.type = types.get(new Random().nextInt(types.size()));

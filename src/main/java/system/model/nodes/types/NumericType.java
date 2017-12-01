@@ -5,21 +5,28 @@ package system.model.nodes.types;
 //        |	floatingPointType
 //        ;
 
-public class NumericType implements IUnannType {
-//TODO implement floatingPointType
-    IntegralType integralType;
+import java.util.Random;
 
-    public NumericType() {
-        this.integralType = new IntegralType();
+public class NumericType implements INumericType {
+//TODO implement floatingPointType
+    INumericType type;
+
+    NumericType() {
+
+        if ((new Random()).nextInt(6) > 1) {
+            this.type = new IntegralType();
+        } else {
+            this.type = new FloatingPointType();
+        }
     }
 
     @Override
     public String produce() {
-        return this.verify(this.integralType.produce());
+        return this.verify(this.type.produce());
     }
 
     @Override
     public String getType() {
-        return this.integralType.getType();
+        return this.type.getType();
     }
 }
