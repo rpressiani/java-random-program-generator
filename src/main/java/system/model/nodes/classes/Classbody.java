@@ -20,16 +20,23 @@ public class Classbody implements Node {
     private int maxNumberOfFields = Main.config.getFields().get("max");
 
     Classbody() {
-//TODO hardcoded main method
+        //TODO hardcoded main method
         this.mainMethod = "public static void main(String[] args) {\n" +
                 "        System.out.println(\"Hello!\");\n" +
                 "    }";
         this.classBodyDeclarations = new ArrayList<>();
+        init();
+    }
 
-//TODO hardcoded random
+    private void init() {
+        //TODO hardcoded random
         for (int i = 0; i < (new Random()).nextInt(maxNumberOfFields-minNumberOfFields) + minNumberOfFields; i++) {
             this.classBodyDeclarations.add(new ClassBodyDeclaration());
         }
+    }
+
+    public List<ClassBodyDeclaration> getDeclarations() {
+        return classBodyDeclarations;
     }
 
     @Override

@@ -14,9 +14,21 @@ package system.model.nodes.classes;
 import system.model.nodes.Node;
 
 public class FieldModifier implements Node {
+
+    private static Visibility visibility;
+
+    public FieldModifier() {
+        this.visibility = Visibility.getRandomVisibility();
+    }
+
+    public static Visibility getVisibility() {
+        return visibility;
+    }
+
     @Override
     public String produce() {
-//    TODO: Still need to be implemented
-        return this.verify("public ");
+        return this.verify(this.visibility.toString().toLowerCase());
     }
+
+
 }

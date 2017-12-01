@@ -14,6 +14,10 @@ public class VariableDeclaratorList implements Node {
         this.variableDeclarator = new VariableDeclarator();
     }
 
+    public VariableDeclarator getVariableDeclarator() {
+        return variableDeclarator;
+    }
+
     @Override
     public String produce() {
         return this.verify(this.variableDeclarator.produce());

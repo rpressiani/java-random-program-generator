@@ -14,6 +14,10 @@ public class VariableDeclaratorId implements Node {
         this.genericIdentifier = new GenericIdentifier();
     }
 
+    public String getId() {
+        return genericIdentifier.getIdentifier();
+    }
+
     @Override
     public String produce() {
         return this.verify(this.genericIdentifier.produce());

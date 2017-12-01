@@ -19,10 +19,23 @@ public class FieldDeclaration implements Node {
         this.variableDeclaratorList = new VariableDeclaratorList();
     }
 
+    public FieldModifier getFieldModifier() {
+        return fieldModifier;
+    }
+
+    public UnannType getUnannType() {
+        return unannType;
+    }
+
+    public VariableDeclaratorList getVariableDeclaratorList() {
+        return variableDeclaratorList;
+    }
+
     @Override
     public String produce() {
         StringBuilder b = new StringBuilder();
         b.append(this.fieldModifier.produce());
+        b.append(" ");
         b.append(this.unannType.produce());
         b.append(this.variableDeclaratorList.produce());
         b.append(";\n");

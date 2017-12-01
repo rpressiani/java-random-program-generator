@@ -18,6 +18,10 @@ public class ClassMemberDeclaration implements Node {
         this.fieldDeclaration = new FieldDeclaration();
     }
 
+    public FieldDeclaration getFieldDeclaration() {
+        return fieldDeclaration;
+    }
+
     @Override
     public String produce() {
         return this.verify(fieldDeclaration.produce());

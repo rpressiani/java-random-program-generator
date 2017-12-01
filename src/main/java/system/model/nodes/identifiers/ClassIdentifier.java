@@ -4,14 +4,22 @@ import system.controller.Main;
 import utils.RegexGen;
 
 public class ClassIdentifier extends Identifier {
-//    TODO hardcoded string length
+
+    private String identifier;
+
     public ClassIdentifier() {
         String len = Main.config.getIdentifier().get("len");
         this.generex = new RegexGen("[A-Z][a-zA-Z0-9]{" + len + ",}");
+
+        this.identifier = this.generex.get();
+    }
+
+    public String getIdentifier() {
+        return identifier;
     }
 
     @Override
     public String produce() {
-        return this.verify(this.generex.get());
+        return this.verify(this.identifier);
     }
 }
