@@ -15,14 +15,14 @@ import system.model.nodes.Node;
 
 public class FieldModifier implements Node {
 
-    private static Visibility visibility;
+    private Visibility visibility;
 
-    public FieldModifier() {
+    FieldModifier() {
         this.visibility = Visibility.getRandomVisibility();
     }
 
-    public static Visibility getVisibility() {
-        return visibility;
+    public Visibility getVisibility() {
+        return this.visibility;
     }
 
     @Override
