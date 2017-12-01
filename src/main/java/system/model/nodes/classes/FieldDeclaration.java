@@ -37,6 +37,7 @@ public class FieldDeclaration implements Node {
         b.append(this.fieldModifier.produce());
         b.append(" ");
         b.append(this.unannType.produce());
+        b.append(" ");
         b.append(this.variableDeclaratorList.produce());
         b.append(";\n");
         return this.verify(b.toString());

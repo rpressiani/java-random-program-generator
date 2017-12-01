@@ -9,25 +9,26 @@ import system.model.nodes.Node;
 
 import java.util.Random;
 
-public class UnannPrimitiveType implements Node {
+public class UnannPrimitiveType implements IUnannType {
 
-    NumericType numericType;
+    private IUnannType type;
 
     public UnannPrimitiveType() {
-        this.numericType = new NumericType();
+
+        if ((new Random()).nextInt(6) > 0) {
+            this.type = new NumericType();
+        } else {
+            this.type = new BooleanType();
+        }
     }
 
     @Override
     public String produce() {
+        return this.verify(this.type.produce());
+    }
 
-        String prod;
-
-        if ((new Random()).nextInt(6) > 0) {
-            prod = this.verify(this.numericType.produce());
-        } else {
-            prod = "boolean ";
-        }
-
-        return this.verify(prod);
+    @Override
+    public String getType() {
+        return this.type.getType();
     }
 }

@@ -8,16 +8,21 @@ package system.model.nodes.types;
 import system.model.nodes.Node;
 
 //TODO implement reference Type
-public class UnannType implements Node {
+public class UnannType implements Node, IUnannType {
 
-    UnannPrimitiveType unannPrimitiveType;
+    private IUnannType type;
 
     public UnannType() {
-        this.unannPrimitiveType = new UnannPrimitiveType();
+        this.type = new UnannPrimitiveType();
     }
 
     @Override
     public String produce() {
-        return this.verify(this.unannPrimitiveType.produce());
+        return this.verify(this.type.produce());
+    }
+
+    @Override
+    public String getType() {
+        return this.type.getType();
     }
 }

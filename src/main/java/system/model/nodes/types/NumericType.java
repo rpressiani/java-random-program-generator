@@ -5,9 +5,7 @@ package system.model.nodes.types;
 //        |	floatingPointType
 //        ;
 
-import system.model.nodes.Node;
-
-public class NumericType implements Node {
+public class NumericType implements IUnannType {
 //TODO implement floatingPointType
     IntegralType integralType;
 
@@ -18,5 +16,10 @@ public class NumericType implements Node {
     @Override
     public String produce() {
         return this.verify(this.integralType.produce());
+    }
+
+    @Override
+    public String getType() {
+        return this.integralType.getType();
     }
 }
