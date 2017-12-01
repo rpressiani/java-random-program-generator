@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
+//TODO refactor Random
 public class Main {
 
     public static Config config;

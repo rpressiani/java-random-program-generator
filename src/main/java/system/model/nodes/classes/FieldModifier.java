@@ -13,6 +13,7 @@ package system.model.nodes.classes;
 
 import system.model.nodes.Node;
 
+//TODO implement modifiers other than visibility
 public class FieldModifier implements Node {
 
     private Visibility visibility;
