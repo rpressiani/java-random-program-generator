@@ -5,8 +5,6 @@ package system.model.nodes.types;
 //        |	'boolean'
 //        ;
 
-import system.model.nodes.Node;
-
 import java.util.Random;
 
 public class UnannPrimitiveType implements IUnannType {
