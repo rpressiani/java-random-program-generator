@@ -5,10 +5,8 @@ package system.model.nodes.types;
 //        |	unannReferenceType
 //        ;
 
-import system.model.nodes.Node;
-
 //TODO implement reference Type
-public class UnannType implements Node, IUnannType {
+public class UnannType implements IUnannType {
 
     private IUnannType type;
 

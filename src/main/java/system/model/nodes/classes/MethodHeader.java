@@ -7,9 +7,29 @@ import system.model.nodes.Node;
 //        |	typeParameters annotation* result methodDeclarator throws_?
 //        ;
 
+//TODO throws_?
+//TODO typeParameters annotation* result methodDeclarator throws_?
+
 public class MethodHeader implements Node{
+
+    private Result result;
+    private MethodDeclarator methodDeclarator;
+
+    MethodHeader() {
+        this.result = new Result();
+        this.methodDeclarator = new MethodDeclarator();
+    }
+
+    public Result getResult() {
+        return result;
+    }
+
     @Override
     public String produce() {
-        return null;
+        String b = result.produce() +
+                " " +
+                methodDeclarator.produce() +
+                " ";
+        return this.verify(b);
     }
 }

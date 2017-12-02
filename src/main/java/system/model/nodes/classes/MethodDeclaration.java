@@ -15,7 +15,7 @@ public class MethodDeclaration implements IClassMemberDeclaration {
     MethodDeclaration() {
         this.methodModifier = new MethodModifier();
         this.methodHeader = new MethodHeader();
-        this.methodBody = new MethodBody();
+        this.methodBody = new MethodBody(this.methodHeader.getResult().getType());
     }
 
     public MethodModifier getMethodModifier() {
