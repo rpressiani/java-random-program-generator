@@ -4,10 +4,9 @@ package system.model.nodes.classes;
 //        :	fieldModifier* unannType variableDeclaratorList ';'
 //        ;
 
-import system.model.nodes.Node;
 import system.model.nodes.types.UnannType;
 
-public class FieldDeclaration implements Node {
+public class FieldDeclaration implements IClassMemberDeclaration {
 
     private FieldModifier fieldModifier;
     private UnannType unannType;
@@ -33,13 +32,12 @@ public class FieldDeclaration implements Node {
 
     @Override
     public String produce() {
-        StringBuilder b = new StringBuilder();
-        b.append(this.fieldModifier.produce());
-        b.append(" ");
-        b.append(this.unannType.produce());
-        b.append(" ");
-        b.append(this.variableDeclaratorList.produce());
-        b.append(";\n");
-        return this.verify(b.toString());
+        String b = this.fieldModifier.produce() +
+                " " +
+                this.unannType.produce() +
+                " " +
+                this.variableDeclaratorList.produce() +
+                ";\n";
+        return this.verify(b);
     }
 }
