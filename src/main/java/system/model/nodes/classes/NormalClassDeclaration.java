@@ -25,7 +25,7 @@ public class NormalClassDeclaration implements Node {
 
     @Override
     public String produce() {
-        return this.verify("class " + this.identifier.produce() + classbody.produce());
+        return this.verify("class " + this.identifier.produce() + classBody.produce());
     }
 
 }
