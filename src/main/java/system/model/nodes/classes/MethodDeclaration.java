@@ -6,9 +6,33 @@ import system.model.nodes.Node;
 //        :	methodModifier* methodHeader methodBody
 //        ;
 
-public class MethodDeclaration implements Node {
+public class MethodDeclaration implements IClassMemberDeclaration {
+
+    private MethodModifier methodModifier;
+    private MethodHeader methodHeader;
+    private MethodBody methodBody;
+
+    MethodDeclaration() {
+        this.methodModifier = new MethodModifier();
+        this.methodHeader = new MethodHeader();
+        this.methodBody = new MethodBody();
+    }
+
+    public MethodModifier getMethodModifier() {
+        return methodModifier;
+    }
+
+    public MethodHeader getMethodHeader() {
+        return methodHeader;
+    }
+
     @Override
     public String produce() {
-        return null;
+        String b = methodModifier.produce() +
+                " " +
+                methodHeader.produce() +
+                " " +
+                methodBody.produce();
+        return this.verify(b);
     }
 }

@@ -12,18 +12,28 @@ import system.model.nodes.Node;
 
 public class ClassMemberDeclaration implements Node {
 
-    private FieldDeclaration fieldDeclaration;
+    private IClassMemberDeclaration classMemberDeclaration;
 
-    ClassMemberDeclaration() {
-        this.fieldDeclaration = new FieldDeclaration();
+    ClassMemberDeclaration(String type) {
+        switch (type) {
+            case "field":
+                this.classMemberDeclaration = new FieldDeclaration();
+                break;
+            case "method":
+                this.classMemberDeclaration = new MethodDeclaration();
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid type");
+        }
+
     }
 
-    public FieldDeclaration getFieldDeclaration() {
-        return fieldDeclaration;
+    public IClassMemberDeclaration getClassMemberDeclaration() {
+        return classMemberDeclaration;
     }
 
     @Override
     public String produce() {
-        return this.verify(fieldDeclaration.produce());
+        return this.verify(classMemberDeclaration.produce());
     }
 }

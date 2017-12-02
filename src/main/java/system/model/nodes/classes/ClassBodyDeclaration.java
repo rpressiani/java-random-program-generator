@@ -13,8 +13,8 @@ public class ClassBodyDeclaration implements Node {
 
     private ClassMemberDeclaration classMemberDeclaration;
 
-    ClassBodyDeclaration() {
-        this.classMemberDeclaration = new ClassMemberDeclaration();
+    ClassBodyDeclaration(String type) {
+        this.classMemberDeclaration = new ClassMemberDeclaration(type);
     }
 
     public ClassMemberDeclaration getClassMemberDeclaration() {

@@ -19,6 +19,9 @@ public class ClassBody implements Node {
     private int minNumberOfFields = Main.config.getFields().get("min");
     private int maxNumberOfFields = Main.config.getFields().get("max");
 
+    private int minNumberOfMethods = Main.config.getMethods().get("min");
+    private int maxNumberOfMethods = Main.config.getMethods().get("max");
+
     ClassBody() {
         //TODO hardcoded main method
         this.mainMethod = "public static void main(String[] args) {\n" +
@@ -29,9 +32,13 @@ public class ClassBody implements Node {
     }
 
     private void init() {
-        //TODO hardcoded random
+//        GENERATE FIELDS
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfFields-minNumberOfFields) + minNumberOfFields; i++) {
-            this.classBodyDeclarations.add(new ClassBodyDeclaration());
+            this.classBodyDeclarations.add(new ClassBodyDeclaration("field"));
+        }
+//        GENERATE METHODS
+        for (int i = 0; i < RandomGen.getNextInt(maxNumberOfMethods-minNumberOfMethods) + minNumberOfMethods; i++) {
+            this.classBodyDeclarations.add(new ClassBodyDeclaration("method"));
         }
     }
 
