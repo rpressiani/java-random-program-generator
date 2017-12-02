@@ -5,7 +5,7 @@ package system.model.nodes.types;
 //        |	'boolean'
 //        ;
 
-import java.util.Random;
+import utils.RandomGen;
 
 public class UnannPrimitiveType implements IUnannType {
 
@@ -13,7 +13,7 @@ public class UnannPrimitiveType implements IUnannType {
 
     UnannPrimitiveType() {
 
-        if ((new Random()).nextInt(6) > 0) {
+        if (RandomGen.getNextInt(6) > 0) {
             this.type = new NumericType();
         } else {
             this.type = new BooleanType();

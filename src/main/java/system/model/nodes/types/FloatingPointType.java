@@ -1,8 +1,9 @@
 package system.model.nodes.types;
 
+import utils.RandomGen;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class FloatingPointType implements INumericType {
     private String type;
@@ -14,7 +15,7 @@ public class FloatingPointType implements INumericType {
             add("double");
         }};
 
-        this.type = types.get(new Random().nextInt(types.size()));
+        this.type = types.get(RandomGen.getNextInt(types.size()));
     }
 
     @Override

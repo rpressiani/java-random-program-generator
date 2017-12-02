@@ -14,26 +14,29 @@ import java.util.Random;
 public class DecimalNumeral implements Node{
 
     private String digits;
+    private Random rand;
 
     DecimalNumeral(String type) {
-        int rand = (new Random()).nextInt(10);
-        if (rand > 0) {
+
+        this.rand = new Random();
+
+        if (rand.nextInt(10) > 0) {
 //TODO            this.digits = (new NonZeroDigit()).produce() + (new Digits()).produce();
             switch (type) {
                 case "long":
-                    this.digits = String.valueOf((new Random()).nextLong());
+                    this.digits = String.valueOf(rand.nextLong());
                     break;
                 case "byte":
-                    this.digits = String.valueOf(Math.abs((new Random()).nextInt(8)));
+                    this.digits = String.valueOf(Math.abs(rand.nextInt(8)));
                     break;
                 case "char":
-                    this.digits = String.valueOf(Math.abs((new Random()).nextInt(256)));
+                    this.digits = String.valueOf(Math.abs(rand.nextInt(256)));
                     break;
                 case "short":
-                    this.digits = String.valueOf((new Random()).nextInt(Short.MAX_VALUE));
+                    this.digits = String.valueOf(rand.nextInt(Short.MAX_VALUE));
                     break;
                 case "int":
-                    this.digits = String.valueOf((new Random()).nextInt());
+                    this.digits = String.valueOf(rand.nextInt());
                     break;
             }
 

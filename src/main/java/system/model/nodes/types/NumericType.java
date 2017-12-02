@@ -5,7 +5,7 @@ package system.model.nodes.types;
 //        |	floatingPointType
 //        ;
 
-import java.util.Random;
+import utils.RandomGen;
 
 public class NumericType implements INumericType {
 //TODO implement floatingPointType
@@ -13,7 +13,7 @@ public class NumericType implements INumericType {
 
     NumericType() {
 
-        if ((new Random()).nextInt(6) > 1) {
+        if (RandomGen.getNextInt(6) > 1) {
             this.type = new IntegralType();
         } else {
             this.type = new FloatingPointType();

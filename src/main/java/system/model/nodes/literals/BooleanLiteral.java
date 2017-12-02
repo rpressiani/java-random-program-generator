@@ -1,6 +1,6 @@
 package system.model.nodes.literals;
 
-import java.util.Random;
+import utils.RandomGen;
 
 //BooleanLiteral
 //        :	'true'
@@ -12,11 +12,12 @@ public class BooleanLiteral implements ILiteral {
     private String boo;
 
     BooleanLiteral() {
-        if ((new Random()).nextInt(2) > 1) {
+        if (RandomGen.getNextInt(2) > 1) {
             this.boo = "true";
         } else {
             this.boo = "false";
         }
+
     }
 
     @Override

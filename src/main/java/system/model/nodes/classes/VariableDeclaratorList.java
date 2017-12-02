@@ -6,10 +6,10 @@ package system.model.nodes.classes;
 
 import system.controller.Main;
 import system.model.nodes.Node;
+import utils.RandomGen;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class VariableDeclaratorList implements Node {
 
@@ -19,7 +19,7 @@ public class VariableDeclaratorList implements Node {
         this.variableDeclaratorList = new ArrayList<>();
         int listLen = Main.config.getVariableDeclaratorListLength();
 
-        for (int i = 0; i < (new Random()).nextInt(listLen) + 1; i++) {
+        for (int i = 0; i < RandomGen.getNextInt(listLen) + 1; i++) {
             this.variableDeclaratorList.add(new VariableDeclarator(type));
         }
     }
@@ -34,7 +34,7 @@ public class VariableDeclaratorList implements Node {
         b.append(this.variableDeclaratorList.get(0).produce());
 
         for (int i = 1; i < this.variableDeclaratorList.size() ; i++) {
-            b.append("," + this.variableDeclaratorList.get(i).produce());
+            b.append(",").append(this.variableDeclaratorList.get(i).produce());
         }
 
         return this.verify(b.toString());

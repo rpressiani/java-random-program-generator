@@ -8,9 +8,10 @@ package system.model.nodes.types;
 //        |	'char'
 //        ;
 
+import utils.RandomGen;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class IntegralType implements INumericType {
 
@@ -26,7 +27,7 @@ public class IntegralType implements INumericType {
             add("char");
         }};
 
-        this.type = types.get(new Random().nextInt(types.size()));
+        this.type = types.get(RandomGen.getNextInt(types.size()));
     }
 
     @Override

@@ -6,10 +6,10 @@ package system.model.nodes.classes;
 
 import system.controller.Main;
 import system.model.nodes.Node;
+import utils.RandomGen;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Classbody implements Node {
 
@@ -30,7 +30,7 @@ public class Classbody implements Node {
 
     private void init() {
         //TODO hardcoded random
-        for (int i = 0; i < (new Random()).nextInt(maxNumberOfFields-minNumberOfFields) + minNumberOfFields; i++) {
+        for (int i = 0; i < RandomGen.getNextInt(maxNumberOfFields-minNumberOfFields) + minNumberOfFields; i++) {
             this.classBodyDeclarations.add(new ClassBodyDeclaration());
         }
     }
