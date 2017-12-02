@@ -11,7 +11,7 @@ import utils.RandomGen;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Classbody implements Node {
+public class ClassBody implements Node {
 
     private String mainMethod;
     private List<ClassBodyDeclaration> classBodyDeclarations;
@@ -19,7 +19,7 @@ public class Classbody implements Node {
     private int minNumberOfFields = Main.config.getFields().get("min");
     private int maxNumberOfFields = Main.config.getFields().get("max");
 
-    Classbody() {
+    ClassBody() {
         //TODO hardcoded main method
         this.mainMethod = "public static void main(String[] args) {\n" +
                 "        System.out.println(\"Hello!\");\n" +

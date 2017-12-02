@@ -10,11 +10,12 @@ import system.model.nodes.identifiers.ClassIdentifier;
 public class NormalClassDeclaration implements Node {
 
     private ClassIdentifier identifier;
-    private Classbody classbody;
+    private ClassBody classBody;
 
     public NormalClassDeclaration() {
         this.identifier = new ClassIdentifier();
-        this.classbody = new Classbody();
+        this.classBody = new ClassBody();
+    }
     }
 
 
