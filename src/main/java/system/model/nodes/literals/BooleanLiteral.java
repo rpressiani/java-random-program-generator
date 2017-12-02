@@ -9,13 +9,13 @@ import java.util.Random;
 
 public class BooleanLiteral implements ILiteral {
 
-    String boo;
+    private String boo;
 
-    public BooleanLiteral() {
+    BooleanLiteral() {
         if ((new Random()).nextInt(2) > 1) {
-            this.boo = "True";
+            this.boo = "true";
         } else {
-            this.boo = "False";
+            this.boo = "false";
         }
     }
 
