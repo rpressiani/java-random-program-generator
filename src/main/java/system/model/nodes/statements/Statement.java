@@ -11,7 +11,7 @@ import system.model.nodes.Node;
 //        |	forStatement
 //        ;
 
-public class Statement implements IStatement{
+public class Statement implements IBlockStatement{
 
     private IStatement statement;
 

@@ -13,7 +13,11 @@ import system.model.nodes.Node;
 
 public class BlockStatement implements Node{
 
-    private Statement statement;
+    private IBlockStatement statement;
+
+    BlockStatement() {
+        this.statement = new LocalVariableDeclarationStatement();
+    }
 
     BlockStatement(String type) {
         this.statement = new Statement(type);

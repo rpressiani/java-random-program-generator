@@ -7,6 +7,7 @@ public class Config {
     private Map<String, String> identifier;
     private Map<String, Integer> fields;
     private Map<String, Integer> methods;
+    private Map<String, Integer> statements;
     private int variableDeclaratorListLength;
 
     public Map<String, String> getIdentifier() {
@@ -19,6 +20,10 @@ public class Config {
 
     public Map<String, Integer> getMethods() {
         return methods;
+    }
+
+    public Map<String, Integer> getStatements() {
+        return statements;
     }
 
     public int getVariableDeclaratorListLength() {

@@ -15,7 +15,7 @@ public class VariableDeclaratorList implements Node {
 
     private List<VariableDeclarator> variableDeclaratorList;
 
-    VariableDeclaratorList(String type) {
+    public VariableDeclaratorList(String type) {
         this.variableDeclaratorList = new ArrayList<>();
         int listLen = Main.config.getVariableDeclaratorListLength();
 
