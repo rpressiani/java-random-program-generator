@@ -22,7 +22,7 @@ public class Literal implements Node{
             case "short":
             case "long":
             case "char":
-                this.literal = new IntegerLiteral();
+                this.literal = new IntegerLiteral(type);
                 break;
 
             case "boolean":

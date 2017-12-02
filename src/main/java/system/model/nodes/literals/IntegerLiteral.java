@@ -12,8 +12,15 @@ package system.model.nodes.literals;
 //TODO BinaryIntegerLiteral
 
 public class IntegerLiteral implements ILiteral {
+
+    private DecimalIntegerLiteral decimalIntegerLiteral;
+
+    IntegerLiteral(String type) {
+        this.decimalIntegerLiteral = new DecimalIntegerLiteral(type);
+    }
+
     @Override
     public String produce() {
-        return "0";
+        return this.verify(decimalIntegerLiteral.produce());
     }
 }
