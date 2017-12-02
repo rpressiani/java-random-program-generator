@@ -5,6 +5,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import system.model.nodes.Node;
 import system.model.nodes.classes.NormalClassDeclaration;
 import utils.Config;
+import utils.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,9 +27,9 @@ public class Main {
 
         save(cl);
         if (CompileChecker.compileCheck("Main.java") == 0) {
-            System.out.println("[COMPILER] Compilation successful");
+            Logger.log("compiler", "Compilation successful");
         } else {
-            System.err.println("[COMPILER] Compilation failed");
+            Logger.logError("compiler","Compilation failed");
         }
 
     }
