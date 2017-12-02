@@ -21,12 +21,20 @@ public class Literal implements Node{
             case "byte":
             case "short":
             case "long":
-            case "char":
+                this.literal = new IntegerLiteral(type);
+                break;
+
+            case "char": //TODO implement Character Literal
                 this.literal = new IntegerLiteral(type);
                 break;
 
             case "boolean":
                 this.literal = new BooleanLiteral();
+                break;
+
+            case "double":
+            case "float":
+                this.literal = new FloatingPointLiteral(type);
                 break;
 
             default:
