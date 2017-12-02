@@ -14,6 +14,10 @@ public class ClassIdentifier extends Identifier {
         this.identifier = this.generex.get();
     }
 
+    public ClassIdentifier(String className) {
+        this.identifier = className;
+    }
+
     public String getIdentifier() {
         return identifier;
     }

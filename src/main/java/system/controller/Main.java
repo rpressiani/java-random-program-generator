@@ -12,7 +12,6 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO refactor Random
 public class Main {
 
     public static Config config;
@@ -23,9 +22,14 @@ public class Main {
 
         new File("generatedSrc/main/java").mkdirs();
 
-        NormalClassDeclaration cl = new NormalClassDeclaration();
+        NormalClassDeclaration cl = new NormalClassDeclaration("Main");
 
         save(cl);
+        if (CompileChecker.compileCheck("Main.java") == 0) {
+            System.out.println("[COMPILER] Compilation successful");
+        } else {
+            System.err.println("[COMPILER] Compilation failed");
+        }
 
     }
 

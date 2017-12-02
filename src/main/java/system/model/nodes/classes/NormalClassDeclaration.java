@@ -16,6 +16,10 @@ public class NormalClassDeclaration implements Node {
         this.identifier = new ClassIdentifier();
         this.classBody = new ClassBody();
     }
+
+    public NormalClassDeclaration(String className) {
+        this.identifier = new ClassIdentifier(className);
+        this.classBody = new ClassBody();
     }
 
 
