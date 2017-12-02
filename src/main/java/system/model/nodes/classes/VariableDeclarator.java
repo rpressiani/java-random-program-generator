@@ -10,9 +10,11 @@ import system.model.nodes.Node;
 public class VariableDeclarator implements Node {
 
     private VariableDeclaratorId variableDeclaratorId;
+    private VariableInitializer variableInitializer;
 
-    VariableDeclarator() {
+    VariableDeclarator(String type) {
         this.variableDeclaratorId = new VariableDeclaratorId();
+        this.variableInitializer = new VariableInitializer(type);
     }
 
     public String getVariableDeclaratorId() {
@@ -21,7 +23,15 @@ public class VariableDeclarator implements Node {
 
     @Override
     public String produce() {
-        return this.verify(this.variableDeclaratorId.produce());
+        StringBuilder b = new StringBuilder();
+
+        b.append(this.variableDeclaratorId.produce());
+        String initializer = this.variableInitializer.produce();
+        if (initializer.length() > 0) {
+            b.append("=" + initializer);
+        }
+
+        return this.verify(b.toString());
     }
 
 }

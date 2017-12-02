@@ -15,12 +15,12 @@ public class VariableDeclaratorList implements Node {
 
     private List<VariableDeclarator> variableDeclaratorList;
 
-    VariableDeclaratorList() {
+    VariableDeclaratorList(String type) {
         this.variableDeclaratorList = new ArrayList<>();
         int listLen = Main.config.getVariableDeclaratorListLength();
 
         for (int i = 0; i < (new Random()).nextInt(listLen) + 1; i++) {
-            this.variableDeclaratorList.add(new VariableDeclarator());
+            this.variableDeclaratorList.add(new VariableDeclarator(type));
         }
     }
 

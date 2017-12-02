@@ -16,7 +16,7 @@ public class FieldDeclaration implements Node {
     FieldDeclaration() {
         this.fieldModifier = new FieldModifier();
         this.unannType = new UnannType();
-        this.variableDeclaratorList = new VariableDeclaratorList();
+        this.variableDeclaratorList = new VariableDeclaratorList(this.unannType.getType());
     }
 
     public FieldModifier getFieldModifier() {

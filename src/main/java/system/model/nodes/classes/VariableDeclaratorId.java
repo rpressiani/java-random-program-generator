@@ -7,6 +7,7 @@ package system.model.nodes.classes;
 import system.model.nodes.Node;
 import system.model.nodes.identifiers.GenericIdentifier;
 
+//TODO implement "dims?"
 public class VariableDeclaratorId implements Node {
     private GenericIdentifier genericIdentifier;
 
