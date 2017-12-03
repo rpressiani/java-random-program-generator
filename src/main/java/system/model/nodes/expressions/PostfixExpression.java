@@ -26,7 +26,6 @@ public class PostfixExpression implements Node{
             this.postfixExpression = new Primary(type);
         } else {
             this.postfixExpression = new ExpressionName(type, scopeTable);
-//            Logger.logError("TEST", this.postfixExpression.produce());
             if (this.postfixExpression.produce() == null) {
                 this.postfixExpression = new Primary(type);
             }
