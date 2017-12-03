@@ -1,5 +1,6 @@
 package system.model.nodes.classes;
 
+import system.model.ScopeTable;
 import system.model.nodes.Node;
 
 //classBodyDeclaration
@@ -13,8 +14,8 @@ public class ClassBodyDeclaration implements Node {
 
     private ClassMemberDeclaration classMemberDeclaration;
 
-    ClassBodyDeclaration(String type) {
-        this.classMemberDeclaration = new ClassMemberDeclaration(type);
+    ClassBodyDeclaration(String type, ScopeTable scopeTable) {
+        this.classMemberDeclaration = new ClassMemberDeclaration(type, scopeTable);
     }
 
     public ClassMemberDeclaration getClassMemberDeclaration() {

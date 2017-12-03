@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.ScopeTable;
 import system.model.nodes.Node;
 
 //expression
@@ -12,8 +13,8 @@ public class Expression implements Node {
 
     private AssignmentExpression assignmentExpression;
 
-    public Expression(String type) {
-        this.assignmentExpression = new AssignmentExpression(type);
+    public Expression(String type, ScopeTable scopeTable) {
+        this.assignmentExpression = new AssignmentExpression(type, scopeTable);
     }
 
     public AssignmentExpression getAssignmentExpression() {

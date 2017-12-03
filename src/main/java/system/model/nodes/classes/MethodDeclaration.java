@@ -14,8 +14,8 @@ public class MethodDeclaration implements IClassMemberDeclaration {
     private MethodHeader methodHeader;
     private MethodBody methodBody;
 
-    MethodDeclaration() {
-        this.scopeTable = new ScopeTable();
+    MethodDeclaration(ScopeTable scopeTable) {
+        this.scopeTable = new ScopeTable(scopeTable);
 
         this.methodModifier = new MethodModifier();
         this.methodHeader = new MethodHeader();

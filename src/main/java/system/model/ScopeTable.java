@@ -39,4 +39,8 @@ public class ScopeTable {
     private Map<String,ArrayList<String>> getOuterScopeTable() {
         return localVariables;
     }
+
+    public Map<String, ArrayList<String>> getLocalVariables() {
+        return localVariables;
+    }
 }

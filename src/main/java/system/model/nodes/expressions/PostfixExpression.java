@@ -1,6 +1,9 @@
 package system.model.nodes.expressions;
 
+import system.model.ScopeTable;
 import system.model.nodes.Node;
+import utils.Logger;
+import utils.RandomGen;
 
 //postfixExpression
 //        :	(	primary
@@ -17,14 +20,25 @@ import system.model.nodes.Node;
 //TODO WARNING!! * after post increment decrement postfix expression
 public class PostfixExpression implements Node{
 
-    private Primary primary;
+    private IPostfixExpression postfixExpression;
 
-    public PostfixExpression(String type) {
-        this.primary = new Primary(type);
+    PostfixExpression(String type, ScopeTable scopeTable) {
+        if (RandomGen.getNextInt(2) == 1) {
+            this.postfixExpression = new Primary(type);
+        } else {
+            this.postfixExpression = new ExpressionName(type, scopeTable);
+//            Logger.logError("TEST", this.postfixExpression.produce());
+            if (this.postfixExpression.produce() == null) {
+                this.postfixExpression = new Primary(type);
+            }
+        }
+
+
     }
 
     @Override
     public String produce() {
-        return this.verify(primary.produce());
+        return this.verify(postfixExpression.produce());
     }
+
 }

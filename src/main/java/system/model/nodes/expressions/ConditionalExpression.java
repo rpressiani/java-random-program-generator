@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.ScopeTable;
 import system.model.nodes.Node;
 
 //conditionalExpression
@@ -12,8 +13,8 @@ public class ConditionalExpression implements Node {
 
     private ConditionalOrExpression conditionalOrExpression;
 
-    public ConditionalExpression(String type) {
-        this.conditionalOrExpression = new ConditionalOrExpression(type);
+    public ConditionalExpression(String type, ScopeTable scopeTable) {
+        this.conditionalOrExpression = new ConditionalOrExpression(type, scopeTable);
     }
 
     @Override

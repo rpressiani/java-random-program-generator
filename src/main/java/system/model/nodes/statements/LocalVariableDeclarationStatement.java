@@ -4,12 +4,14 @@ package system.model.nodes.statements;
 //        :	localVariableDeclaration ';'
 //        ;
 
+import system.model.ScopeTable;
+
 public class LocalVariableDeclarationStatement implements IBlockStatement {
 
     private LocalVariableDeclaration localVariableDeclaration;
 
-    LocalVariableDeclarationStatement() {
-        this.localVariableDeclaration = new LocalVariableDeclaration();
+    LocalVariableDeclarationStatement(ScopeTable scopeTable) {
+        this.localVariableDeclaration = new LocalVariableDeclaration(scopeTable);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.ScopeTable;
 import system.model.nodes.Node;
 
 //assignmentExpression
@@ -12,8 +13,8 @@ public class AssignmentExpression implements Node {
 
     private ConditionalExpression conditionalExpression;
 
-    public AssignmentExpression(String type) {
-        this.conditionalExpression = new ConditionalExpression(type);
+    AssignmentExpression(String type, ScopeTable scopeTable) {
+        this.conditionalExpression = new ConditionalExpression(type, scopeTable);
     }
 
     @Override

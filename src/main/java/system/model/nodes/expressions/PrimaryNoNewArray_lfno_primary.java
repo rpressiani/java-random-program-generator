@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.ScopeTable;
 import system.model.nodes.Node;
 import system.model.nodes.literals.Literal;
 
@@ -35,7 +36,7 @@ public class PrimaryNoNewArray_lfno_primary implements Node{
 
     private Literal literal;
 
-    public PrimaryNoNewArray_lfno_primary(String type) {
+    PrimaryNoNewArray_lfno_primary(String type) {
         this.literal = new Literal(type);
     }
 

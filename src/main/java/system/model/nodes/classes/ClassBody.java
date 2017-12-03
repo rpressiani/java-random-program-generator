@@ -5,7 +5,9 @@ package system.model.nodes.classes;
 //        ;
 
 import system.controller.Main;
+import system.model.ScopeTable;
 import system.model.nodes.Node;
+import utils.Logger;
 import utils.RandomGen;
 
 import java.util.ArrayList;
@@ -22,23 +24,24 @@ public class ClassBody implements Node {
     private int minNumberOfMethods = Main.config.getMethods().get("min");
     private int maxNumberOfMethods = Main.config.getMethods().get("max");
 
-    ClassBody() {
+    ClassBody(ScopeTable scopeTable) {
         //TODO hardcoded main method
         this.mainMethod = "public static void main(String[] args) {\n" +
                 "        System.out.println(\"Hello!\");\n" +
                 "    }";
         this.classBodyDeclarations = new ArrayList<>();
-        init();
+        init(scopeTable);
     }
 
-    private void init() {
+    private void init(ScopeTable scopeTable) {
 //        GENERATE FIELDS
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfFields-minNumberOfFields) + minNumberOfFields; i++) {
-            this.classBodyDeclarations.add(new ClassBodyDeclaration("field"));
+            this.classBodyDeclarations.add(new ClassBodyDeclaration("field", scopeTable));
         }
+        Logger.log("classbody", "End fields generation");
 //        GENERATE METHODS
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfMethods-minNumberOfMethods) + minNumberOfMethods; i++) {
-            this.classBodyDeclarations.add(new ClassBodyDeclaration("method"));
+            this.classBodyDeclarations.add(new ClassBodyDeclaration("method", scopeTable));
         }
     }
 

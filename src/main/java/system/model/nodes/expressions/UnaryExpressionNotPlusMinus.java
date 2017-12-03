@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.ScopeTable;
 import system.model.nodes.Node;
 
 //unaryExpressionNotPlusMinus
@@ -16,8 +17,8 @@ public class UnaryExpressionNotPlusMinus implements Node{
 
     private PostfixExpression postfixExpression;
 
-    public UnaryExpressionNotPlusMinus(String type) {
-        this.postfixExpression = new PostfixExpression(type);
+    public UnaryExpressionNotPlusMinus(String type, ScopeTable scopeTable) {
+        this.postfixExpression = new PostfixExpression(type, scopeTable);
     }
 
     @Override

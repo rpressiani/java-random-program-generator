@@ -1,6 +1,6 @@
 package system.model.nodes.expressions;
 
-import system.model.nodes.Node;
+import system.model.ScopeTable;
 
 //primary
 //        :	(	primaryNoNewArray_lfno_primary
@@ -15,11 +15,11 @@ import system.model.nodes.Node;
 //TODO        (	primaryNoNewArray_lf_primary
 //TODO        )*
 
-public class Primary implements Node{
+public class Primary implements IPostfixExpression{
 
     private PrimaryNoNewArray_lfno_primary primaryNoNewArray_lfno_primary;
 
-    public Primary(String type) {
+    Primary(String type) {
         this.primaryNoNewArray_lfno_primary = new PrimaryNoNewArray_lfno_primary(type);
     }
 

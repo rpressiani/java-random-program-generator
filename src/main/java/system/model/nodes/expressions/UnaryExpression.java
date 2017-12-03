@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.ScopeTable;
 import system.model.nodes.Node;
 
 //unaryExpression
@@ -18,8 +19,8 @@ public class UnaryExpression implements Node{
 
     private UnaryExpressionNotPlusMinus unaryExpressionNotPlusMinus;
 
-    public UnaryExpression(String type) {
-        this.unaryExpressionNotPlusMinus = new UnaryExpressionNotPlusMinus(type);
+    public UnaryExpression(String type, ScopeTable scopeTable) {
+        this.unaryExpressionNotPlusMinus = new UnaryExpressionNotPlusMinus(type, scopeTable);
     }
 
     @Override

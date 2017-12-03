@@ -1,5 +1,6 @@
 package system.model.nodes.classes;
 
+import system.model.ScopeTable;
 import system.model.nodes.Node;
 import system.model.nodes.expressions.Expression;
 
@@ -13,8 +14,8 @@ public class VariableInitializer implements Node {
 
     private Expression expression;
 
-    VariableInitializer(String type) {
-        this.expression = new Expression(type);
+    VariableInitializer(String type, ScopeTable scopeTable) {
+        this.expression = new Expression(type, scopeTable);
     }
 
     public Expression getExpression() {

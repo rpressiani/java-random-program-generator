@@ -14,8 +14,8 @@ public class Block implements Node{
     private BlockStatements blockStatements;
     private ScopeTable scopeTable;
 
-    public Block(String type) {
-        this.scopeTable = new ScopeTable();
+    public Block(String type, ScopeTable outerScopeTable) {
+        this.scopeTable = new ScopeTable(outerScopeTable);
         this.blockStatements = new BlockStatements(type, this.scopeTable);
     }
 

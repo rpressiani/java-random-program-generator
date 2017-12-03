@@ -4,17 +4,18 @@ package system.model.nodes.classes;
 //        :	variableDeclaratorId ('=' variableInitializer)?
 //        ;
 
+import system.model.ScopeTable;
 import system.model.nodes.Node;
 
-//TODO implement variableInitializer
+//TODO all variable are always initilized
 public class VariableDeclarator implements Node {
 
     private VariableDeclaratorId variableDeclaratorId;
     private VariableInitializer variableInitializer;
 
-    VariableDeclarator(String type) {
+    VariableDeclarator(String type, ScopeTable scopeTable) {
         this.variableDeclaratorId = new VariableDeclaratorId();
-        this.variableInitializer = new VariableInitializer(type);
+        this.variableInitializer = new VariableInitializer(type, scopeTable);
     }
 
     public String getVariableDeclaratorId() {
@@ -28,7 +29,7 @@ public class VariableDeclarator implements Node {
         b.append(this.variableDeclaratorId.produce());
         String initializer = this.variableInitializer.produce();
         if (initializer.length() > 0) {
-            b.append("=" + initializer);
+            b.append("=").append(initializer);
         }
 
         return this.verify(b.toString());

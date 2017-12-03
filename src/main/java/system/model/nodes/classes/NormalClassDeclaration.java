@@ -4,6 +4,7 @@ package system.model.nodes.classes;
 //        :	classModifier* 'class' Identifier typeParameters? superclass? superinterfaces? classBody
 //        ;
 
+import system.model.ScopeTable;
 import system.model.nodes.Node;
 import system.model.nodes.identifiers.ClassIdentifier;
 
@@ -11,15 +12,18 @@ public class NormalClassDeclaration implements Node {
 
     private ClassIdentifier identifier;
     private ClassBody classBody;
+    private ScopeTable scopeTable;
 
     public NormalClassDeclaration() {
         this.identifier = new ClassIdentifier();
-        this.classBody = new ClassBody();
+        this.scopeTable = new ScopeTable();
+        this.classBody = new ClassBody(scopeTable);
     }
 
     public NormalClassDeclaration(String className) {
         this.identifier = new ClassIdentifier(className);
-        this.classBody = new ClassBody();
+        this.scopeTable = new ScopeTable();
+        this.classBody = new ClassBody(scopeTable);
     }
 
     @Override
