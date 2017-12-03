@@ -11,7 +11,7 @@ import system.model.nodes.Node;
 //        |	NullLiteral
 //        ;
 
-public class Literal implements Node{
+public class Literal implements IPrimaryNoNewArray_lfno_primary{
 
     private ILiteral literal;
 

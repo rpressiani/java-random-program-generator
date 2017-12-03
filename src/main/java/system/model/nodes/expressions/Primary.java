@@ -19,8 +19,8 @@ public class Primary implements IPostfixExpression{
 
     private PrimaryNoNewArray_lfno_primary primaryNoNewArray_lfno_primary;
 
-    Primary(String type) {
-        this.primaryNoNewArray_lfno_primary = new PrimaryNoNewArray_lfno_primary(type);
+    Primary(String type, ScopeTable scopeTable) {
+        this.primaryNoNewArray_lfno_primary = new PrimaryNoNewArray_lfno_primary(type, scopeTable);
     }
 
     @Override

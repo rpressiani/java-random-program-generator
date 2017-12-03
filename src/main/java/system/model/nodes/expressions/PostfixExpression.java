@@ -13,7 +13,6 @@ import utils.RandomGen;
 //        )*
 //        ;
 
-//TODO expressionName
 //TODO postIncrementExpression_lf_postfixExpression
 //TODO postDecrementExpression_lf_postfixExpression
 //TODO WARNING!! * after post increment decrement postfix expression
@@ -23,11 +22,11 @@ public class PostfixExpression implements Node{
 
     PostfixExpression(String type, ScopeTable scopeTable) {
         if (RandomGen.getNextInt(2) == 1) {
-            this.postfixExpression = new Primary(type);
+            this.postfixExpression = new Primary(type, scopeTable);
         } else {
             this.postfixExpression = new ExpressionName(type, scopeTable);
             if (this.postfixExpression.produce() == null) {
-                this.postfixExpression = new Primary(type);
+                this.postfixExpression = new Primary(type, scopeTable);
             }
         }
 

@@ -2,7 +2,9 @@ package system.model.nodes.expressions;
 
 import system.model.ScopeTable;
 import system.model.nodes.Node;
+import system.model.nodes.literals.IPrimaryNoNewArray_lfno_primary;
 import system.model.nodes.literals.Literal;
+import utils.RandomGen;
 
 //primaryNoNewArray_lfno_primary
 //        :	literal
@@ -34,14 +36,21 @@ import system.model.nodes.literals.Literal;
 
 public class PrimaryNoNewArray_lfno_primary implements Node{
 
-    private Literal literal;
+    private IPrimaryNoNewArray_lfno_primary primaryNoNewArray_lfno_primary;
 
-    PrimaryNoNewArray_lfno_primary(String type) {
-        this.literal = new Literal(type);
+    PrimaryNoNewArray_lfno_primary(String type, ScopeTable scopeTable) {
+        if (RandomGen.getNextInt(2) == 1) {
+            this.primaryNoNewArray_lfno_primary = new Literal(type);
+        } else {
+            this.primaryNoNewArray_lfno_primary = new MethodInvocation_lfno_primary(type, scopeTable);
+            if (((MethodInvocation_lfno_primary) this.primaryNoNewArray_lfno_primary).getMethodName() == null) {
+                this.primaryNoNewArray_lfno_primary = new Literal(type);
+            }
+        }
     }
 
     @Override
     public String produce() {
-        return this.verify(literal.produce());
+        return this.verify(primaryNoNewArray_lfno_primary.produce());
     }
 }
