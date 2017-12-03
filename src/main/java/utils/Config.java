@@ -27,6 +27,6 @@ public class Config {
     }
 
     public int getVariableDeclaratorListLength() {
-        return variableDeclaratorListLength - 1;
+        return variableDeclaratorListLength;
     }
 }
