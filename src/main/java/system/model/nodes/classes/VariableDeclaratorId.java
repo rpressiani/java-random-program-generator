@@ -16,7 +16,7 @@ public class VariableDeclaratorId implements Node {
     }
 
     public String getId() {
-        return genericIdentifier.getIdentifier();
+        return genericIdentifier.toString();
     }
 
     @Override

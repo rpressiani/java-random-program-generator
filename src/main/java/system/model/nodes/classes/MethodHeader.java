@@ -24,6 +24,10 @@ public class MethodHeader implements Node{
         return result;
     }
 
+    public MethodDeclarator getMethodDeclarator() {
+        return methodDeclarator;
+    }
+
     @Override
     public String produce() {
         String b = result.produce() +

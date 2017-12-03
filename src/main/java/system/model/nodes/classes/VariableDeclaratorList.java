@@ -22,7 +22,7 @@ public class VariableDeclaratorList implements Node {
 
         for (int i = 0; i < RandomGen.getNextInt(listLen) + 1; i++) {
             VariableDeclarator newVar = new VariableDeclarator(type, scopeTable);
-            scopeTable.add(type, newVar.getVariableDeclaratorId());
+            scopeTable.addVariable(type, newVar.getVariableDeclaratorId());
             this.variableDeclaratorList.add(newVar);
         }
     }

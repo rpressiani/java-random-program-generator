@@ -4,7 +4,7 @@ import utils.RegexGen;
 
 public class GenericIdentifier extends Identifier {
 
-    String genericIdentifier;
+    private String genericIdentifier;
 
     //    TODO hardcoded string length
     public GenericIdentifier() {
@@ -12,7 +12,7 @@ public class GenericIdentifier extends Identifier {
         this.genericIdentifier = this.generex.get();
     }
 
-    public String getIdentifier() {
+    public String toString() {
         return this.genericIdentifier;
     }
 

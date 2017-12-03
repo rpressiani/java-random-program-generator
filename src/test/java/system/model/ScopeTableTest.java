@@ -12,36 +12,36 @@ public class ScopeTableTest {
     @Before
     public void setUp() {
         scopeTable = new ScopeTable();
-        scopeTable.add("int", "test");
+        scopeTable.addVariable("int", "test");
     }
 
     @Test
     public void addIfKeyAlreadyExists() {
-        scopeTable.add("int", "test2");
+        scopeTable.addVariable("int", "test2");
 
-        assertTrue(scopeTable.get("int").contains("test2"));
+        assertTrue(scopeTable.getLocalVariables("int").contains("test2"));
     }
 
     @Test
     public void addIfKeyDoesNotExists() {
-        scopeTable.add("float", "test3");
+        scopeTable.addVariable("float", "test3");
 
-        assertTrue(scopeTable.get("float").contains("test3"));
+        assertTrue(scopeTable.getLocalVariables("float").contains("test3"));
     }
 
     @Test
     public void returnNullIfTypeNotPresent() {
-        assertEquals(null, scopeTable.get("float"));
+        assertEquals(null, scopeTable.getLocalVariables("float"));
     }
 
     @Test
     public void deepCopyWhenCreatingFromOuterScope() {
         ScopeTable newScopeTable = new ScopeTable(scopeTable);
 
-        newScopeTable.add("float", "test");
-        newScopeTable.add("int", "test2");
+        newScopeTable.addVariable("float", "test");
+        newScopeTable.addVariable("int", "test2");
 
-        assertNull(scopeTable.get("float"));
-        assertTrue(!scopeTable.get("int").contains("test2"));
+        assertNull(scopeTable.getLocalVariables("float"));
+        assertTrue(!scopeTable.getLocalVariables("int").contains("test2"));
     }
 }

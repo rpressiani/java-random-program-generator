@@ -22,15 +22,19 @@ public class ScopeTable {
         this.methods = deepCopy(outerScopeTable.getMethods());
     }
 
-    public void add(String type, String identifier) {
+    public void addVariable(String type, String identifier) {
         this.localVariables.computeIfAbsent(type, k -> new ArrayList<>()).add(identifier);
     }
 
-    public List<String> get(String type) {
+    public void addMethod(String type, String identifier) {
+        this.methods.computeIfAbsent(type, k -> new ArrayList<>()).add(identifier);
+    }
+
+    protected List<String> getLocalVariables(String type) {
         return this.localVariables.get(type);
     }
 
-    public String getRandom(String type) {
+    public String getRandomVariable(String type) {
         try {
             List<String> variables = this.localVariables.get(type);
             return variables.get(RandomGen.getNextInt(variables.size()));
@@ -39,10 +43,19 @@ public class ScopeTable {
         }
     }
 
-    private Map<String, ArrayList<String>> deepCopy(Map<String, ArrayList<String>> original){
+    public String getRandomMethod(String type) {
+        try {
+            List<String> methods = this.methods.get(type);
+            return methods.get(RandomGen.getNextInt(methods.size()));
+        } catch (NullPointerException e) {
+            return null;
+        }
+    }
+
+    private Map<String, ArrayList<String>> deepCopy(Map<String, ArrayList<String>> original) {
 
         Map<String, ArrayList<String>> copy = new HashMap<>();
-        for(Map.Entry<String, ArrayList<String>> entry : original.entrySet()){
+        for (Map.Entry<String, ArrayList<String>> entry : original.entrySet()) {
             copy.put(entry.getKey(), new ArrayList<>(entry.getValue()));
         }
         return copy;
@@ -52,7 +65,7 @@ public class ScopeTable {
         return localVariables;
     }
 
-    private Map<String,ArrayList<String>> getMethods() {
+    private Map<String, ArrayList<String>> getMethods() {
         return methods;
     }
 }

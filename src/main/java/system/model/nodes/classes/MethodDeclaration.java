@@ -14,12 +14,14 @@ public class MethodDeclaration implements IClassMemberDeclaration {
     private MethodHeader methodHeader;
     private MethodBody methodBody;
 
-    MethodDeclaration(ScopeTable scopeTable) {
-        this.scopeTable = new ScopeTable(scopeTable);
+    MethodDeclaration(ScopeTable outerScopeTable) {
+        this.scopeTable = new ScopeTable(outerScopeTable);
 
         this.methodModifier = new MethodModifier();
         this.methodHeader = new MethodHeader();
         this.methodBody = new MethodBody(this.methodHeader.getResult().getType(), this.scopeTable);
+
+        outerScopeTable.addMethod(this.methodHeader.getResult().getType(), this.methodHeader.getMethodDeclarator().getIdentifier().toString());
     }
 
     public MethodModifier getMethodModifier() {
