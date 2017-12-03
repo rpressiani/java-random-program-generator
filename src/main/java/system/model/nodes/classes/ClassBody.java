@@ -7,7 +7,6 @@ package system.model.nodes.classes;
 import system.controller.Main;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
-import utils.Logger;
 import utils.RandomGen;
 
 import java.util.ArrayList;
@@ -38,7 +37,6 @@ public class ClassBody implements Node {
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfFields-minNumberOfFields) + minNumberOfFields; i++) {
             this.classBodyDeclarations.add(new ClassBodyDeclaration("field", scopeTable));
         }
-        Logger.log("classbody", "End fields generation");
 //        GENERATE METHODS
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfMethods-minNumberOfMethods) + minNumberOfMethods; i++) {
             this.classBodyDeclarations.add(new ClassBodyDeclaration("method", scopeTable));

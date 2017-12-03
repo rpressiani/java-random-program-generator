@@ -1,16 +1,15 @@
 package system.model.nodes.expressions;
 
 import system.model.ScopeTable;
-import utils.Logger;
 
 public class ExpressionName implements IPostfixExpression {
 
     private String expressionName;
 
     ExpressionName(String type, ScopeTable scopeTable) {
-            Logger.log("SCOPE TABLE", scopeTable.getLocalVariables().toString());
+//            Logger.log("SCOPE TABLE", scopeTable.getLocalVariables().toString());
             this.expressionName = scopeTable.getRandom(type);
-            Logger.logError("warning", this.expressionName);
+//            Logger.logError("warning", this.expressionName);
     }
 
     @Override

@@ -10,13 +10,16 @@ import java.util.Map;
 public class ScopeTable {
 
     private Map<String, ArrayList<String>> localVariables;
+    private Map<String, ArrayList<String>> methods;
 
     public ScopeTable() {
         this.localVariables = new HashMap<>();
+        this.methods = new HashMap<>();
     }
 
     public ScopeTable(ScopeTable outerScopeTable) {
         this.localVariables = deepCopy(outerScopeTable.getLocalVariables());
+        this.methods = deepCopy(outerScopeTable.getMethods());
     }
 
     public void add(String type, String identifier) {
@@ -36,10 +39,6 @@ public class ScopeTable {
         }
     }
 
-    public Map<String, ArrayList<String>> getLocalVariables() {
-        return localVariables;
-    }
-
     private Map<String, ArrayList<String>> deepCopy(Map<String, ArrayList<String>> original){
 
         Map<String, ArrayList<String>> copy = new HashMap<>();
@@ -49,4 +48,11 @@ public class ScopeTable {
         return copy;
     }
 
+    private Map<String, ArrayList<String>> getLocalVariables() {
+        return localVariables;
+    }
+
+    private Map<String,ArrayList<String>> getMethods() {
+        return methods;
+    }
 }
