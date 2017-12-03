@@ -1,5 +1,6 @@
 package system.model.nodes.statements;
 
+import system.model.ScopeTable;
 import system.model.nodes.literals.Literal;
 
 //returnStatement
@@ -12,7 +13,8 @@ public class ReturnStatement implements IStatementWithoutTrailingSubstatement {
 
     private String returnStatement;
 
-    ReturnStatement(String type) {
+    ReturnStatement(ScopeTable scopeTable, String type) {
+//        TODO implement return from scopeTable
         this.returnStatement = new Literal(type).produce();
     }
 

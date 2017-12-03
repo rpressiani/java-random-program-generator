@@ -6,21 +6,22 @@ package system.model.nodes.statements;
 //        |	statement
 //        ;
 
-//TODO        :	localVariableDeclarationStatement
 //TODO        |	classDeclaration
 
+import system.model.ScopeTable;
 import system.model.nodes.Node;
 
 public class BlockStatement implements Node{
 
     private IBlockStatement statement;
 
-    BlockStatement() {
-        this.statement = new LocalVariableDeclarationStatement();
+    BlockStatement(ScopeTable scopeTable) {
+        this.statement = new LocalVariableDeclarationStatement(scopeTable);
+//        this.statement = new Statement();
     }
 
-    BlockStatement(String type) {
-        this.statement = new Statement(type);
+    BlockStatement(String type, ScopeTable scopeTable) {
+        this.statement = new Statement(type, scopeTable);
     }
 
     @Override

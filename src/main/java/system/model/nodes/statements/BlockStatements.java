@@ -1,6 +1,7 @@
 package system.model.nodes.statements;
 
 import system.controller.Main;
+import system.model.ScopeTable;
 import system.model.nodes.Node;
 import utils.RandomGen;
 
@@ -15,17 +16,25 @@ public class BlockStatements implements Node{
 
     private List<BlockStatement> blockStatementList;
 
-    BlockStatements(String type) {
+    BlockStatements(ScopeTable scopeTable) {
+        init(scopeTable);
+    }
+
+    BlockStatements(String type, ScopeTable scopeTable) {
+        init(scopeTable);
+
+        if (!type.equals("void")) {
+            this.blockStatementList.add(new BlockStatement(type, scopeTable));
+        }
+    }
+
+    private void init(ScopeTable scopeTable) {
         this.blockStatementList = new ArrayList<>();
 
         int maxNumberOfStatements = Main.config.getStatements().get("max");
         int minNumberOfStatements = Main.config.getStatements().get("min");
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfStatements - minNumberOfStatements) + minNumberOfStatements; i++) {
-            this.blockStatementList.add(new BlockStatement());
-        }
-
-        if (!type.equals("void")) {
-            this.blockStatementList.add(new BlockStatement(type));
+            this.blockStatementList.add(new BlockStatement(scopeTable));
         }
     }
 

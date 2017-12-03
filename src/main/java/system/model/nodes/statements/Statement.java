@@ -1,6 +1,6 @@
 package system.model.nodes.statements;
 
-import system.model.nodes.Node;
+import system.model.ScopeTable;
 
 //statement
 //        :	statementWithoutTrailingSubstatement
@@ -11,12 +11,22 @@ import system.model.nodes.Node;
 //        |	forStatement
 //        ;
 
+//TODO        |	labeledStatement
+//TODO        |	ifThenStatement
+//TODO        |	ifThenElseStatement
+//TODO        |	whileStatement
+//TODO        |	forStatement
+
 public class Statement implements IBlockStatement{
 
     private IStatement statement;
 
-    Statement(String type) {
-        this.statement = new StatementWithoutTrailingSubstatement(type);
+//    Statement() {
+//
+//    }
+
+    Statement(String type, ScopeTable scopeTable) {
+        this.statement = new StatementWithoutTrailingSubstatement(scopeTable, type);
     }
 
     @Override
