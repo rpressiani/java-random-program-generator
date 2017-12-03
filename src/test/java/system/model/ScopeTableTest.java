@@ -10,7 +10,7 @@ public class ScopeTableTest {
     private ScopeTable scopeTable;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         scopeTable = new ScopeTable();
         scopeTable.add("int", "test");
     }
@@ -32,5 +32,16 @@ public class ScopeTableTest {
     @Test
     public void returnNullIfTypeNotPresent() {
         assertEquals(null, scopeTable.get("float"));
+    }
+
+    @Test
+    public void deepCopyWhenCreatingFromOuterScope() {
+        ScopeTable newScopeTable = new ScopeTable(scopeTable);
+
+        newScopeTable.add("float", "test");
+        newScopeTable.add("int", "test2");
+
+        assertNull(scopeTable.get("float"));
+        assertTrue(!scopeTable.get("int").contains("test2"));
     }
 }

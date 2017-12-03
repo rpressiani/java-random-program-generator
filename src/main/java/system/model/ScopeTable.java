@@ -16,7 +16,7 @@ public class ScopeTable {
     }
 
     public ScopeTable(ScopeTable outerScopeTable) {
-        this.localVariables = outerScopeTable.getOuterScopeTable();
+        this.localVariables = deepCopy(outerScopeTable.getLocalVariables());
     }
 
     public void add(String type, String identifier) {
@@ -36,11 +36,17 @@ public class ScopeTable {
         }
     }
 
-    private Map<String,ArrayList<String>> getOuterScopeTable() {
-        return localVariables;
-    }
-
     public Map<String, ArrayList<String>> getLocalVariables() {
         return localVariables;
     }
+
+    private Map<String, ArrayList<String>> deepCopy(Map<String, ArrayList<String>> original){
+
+        Map<String, ArrayList<String>> copy = new HashMap<>();
+        for(Map.Entry<String, ArrayList<String>> entry : original.entrySet()){
+            copy.put(entry.getKey(), new ArrayList<>(entry.getValue()));
+        }
+        return copy;
+    }
+
 }
