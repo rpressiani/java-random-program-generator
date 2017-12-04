@@ -23,9 +23,19 @@ public class Main {
 
         new File("generatedSrc/main/java").mkdirs();
 
-        NormalClassDeclaration cl = new NormalClassDeclaration("Main");
+        NormalClassDeclaration cl = null;
+        try {
+            cl = new NormalClassDeclaration("Main");
+        } catch (Exception e) {
+            Logger.logError("MAIN", "Generation failed");
+            e.printStackTrace();
+        }
+        Logger.log("MAIN", "Generation successful");
 
-        save(cl);
+        if (cl != null) {
+            save(cl);
+        }
+
         if (CompileChecker.compileCheck("Main.java") == 0) {
             Logger.log("compiler", "Compilation successful");
         } else {
