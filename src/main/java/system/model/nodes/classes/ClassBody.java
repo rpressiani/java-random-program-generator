@@ -25,11 +25,14 @@ public class ClassBody implements Node {
 
     ClassBody(ScopeTable scopeTable) {
         //TODO hardcoded main method
-        this.mainMethod = "public static void main(String[] args) {\n" +
-                "        System.out.println(\"Hello!\");\n" +
-                "    }";
         this.classBodyDeclarations = new ArrayList<>();
         init(scopeTable);
+
+        MethodBody mainMethodBody = new MethodBody("void", new ScopeTable(scopeTable));
+
+        this.mainMethod = "public static void main(String[] args)" +
+                mainMethodBody.produce();
+
     }
 
     private void init(ScopeTable scopeTable) {
@@ -41,10 +44,6 @@ public class ClassBody implements Node {
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfMethods-minNumberOfMethods) + minNumberOfMethods; i++) {
             this.classBodyDeclarations.add(new ClassBodyDeclaration("method", scopeTable));
         }
-    }
-
-    public List<ClassBodyDeclaration> getDeclarations() {
-        return classBodyDeclarations;
     }
 
     @Override
