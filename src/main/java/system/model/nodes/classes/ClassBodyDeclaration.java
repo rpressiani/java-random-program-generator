@@ -18,10 +18,6 @@ public class ClassBodyDeclaration implements Node {
         this.classMemberDeclaration = new ClassMemberDeclaration(type, scopeTable);
     }
 
-    public ClassMemberDeclaration getClassMemberDeclaration() {
-        return classMemberDeclaration;
-    }
-
     @Override
     public String produce() {
         return this.verify(this.classMemberDeclaration.produce());
