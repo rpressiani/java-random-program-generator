@@ -2,6 +2,13 @@ package system.model.nodes.expressions;
 
 import system.model.ScopeTable;
 
+//expressionName
+//        :	Identifier
+//        |	ambiguousName '.' Identifier
+//        ;
+
+//TODO        |	ambiguousName '.' Identifier
+
 public class ExpressionName implements IPostfixExpression {
 
     private String expressionName;
