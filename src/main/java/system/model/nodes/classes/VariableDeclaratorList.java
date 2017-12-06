@@ -16,6 +16,7 @@ public class VariableDeclaratorList implements Node {
 
     private List<VariableDeclarator> variableDeclaratorList;
 
+//    TODO remove varType from VariableDeclaratorList constructor
     public VariableDeclaratorList(String type, String varType, ScopeTable scopeTable) {
         this.variableDeclaratorList = new ArrayList<>();
         int listLen = Main.config.getVariableDeclaratorListLength();

@@ -20,9 +20,9 @@ public class ScopeTable {
     }
 
     public ScopeTable(ScopeTable outerScopeTable) {
-        this.localVariables = deepCopy(outerScopeTable.getLocalVariables());
-        this.methods = deepCopy(outerScopeTable.getMethods());
-        this.fields = deepCopy(outerScopeTable.getFields());
+        this.localVariables = deepCopy(outerScopeTable.localVariables);
+        this.methods = deepCopy(outerScopeTable.methods);
+        this.fields = deepCopy(outerScopeTable.fields);
     }
 
     public void addField(String type, String identifier) {
@@ -77,15 +77,4 @@ public class ScopeTable {
         return copy;
     }
 
-    private Map<String, ArrayList<String>> getLocalVariables() {
-        return localVariables;
-    }
-
-    private Map<String, ArrayList<String>> getMethods() {
-        return methods;
-    }
-
-    private Map<String, ArrayList<String>> getFields() {
-        return fields;
-    }
 }

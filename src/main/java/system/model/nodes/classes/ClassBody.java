@@ -36,11 +36,11 @@ public class ClassBody implements Node {
     }
 
     private void init(ScopeTable scopeTable) {
-//        GENERATE FIELDS
+        // GENERATE FIELDS
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfFields-minNumberOfFields) + minNumberOfFields; i++) {
             this.classBodyDeclarations.add(new ClassBodyDeclaration("field", scopeTable));
         }
-//        GENERATE METHODS
+        // GENERATE METHODS
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfMethods-minNumberOfMethods) + minNumberOfMethods; i++) {
             this.classBodyDeclarations.add(new ClassBodyDeclaration("method", scopeTable));
         }
