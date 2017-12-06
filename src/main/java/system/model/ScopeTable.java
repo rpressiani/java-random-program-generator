@@ -9,9 +9,9 @@ import java.util.Map;
 
 public class ScopeTable {
 
-    private Map<String, ArrayList<String>> fields;
-    private Map<String, ArrayList<String>> localVariables;
-    private Map<String, ArrayList<String>> methods;
+    private Map<String, ArrayList<STEntry>> fields;
+    private Map<String, ArrayList<STEntry>> localVariables;
+    private Map<String, ArrayList<STEntry>> methods;
 
     public ScopeTable() {
         this.localVariables = new HashMap<>();
@@ -25,53 +25,53 @@ public class ScopeTable {
         this.fields = deepCopy(outerScopeTable.fields);
     }
 
-    public void addField(String type, String identifier) {
+    public void addField(String type, STEntry identifier) {
         this.fields.computeIfAbsent(type, k -> new ArrayList<>()).add(identifier);
     }
 
-    public void addVariable(String type, String identifier) {
+    public void addVariable(String type, STEntry identifier) {
         this.localVariables.computeIfAbsent(type, k -> new ArrayList<>()).add(identifier);
     }
 
-    public void addMethod(String type, String identifier) {
+    public void addMethod(String type, STEntry identifier) {
         this.methods.computeIfAbsent(type, k -> new ArrayList<>()).add(identifier);
     }
 
-    protected List<String> getLocalVariables(String type) {
+    protected List<STEntry> getLocalVariables(String type) {
         return this.localVariables.get(type);
     }
 
-    public String getRandomVariable(String type) {
+    public STEntry getRandomVariable(String type) {
         try {
-            List<String> variables = this.localVariables.get(type);
+            List<STEntry> variables = this.localVariables.get(type);
             return variables.get(RandomGen.getNextInt(variables.size()));
         } catch (NullPointerException e) {
-            return null;
+            return new STEntry(null, false);
         }
     }
 
-    public String getRandomMethod(String type) {
+    public STEntry getRandomMethod(String type) {
         try {
-            List<String> methods = this.methods.get(type);
+            List<STEntry> methods = this.methods.get(type);
             return methods.get(RandomGen.getNextInt(methods.size()));
         } catch (NullPointerException e) {
-            return null;
+            return new STEntry(null, false);
         }
     }
 
-    public String getRandomField(String type) {
+    public STEntry getRandomField(String type) {
         try {
-            List<String> fields = this.fields.get(type);
+            List<STEntry> fields = this.fields.get(type);
             return fields.get(RandomGen.getNextInt(fields.size()));
         } catch (NullPointerException e) {
-            return null;
+            return new STEntry(null, false);
         }
     }
 
-    private Map<String, ArrayList<String>> deepCopy(Map<String, ArrayList<String>> original) {
+    private Map<String, ArrayList<STEntry>> deepCopy(Map<String, ArrayList<STEntry>> original) {
 
-        Map<String, ArrayList<String>> copy = new HashMap<>();
-        for (Map.Entry<String, ArrayList<String>> entry : original.entrySet()) {
+        Map<String, ArrayList<STEntry>> copy = new HashMap<>();
+        for (Map.Entry<String, ArrayList<STEntry>> entry : original.entrySet()) {
             copy.put(entry.getKey(), new ArrayList<>(entry.getValue()));
         }
         return copy;

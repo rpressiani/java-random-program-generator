@@ -5,6 +5,7 @@ package system.model.nodes.classes;
 //        ;
 
 import system.controller.Main;
+import system.model.STEntry;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 import utils.RandomGen;
@@ -24,9 +25,15 @@ public class VariableDeclaratorList implements Node {
         for (int i = 0; i < RandomGen.getNextInt(listLen) + 1; i++) {
             VariableDeclarator newVar = new VariableDeclarator(type, scopeTable);
             if (varType.equals("field")) {
-                scopeTable.addField(type, newVar.getVariableDeclaratorId());
+                scopeTable.addField(
+                        type,
+                        new STEntry(newVar.getVariableDeclaratorId(), false)
+                );
             } else {
-                scopeTable.addVariable(type, newVar.getVariableDeclaratorId());
+                scopeTable.addVariable(
+                        type,
+                        new STEntry(newVar.getVariableDeclaratorId(), false)
+                );
             }
             this.variableDeclaratorList.add(newVar);
         }

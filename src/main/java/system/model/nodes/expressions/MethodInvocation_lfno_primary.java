@@ -22,7 +22,7 @@ public class MethodInvocation_lfno_primary implements IPrimaryNoNewArray_lfno_pr
     private String methodName;
 
     MethodInvocation_lfno_primary(String type, ScopeTable scopeTable) {
-        this.methodName = scopeTable.getRandomMethod(type);
+        this.methodName = scopeTable.getRandomMethod(type).getIdentifier();
     }
 
     @Override

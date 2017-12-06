@@ -17,9 +17,9 @@ public class ExpressionName implements IPostfixExpression {
     ExpressionName(String type, ScopeTable scopeTable) {
 //            Logger.log("SCOPE TABLE", scopeTable.getLocalVariables().toString());
         if (RandomGen.getNextInt(2) == 1) {
-            this.expressionName = scopeTable.getRandomVariable(type);
+            this.expressionName = scopeTable.getRandomVariable(type).getIdentifier();
         } else {
-            this.expressionName = scopeTable.getRandomField(type);
+            this.expressionName = scopeTable.getRandomField(type).getIdentifier();
         }
 //            Logger.logError("warning", this.expressionName);
     }

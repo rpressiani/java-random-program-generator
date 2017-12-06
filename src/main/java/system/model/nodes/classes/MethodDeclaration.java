@@ -4,6 +4,7 @@ package system.model.nodes.classes;
 //        :	methodModifier* methodHeader methodBody
 //        ;
 
+import system.model.STEntry;
 import system.model.ScopeTable;
 
 public class MethodDeclaration implements IClassMemberDeclaration {
@@ -21,15 +22,10 @@ public class MethodDeclaration implements IClassMemberDeclaration {
         this.methodHeader = new MethodHeader();
         this.methodBody = new MethodBody(this.methodHeader.getResult().getType(), this.scopeTable);
 
-        outerScopeTable.addMethod(this.methodHeader.getResult().getType(), this.methodHeader.getMethodDeclarator().getIdentifier().toString());
-    }
-
-    public MethodModifier getMethodModifier() {
-        return methodModifier;
-    }
-
-    public MethodHeader getMethodHeader() {
-        return methodHeader;
+        outerScopeTable.addMethod(
+                this.methodHeader.getResult().getType(),
+                new STEntry(this.methodHeader.getMethodDeclarator().getIdentifier().toString(), false)
+        );
     }
 
     @Override
