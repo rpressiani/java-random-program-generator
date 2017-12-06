@@ -1,6 +1,7 @@
 package system.model.nodes.expressions;
 
 import system.model.ScopeTable;
+import utils.RandomGen;
 
 //expressionName
 //        :	Identifier
@@ -15,7 +16,11 @@ public class ExpressionName implements IPostfixExpression {
 
     ExpressionName(String type, ScopeTable scopeTable) {
 //            Logger.log("SCOPE TABLE", scopeTable.getLocalVariables().toString());
+        if (RandomGen.getNextInt(2) == 1) {
             this.expressionName = scopeTable.getRandomVariable(type);
+        } else {
+            this.expressionName = scopeTable.getRandomField(type);
+        }
 //            Logger.logError("warning", this.expressionName);
     }
 

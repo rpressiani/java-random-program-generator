@@ -13,22 +13,10 @@ public class FieldDeclaration implements IClassMemberDeclaration {
     private UnannType unannType;
     private VariableDeclaratorList variableDeclaratorList;
 
-    FieldDeclaration(ScopeTable scopeTable) {
+    FieldDeclaration(ScopeTable scopeTable, String memberType) {
         this.fieldModifier = new FieldModifier();
         this.unannType = new UnannType();
-        this.variableDeclaratorList = new VariableDeclaratorList(this.unannType.getType(), scopeTable);
-    }
-
-    public FieldModifier getFieldModifier() {
-        return fieldModifier;
-    }
-
-    public UnannType getUnannType() {
-        return unannType;
-    }
-
-    public VariableDeclaratorList getVariableDeclaratorList() {
-        return variableDeclaratorList;
+        this.variableDeclaratorList = new VariableDeclaratorList(this.unannType.getType(), memberType, scopeTable);
     }
 
     @Override

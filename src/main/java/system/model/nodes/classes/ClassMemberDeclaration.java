@@ -15,10 +15,10 @@ public class ClassMemberDeclaration implements Node {
 
     private IClassMemberDeclaration classMemberDeclaration;
 
-    ClassMemberDeclaration(String type, ScopeTable scopeTable) {
-        switch (type) {
+    ClassMemberDeclaration(String memberType, ScopeTable scopeTable) {
+        switch (memberType) {
             case "field":
-                this.classMemberDeclaration = new FieldDeclaration(scopeTable);
+                this.classMemberDeclaration = new FieldDeclaration(scopeTable, memberType);
                 break;
             case "method":
                 this.classMemberDeclaration = new MethodDeclaration(scopeTable);
@@ -27,20 +27,6 @@ public class ClassMemberDeclaration implements Node {
                 throw new IllegalArgumentException("Invalid type");
         }
 
-    }
-////TODO join constructors
-//    ClassMemberDeclaration(String type) {
-//        switch (type) {
-//            case "method":
-//                this.classMemberDeclaration = new MethodDeclaration();
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Invalid type");
-//        }
-//    }
-
-    public IClassMemberDeclaration getClassMemberDeclaration() {
-        return classMemberDeclaration;
     }
 
     @Override

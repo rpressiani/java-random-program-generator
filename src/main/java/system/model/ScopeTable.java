@@ -9,17 +9,24 @@ import java.util.Map;
 
 public class ScopeTable {
 
+    private Map<String, ArrayList<String>> fields;
     private Map<String, ArrayList<String>> localVariables;
     private Map<String, ArrayList<String>> methods;
 
     public ScopeTable() {
         this.localVariables = new HashMap<>();
         this.methods = new HashMap<>();
+        this.fields = new HashMap<>();
     }
 
     public ScopeTable(ScopeTable outerScopeTable) {
         this.localVariables = deepCopy(outerScopeTable.getLocalVariables());
         this.methods = deepCopy(outerScopeTable.getMethods());
+        this.fields = deepCopy(outerScopeTable.getFields());
+    }
+
+    public void addField(String type, String identifier) {
+        this.fields.computeIfAbsent(type, k -> new ArrayList<>()).add(identifier);
     }
 
     public void addVariable(String type, String identifier) {
@@ -52,6 +59,15 @@ public class ScopeTable {
         }
     }
 
+    public String getRandomField(String type) {
+        try {
+            List<String> fields = this.fields.get(type);
+            return fields.get(RandomGen.getNextInt(fields.size()));
+        } catch (NullPointerException e) {
+            return null;
+        }
+    }
+
     private Map<String, ArrayList<String>> deepCopy(Map<String, ArrayList<String>> original) {
 
         Map<String, ArrayList<String>> copy = new HashMap<>();
@@ -67,5 +83,9 @@ public class ScopeTable {
 
     private Map<String, ArrayList<String>> getMethods() {
         return methods;
+    }
+
+    private Map<String, ArrayList<String>> getFields() {
+        return fields;
     }
 }

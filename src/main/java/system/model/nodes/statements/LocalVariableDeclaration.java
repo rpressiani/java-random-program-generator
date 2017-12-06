@@ -18,19 +18,7 @@ public class LocalVariableDeclaration implements IBlockStatement{
     LocalVariableDeclaration(ScopeTable scopeTable) {
         this.variableModifier = new VariableModifier();
         this.unannType = new UnannType();
-        this.variableDeclaratorList = new VariableDeclaratorList(this.unannType.getType(), scopeTable);
-    }
-
-    public VariableModifier getVariableModifier() {
-        return variableModifier;
-    }
-
-    public UnannType getUnannType() {
-        return unannType;
-    }
-
-    public VariableDeclaratorList getVariableDeclaratorList() {
-        return variableDeclaratorList;
+        this.variableDeclaratorList = new VariableDeclaratorList(this.unannType.getType(), "var",scopeTable);
     }
 
     @Override

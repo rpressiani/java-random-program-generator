@@ -16,19 +16,19 @@ public class VariableDeclaratorList implements Node {
 
     private List<VariableDeclarator> variableDeclaratorList;
 
-    public VariableDeclaratorList(String type, ScopeTable scopeTable) {
+    public VariableDeclaratorList(String type, String varType, ScopeTable scopeTable) {
         this.variableDeclaratorList = new ArrayList<>();
         int listLen = Main.config.getVariableDeclaratorListLength();
 
         for (int i = 0; i < RandomGen.getNextInt(listLen) + 1; i++) {
             VariableDeclarator newVar = new VariableDeclarator(type, scopeTable);
-            scopeTable.addVariable(type, newVar.getVariableDeclaratorId());
+            if (varType.equals("field")) {
+                scopeTable.addField(type, newVar.getVariableDeclaratorId());
+            } else {
+                scopeTable.addVariable(type, newVar.getVariableDeclaratorId());
+            }
             this.variableDeclaratorList.add(newVar);
         }
-    }
-
-    public List<VariableDeclarator> getVariableDeclaratorList() {
-        return variableDeclaratorList;
     }
 
     @Override
