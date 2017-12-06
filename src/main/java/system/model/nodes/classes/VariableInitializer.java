@@ -19,10 +19,6 @@ public class VariableInitializer implements Node {
         this.expression = new Expression(key, scopeTable);
     }
 
-    public Expression getExpression() {
-        return expression;
-    }
-
     @Override
     public String produce() {
         return this.verify(this.expression.produce());

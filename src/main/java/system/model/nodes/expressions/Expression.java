@@ -18,10 +18,6 @@ public class Expression implements Node {
         this.assignmentExpression = new AssignmentExpression(key, scopeTable);
     }
 
-    public AssignmentExpression getAssignmentExpression() {
-        return assignmentExpression;
-    }
-
     public String produce() {
         return this.verify(this.assignmentExpression.produce());
     }
