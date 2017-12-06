@@ -13,16 +13,10 @@ import system.model.nodes.Node;
 public class Block implements Node{
 
     private BlockStatements blockStatements;
-    private ScopeTable scopeTable;
 
     public Block(STKey key, ScopeTable outerScopeTable) {
-        this.scopeTable = new ScopeTable(outerScopeTable);
-        this.blockStatements = new BlockStatements(key, this.scopeTable);
-    }
-
-    public Block(ScopeTable outerScopeTable) {
-        this.scopeTable = new ScopeTable(outerScopeTable);
-        this.blockStatements = new BlockStatements(this.scopeTable);
+        ScopeTable scopeTable = new ScopeTable(outerScopeTable);
+        this.blockStatements = new BlockStatements(key, scopeTable);
     }
 
     @Override

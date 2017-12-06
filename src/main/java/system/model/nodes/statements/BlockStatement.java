@@ -12,17 +12,13 @@ import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
-public class BlockStatement implements Node{
+public class BlockStatement implements IBlockStatement{
 
     private IBlockStatement statement;
 
-    BlockStatement(ScopeTable scopeTable) {
-        this.statement = new LocalVariableDeclarationStatement(scopeTable);
+    BlockStatement(ScopeTable scopeTable, STKey key) {
+        this.statement = new LocalVariableDeclarationStatement(scopeTable, key);
 //        this.statement = new Statement();
-    }
-
-    BlockStatement(STKey key, ScopeTable scopeTable) {
-        this.statement = new Statement(key, scopeTable);
     }
 
     @Override

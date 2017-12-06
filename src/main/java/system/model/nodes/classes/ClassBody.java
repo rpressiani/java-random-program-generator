@@ -29,7 +29,8 @@ public class ClassBody implements Node {
         this.classBodyDeclarations = new ArrayList<>();
         init(scopeTable);
 
-        MethodBody mainMethodBody = new MethodBody(new STKey("void", false), new ScopeTable(scopeTable));
+        // new STKey is related to the main method in order to get only static variable from the scopetable
+        MethodBody mainMethodBody = new MethodBody(new STKey("void", true), new ScopeTable(scopeTable));
 
         this.mainMethod = "public static void main(String[] args)" +
                 mainMethodBody.produce();

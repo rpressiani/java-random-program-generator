@@ -4,14 +4,15 @@ package system.model.nodes.statements;
 //        :	localVariableDeclaration ';'
 //        ;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 
 public class LocalVariableDeclarationStatement implements IBlockStatement {
 
     private LocalVariableDeclaration localVariableDeclaration;
 
-    LocalVariableDeclarationStatement(ScopeTable scopeTable) {
-        this.localVariableDeclaration = new LocalVariableDeclaration(scopeTable);
+    LocalVariableDeclarationStatement(ScopeTable scopeTable, STKey key) {
+        this.localVariableDeclaration = new LocalVariableDeclaration(scopeTable, key);
     }
 
     @Override

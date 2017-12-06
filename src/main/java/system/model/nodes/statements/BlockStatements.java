@@ -15,34 +15,27 @@ import java.util.List;
 
 public class BlockStatements implements Node{
 
-    private List<BlockStatement> blockStatementList;
-
-    BlockStatements(ScopeTable scopeTable) {
-        init(scopeTable);
-    }
+    private List<IBlockStatement> blockStatementList;
 
     BlockStatements(STKey key, ScopeTable scopeTable) {
-        init(scopeTable);
-
-        if (!key.getType().equals("void")) {
-            this.blockStatementList.add(new BlockStatement(key, scopeTable));
-        }
-    }
-
-    private void init(ScopeTable scopeTable) {
         this.blockStatementList = new ArrayList<>();
 
         int maxNumberOfStatements = Main.config.getStatements().get("max");
         int minNumberOfStatements = Main.config.getStatements().get("min");
+
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfStatements - minNumberOfStatements) + minNumberOfStatements; i++) {
-            this.blockStatementList.add(new BlockStatement(scopeTable));
+            this.blockStatementList.add(new BlockStatement(scopeTable, key));
+        }
+
+        if (!key.getType().equals("void")) {
+            this.blockStatementList.add(new ReturnStatement(scopeTable, key));
         }
     }
 
     @Override
     public String produce() {
         StringBuilder b = new StringBuilder();
-        for (BlockStatement blockStatement: this.blockStatementList) {
+        for (IBlockStatement blockStatement: this.blockStatementList) {
             b.append(blockStatement.produce());
         }
 

@@ -54,7 +54,7 @@ public class ScopeTable {
         try {
             List<STEntry> methods = this.methods.get(key.getType());
             return (STEntry) methods.stream().filter(v -> v.isStatic() == key.isStatic()).toArray()[RandomGen.getNextInt(methods.size())];
-        } catch (NullPointerException e) {
+        } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {
             return new STEntry(null, false);
         }
     }
@@ -63,7 +63,7 @@ public class ScopeTable {
         try {
             List<STEntry> fields = this.fields.get(key.getType());
             return (STEntry) fields.stream().filter(v -> v.isStatic() == key.isStatic()).toArray()[RandomGen.getNextInt(fields.size())];
-        } catch (NullPointerException e) {
+        } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {
             return new STEntry(null, false);
         }
     }

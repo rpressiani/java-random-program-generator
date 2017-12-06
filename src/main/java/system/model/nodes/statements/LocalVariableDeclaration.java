@@ -16,10 +16,10 @@ public class LocalVariableDeclaration implements IBlockStatement{
     private UnannType unannType;
     private VariableDeclaratorList variableDeclaratorList;
 
-    LocalVariableDeclaration(ScopeTable scopeTable) {
+    LocalVariableDeclaration(ScopeTable scopeTable, STKey key) {
         this.variableModifier = new VariableModifier();
         this.unannType = new UnannType();
-        this.variableDeclaratorList = new VariableDeclaratorList(new STKey(this.unannType.getType(), false), "var", scopeTable);
+        this.variableDeclaratorList = new VariableDeclaratorList(new STKey(this.unannType.getType(), key.isStatic()), "var", scopeTable);
     }
 
     @Override
