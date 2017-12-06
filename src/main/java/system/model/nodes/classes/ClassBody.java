@@ -30,7 +30,7 @@ public class ClassBody implements Node {
         init(scopeTable);
 
         // new STKey is related to the main method in order to get only static variable from the scopetable
-        MethodBody mainMethodBody = new MethodBody(new STKey("void", true), new ScopeTable(scopeTable));
+        MethodBody mainMethodBody = new MethodBody(new STKey("void", true), new ScopeTable(scopeTable, true));
 
         this.mainMethod = "public static void main(String[] args)" +
                 mainMethodBody.produce();

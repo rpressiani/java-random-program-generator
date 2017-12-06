@@ -28,12 +28,12 @@ public class VariableDeclaratorList implements Node {
             if (varType.equals("field")) {
                 scopeTable.addField(
                         key.getType(),
-                        new STEntry(newVar.getVariableDeclaratorId(), false)
+                        new STEntry(newVar.getVariableDeclaratorId(), key.isStatic())
                 );
             } else {
                 scopeTable.addVariable(
                         key.getType(),
-                        new STEntry(newVar.getVariableDeclaratorId(), false)
+                        new STEntry(newVar.getVariableDeclaratorId(), key.isStatic())
                 );
             }
             this.variableDeclaratorList.add(newVar);

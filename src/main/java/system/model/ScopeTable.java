@@ -12,17 +12,20 @@ public class ScopeTable {
     private Map<String, ArrayList<STEntry>> fields;
     private Map<String, ArrayList<STEntry>> localVariables;
     private Map<String, ArrayList<STEntry>> methods;
+    private boolean staticScope;
 
     public ScopeTable() {
         this.localVariables = new HashMap<>();
         this.methods = new HashMap<>();
         this.fields = new HashMap<>();
+        this.staticScope = false;
     }
 
-    public ScopeTable(ScopeTable outerScopeTable) {
+    public ScopeTable(ScopeTable outerScopeTable, boolean staticScope) {
         this.localVariables = deepCopy(outerScopeTable.localVariables);
         this.methods = deepCopy(outerScopeTable.methods);
         this.fields = deepCopy(outerScopeTable.fields);
+        this.staticScope = staticScope;
     }
 
     public void addField(String type, STEntry identifier) {
@@ -77,4 +80,7 @@ public class ScopeTable {
         return copy;
     }
 
+    public boolean isStaticScope() {
+        return staticScope;
+    }
 }

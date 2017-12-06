@@ -15,7 +15,7 @@ public class Block implements Node{
     private BlockStatements blockStatements;
 
     public Block(STKey key, ScopeTable outerScopeTable) {
-        ScopeTable scopeTable = new ScopeTable(outerScopeTable);
+        ScopeTable scopeTable = new ScopeTable(outerScopeTable, outerScopeTable.isStaticScope());
         this.blockStatements = new BlockStatements(key, scopeTable);
     }
 

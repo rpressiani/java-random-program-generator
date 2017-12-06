@@ -15,15 +15,16 @@ public class MethodDeclaration implements IClassMemberDeclaration {
     private MethodBody methodBody;
 
     MethodDeclaration(ScopeTable outerScopeTable) {
-        ScopeTable scopeTable = new ScopeTable(outerScopeTable);
-
         this.methodModifier = new MethodModifier();
         this.methodHeader = new MethodHeader();
-        this.methodBody = new MethodBody(new STKey(this.methodHeader.getResult().getType(), false), scopeTable);
+
+        ScopeTable scopeTable = new ScopeTable(outerScopeTable, this.methodModifier.isStatic());
+
+        this.methodBody = new MethodBody(new STKey(this.methodHeader.getResult().getType(), this.methodModifier.isStatic()), scopeTable);
 
         outerScopeTable.addMethod(
                 this.methodHeader.getResult().getType(),
-                new STEntry(this.methodHeader.getMethodDeclarator().getIdentifier().toString(), false)
+                new STEntry(this.methodHeader.getMethodDeclarator().getIdentifier().toString(), this.methodModifier.isStatic())
         );
     }
 

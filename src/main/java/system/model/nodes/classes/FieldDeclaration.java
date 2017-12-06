@@ -17,7 +17,7 @@ public class FieldDeclaration implements IClassMemberDeclaration {
     FieldDeclaration(ScopeTable scopeTable, String memberType) {
         this.fieldModifier = new FieldModifier();
         this.unannType = new UnannType();
-        this.variableDeclaratorList = new VariableDeclaratorList(new STKey(this.unannType.getType(), false), memberType, scopeTable);
+        this.variableDeclaratorList = new VariableDeclaratorList(new STKey(this.unannType.getType(), this.fieldModifier.isStatic()), memberType, scopeTable);
     }
 
     @Override
