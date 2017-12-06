@@ -12,24 +12,28 @@ package system.model.nodes.classes;
 //        ;
 
 import system.model.nodes.Node;
+import utils.RandomGen;
 
 //TODO implement modifiers other than visibility
 public class FieldModifier implements Node {
 
     private Visibility visibility;
+    private boolean _static;
 
     FieldModifier() {
         this.visibility = Visibility.getRandomVisibility();
-    }
-
-    public Visibility getVisibility() {
-        return this.visibility;
+        this._static = RandomGen.getNextInt(4) == 0;
     }
 
     @Override
     public String produce() {
-        return this.verify(this.visibility.toString().toLowerCase());
+        StringBuilder b = new StringBuilder();
+        b.append(this.visibility.toString().toLowerCase());
+        if (this.isStatic()) b.append(" static");
+        return this.verify(b.toString());
     }
 
-
+    public boolean isStatic() {
+        return _static;
+    }
 }
