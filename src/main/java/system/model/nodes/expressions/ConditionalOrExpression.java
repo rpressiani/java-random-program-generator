@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -13,8 +14,8 @@ public class ConditionalOrExpression implements Node {
 
     private ConditionalAndExpression conditionalAndExpression;
 
-    public ConditionalOrExpression(String type, ScopeTable scopeTable) {
-        this.conditionalAndExpression = new ConditionalAndExpression(type, scopeTable);
+    ConditionalOrExpression(STKey key, ScopeTable scopeTable) {
+        this.conditionalAndExpression = new ConditionalAndExpression(key, scopeTable);
     }
 
     @Override

@@ -41,28 +41,28 @@ public class ScopeTable {
         return this.localVariables.get(type);
     }
 
-    public STEntry getRandomVariable(String type) {
+    public STEntry getRandomVariable(STKey key) {
         try {
-            List<STEntry> variables = this.localVariables.get(type);
+            List<STEntry> variables = this.localVariables.get(key.getType());
             return variables.get(RandomGen.getNextInt(variables.size()));
         } catch (NullPointerException e) {
             return new STEntry(null, false);
         }
     }
 
-    public STEntry getRandomMethod(String type) {
+    public STEntry getRandomMethod(STKey key) {
         try {
-            List<STEntry> methods = this.methods.get(type);
-            return methods.get(RandomGen.getNextInt(methods.size()));
+            List<STEntry> methods = this.methods.get(key.getType());
+            return (STEntry) methods.stream().filter(v -> v.isStatic() == key.isStatic()).toArray()[RandomGen.getNextInt(methods.size())];
         } catch (NullPointerException e) {
             return new STEntry(null, false);
         }
     }
 
-    public STEntry getRandomField(String type) {
+    public STEntry getRandomField(STKey key) {
         try {
-            List<STEntry> fields = this.fields.get(type);
-            return fields.get(RandomGen.getNextInt(fields.size()));
+            List<STEntry> fields = this.fields.get(key.getType());
+            return (STEntry) fields.stream().filter(v -> v.isStatic() == key.isStatic()).toArray()[RandomGen.getNextInt(fields.size())];
         } catch (NullPointerException e) {
             return new STEntry(null, false);
         }

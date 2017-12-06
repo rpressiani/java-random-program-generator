@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -15,8 +16,8 @@ public class EqualityExpression implements Node {
 
     private RelationalExpression relationalExpression;
 
-    public EqualityExpression(String type, ScopeTable scopeTable) {
-        this.relationalExpression = new RelationalExpression(type, scopeTable);
+    EqualityExpression(STKey key, ScopeTable scopeTable) {
+        this.relationalExpression = new RelationalExpression(key, scopeTable);
     }
 
     @Override

@@ -5,22 +5,21 @@ package system.model.nodes.classes;
 //        ;
 
 import system.model.STEntry;
+import system.model.STKey;
 import system.model.ScopeTable;
 
 public class MethodDeclaration implements IClassMemberDeclaration {
-
-    private ScopeTable scopeTable;
 
     private MethodModifier methodModifier;
     private MethodHeader methodHeader;
     private MethodBody methodBody;
 
     MethodDeclaration(ScopeTable outerScopeTable) {
-        this.scopeTable = new ScopeTable(outerScopeTable);
+        ScopeTable scopeTable = new ScopeTable(outerScopeTable);
 
         this.methodModifier = new MethodModifier();
         this.methodHeader = new MethodHeader();
-        this.methodBody = new MethodBody(this.methodHeader.getResult().getType(), this.scopeTable);
+        this.methodBody = new MethodBody(new STKey(this.methodHeader.getResult().getType(), false), scopeTable);
 
         outerScopeTable.addMethod(
                 this.methodHeader.getResult().getType(),

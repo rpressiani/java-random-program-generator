@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -13,8 +14,8 @@ public class AndExpression implements Node {
 
     private EqualityExpression equalityExpression;
 
-    public AndExpression(String type, ScopeTable scopeTable) {
-        this.equalityExpression = new EqualityExpression(type, scopeTable);
+    AndExpression(STKey key, ScopeTable scopeTable) {
+        this.equalityExpression = new EqualityExpression(key, scopeTable);
     }
 
     @Override

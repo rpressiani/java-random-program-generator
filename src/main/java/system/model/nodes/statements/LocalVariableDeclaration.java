@@ -4,6 +4,7 @@ package system.model.nodes.statements;
 //        :	variableModifier* unannType variableDeclaratorList
 //        ;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.classes.VariableDeclaratorList;
 import system.model.nodes.classes.VariableModifier;
@@ -18,7 +19,7 @@ public class LocalVariableDeclaration implements IBlockStatement{
     LocalVariableDeclaration(ScopeTable scopeTable) {
         this.variableModifier = new VariableModifier();
         this.unannType = new UnannType();
-        this.variableDeclaratorList = new VariableDeclaratorList(this.unannType.getType(), "var", scopeTable);
+        this.variableDeclaratorList = new VariableDeclaratorList(new STKey(this.unannType.getType(), false), "var", scopeTable);
     }
 
     @Override

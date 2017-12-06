@@ -5,6 +5,7 @@ package system.model.nodes.classes;
 //        ;
 
 import system.controller.Main;
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 import utils.RandomGen;
@@ -28,7 +29,7 @@ public class ClassBody implements Node {
         this.classBodyDeclarations = new ArrayList<>();
         init(scopeTable);
 
-        MethodBody mainMethodBody = new MethodBody("void", new ScopeTable(scopeTable));
+        MethodBody mainMethodBody = new MethodBody(new STKey("void", false), new ScopeTable(scopeTable));
 
         this.mainMethod = "public static void main(String[] args)" +
                 mainMethodBody.produce();

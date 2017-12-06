@@ -8,6 +8,7 @@ package system.model.nodes.statements;
 
 //TODO        |	classDeclaration
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -20,8 +21,8 @@ public class BlockStatement implements Node{
 //        this.statement = new Statement();
     }
 
-    BlockStatement(String type, ScopeTable scopeTable) {
-        this.statement = new Statement(type, scopeTable);
+    BlockStatement(STKey key, ScopeTable scopeTable) {
+        this.statement = new Statement(key, scopeTable);
     }
 
     @Override

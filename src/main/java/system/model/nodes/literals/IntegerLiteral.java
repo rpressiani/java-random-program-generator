@@ -11,12 +11,14 @@ package system.model.nodes.literals;
 //TODO OctalIntegerLiteral
 //TODO BinaryIntegerLiteral
 
+import system.model.STKey;
+
 public class IntegerLiteral implements ILiteral {
 
     private DecimalIntegerLiteral decimalIntegerLiteral;
 
-    IntegerLiteral(String type) {
-        this.decimalIntegerLiteral = new DecimalIntegerLiteral(type);
+    IntegerLiteral(STKey key) {
+        this.decimalIntegerLiteral = new DecimalIntegerLiteral(key);
     }
 
     @Override

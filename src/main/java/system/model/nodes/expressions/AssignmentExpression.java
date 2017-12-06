@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -13,8 +14,8 @@ public class AssignmentExpression implements Node {
 
     private ConditionalExpression conditionalExpression;
 
-    AssignmentExpression(String type, ScopeTable scopeTable) {
-        this.conditionalExpression = new ConditionalExpression(type, scopeTable);
+    AssignmentExpression(STKey key, ScopeTable scopeTable) {
+        this.conditionalExpression = new ConditionalExpression(key, scopeTable);
     }
 
     @Override

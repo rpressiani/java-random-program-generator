@@ -1,5 +1,6 @@
 package system.model.nodes.literals;
 
+import system.model.STKey;
 import system.model.nodes.Node;
 
 import java.util.Random;
@@ -16,10 +17,10 @@ import java.util.Random;
 public class DecimalFloatingPointLiteral implements Node{
 
     private String decimalFloatintPointLiteral;
-    private Random random = new Random();
 
-    DecimalFloatingPointLiteral(String type) {
-        switch (type) {
+    DecimalFloatingPointLiteral(STKey key) {
+        Random random = new Random();
+        switch (key.getType()) {
             case "double":
                 this.decimalFloatintPointLiteral = String.valueOf(random.nextDouble());
                 break;

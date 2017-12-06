@@ -4,6 +4,7 @@ package system.model.nodes.classes;
 //        :	fieldModifier* unannType variableDeclaratorList ';'
 //        ;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.types.UnannType;
 
@@ -16,7 +17,7 @@ public class FieldDeclaration implements IClassMemberDeclaration {
     FieldDeclaration(ScopeTable scopeTable, String memberType) {
         this.fieldModifier = new FieldModifier();
         this.unannType = new UnannType();
-        this.variableDeclaratorList = new VariableDeclaratorList(this.unannType.getType(), memberType, scopeTable);
+        this.variableDeclaratorList = new VariableDeclaratorList(new STKey(this.unannType.getType(), false), memberType, scopeTable);
     }
 
     @Override

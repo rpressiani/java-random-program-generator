@@ -15,14 +15,15 @@ package system.model.nodes.statements;
 //        |	tryStatement
 //        ;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 
 public class StatementWithoutTrailingSubstatement implements IStatement {
 
     private IStatementWithoutTrailingSubstatement statementWithoutTrailingSubstatement;
 
-    StatementWithoutTrailingSubstatement(ScopeTable scopeTable, String type) {
-        this.statementWithoutTrailingSubstatement = new ReturnStatement(scopeTable, type);
+    StatementWithoutTrailingSubstatement(ScopeTable scopeTable, STKey key) {
+        this.statementWithoutTrailingSubstatement = new ReturnStatement(scopeTable, key);
     }
 
     @Override

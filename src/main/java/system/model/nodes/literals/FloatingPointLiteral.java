@@ -7,12 +7,14 @@ package system.model.nodes.literals;
 
 //TODO HexadecimalFloatingPointLiteral
 
+import system.model.STKey;
+
 public class FloatingPointLiteral implements ILiteral {
 
     private DecimalFloatingPointLiteral decimalFloatingPointLiteral;
 
-    FloatingPointLiteral(String type) {
-        this.decimalFloatingPointLiteral = new DecimalFloatingPointLiteral(type);
+    FloatingPointLiteral(STKey key) {
+        this.decimalFloatingPointLiteral = new DecimalFloatingPointLiteral(key);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package system.model.nodes.statements;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -14,9 +15,9 @@ public class Block implements Node{
     private BlockStatements blockStatements;
     private ScopeTable scopeTable;
 
-    public Block(String type, ScopeTable outerScopeTable) {
+    public Block(STKey key, ScopeTable outerScopeTable) {
         this.scopeTable = new ScopeTable(outerScopeTable);
-        this.blockStatements = new BlockStatements(type, this.scopeTable);
+        this.blockStatements = new BlockStatements(key, this.scopeTable);
     }
 
     public Block(ScopeTable outerScopeTable) {

@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 import utils.RandomGen;
@@ -20,13 +21,13 @@ public class PostfixExpression implements Node{
 
     private IPostfixExpression postfixExpression;
 
-    PostfixExpression(String type, ScopeTable scopeTable) {
+    PostfixExpression(STKey key, ScopeTable scopeTable) {
         if (RandomGen.getNextInt(2) == 1) {
-            this.postfixExpression = new Primary(type, scopeTable);
+            this.postfixExpression = new Primary(key, scopeTable);
         } else {
-            this.postfixExpression = new ExpressionName(type, scopeTable);
+            this.postfixExpression = new ExpressionName(key, scopeTable);
             if (this.postfixExpression.produce() == null) {
-                this.postfixExpression = new Primary(type, scopeTable);
+                this.postfixExpression = new Primary(key, scopeTable);
             }
         }
 

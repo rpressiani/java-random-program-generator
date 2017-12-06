@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.literals.IPrimaryNoNewArray_lfno_primary;
 
@@ -21,8 +22,8 @@ public class MethodInvocation_lfno_primary implements IPrimaryNoNewArray_lfno_pr
 
     private String methodName;
 
-    MethodInvocation_lfno_primary(String type, ScopeTable scopeTable) {
-        this.methodName = scopeTable.getRandomMethod(type).getIdentifier();
+    MethodInvocation_lfno_primary(STKey key, ScopeTable scopeTable) {
+        this.methodName = scopeTable.getRandomMethod(key).getIdentifier();
     }
 
     @Override

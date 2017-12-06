@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 import system.model.nodes.literals.IPrimaryNoNewArray_lfno_primary;
@@ -38,13 +39,13 @@ public class PrimaryNoNewArray_lfno_primary implements Node{
 
     private IPrimaryNoNewArray_lfno_primary primaryNoNewArray_lfno_primary;
 
-    PrimaryNoNewArray_lfno_primary(String type, ScopeTable scopeTable) {
+    PrimaryNoNewArray_lfno_primary(STKey key, ScopeTable scopeTable) {
         if (RandomGen.getNextInt(2) == 1) {
-            this.primaryNoNewArray_lfno_primary = new Literal(type);
+            this.primaryNoNewArray_lfno_primary = new Literal(key);
         } else {
-            this.primaryNoNewArray_lfno_primary = new MethodInvocation_lfno_primary(type, scopeTable);
+            this.primaryNoNewArray_lfno_primary = new MethodInvocation_lfno_primary(key, scopeTable);
             if (((MethodInvocation_lfno_primary) this.primaryNoNewArray_lfno_primary).getMethodName() == null) {
-                this.primaryNoNewArray_lfno_primary = new Literal(type);
+                this.primaryNoNewArray_lfno_primary = new Literal(key);
             }
         }
     }

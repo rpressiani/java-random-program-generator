@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -13,8 +14,8 @@ public class ExclusiveOrExpression implements Node {
 
     private AndExpression andExpression;
 
-    public ExclusiveOrExpression(String type, ScopeTable scopeTable) {
-        this.andExpression = new AndExpression(type, scopeTable);
+    ExclusiveOrExpression(STKey key, ScopeTable scopeTable) {
+        this.andExpression = new AndExpression(key, scopeTable);
     }
 
     @Override

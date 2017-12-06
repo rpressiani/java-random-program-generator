@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 
 //primary
@@ -19,8 +20,8 @@ public class Primary implements IPostfixExpression{
 
     private PrimaryNoNewArray_lfno_primary primaryNoNewArray_lfno_primary;
 
-    Primary(String type, ScopeTable scopeTable) {
-        this.primaryNoNewArray_lfno_primary = new PrimaryNoNewArray_lfno_primary(type, scopeTable);
+    Primary(STKey key, ScopeTable scopeTable) {
+        this.primaryNoNewArray_lfno_primary = new PrimaryNoNewArray_lfno_primary(key, scopeTable);
     }
 
     @Override

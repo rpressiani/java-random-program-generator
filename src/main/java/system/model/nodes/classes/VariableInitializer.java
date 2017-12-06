@@ -1,5 +1,6 @@
 package system.model.nodes.classes;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 import system.model.nodes.expressions.Expression;
@@ -14,8 +15,8 @@ public class VariableInitializer implements Node {
 
     private Expression expression;
 
-    VariableInitializer(String type, ScopeTable scopeTable) {
-        this.expression = new Expression(type, scopeTable);
+    VariableInitializer(STKey key, ScopeTable scopeTable) {
+        this.expression = new Expression(key, scopeTable);
     }
 
     public Expression getExpression() {

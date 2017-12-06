@@ -6,6 +6,7 @@ package system.model.nodes.classes;
 
 import system.controller.Main;
 import system.model.STEntry;
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 import utils.RandomGen;
@@ -18,20 +19,20 @@ public class VariableDeclaratorList implements Node {
     private List<VariableDeclarator> variableDeclaratorList;
 
 //    TODO remove varType from VariableDeclaratorList constructor
-    public VariableDeclaratorList(String type, String varType, ScopeTable scopeTable) {
+    public VariableDeclaratorList(STKey key, String varType, ScopeTable scopeTable) {
         this.variableDeclaratorList = new ArrayList<>();
         int listLen = Main.config.getVariableDeclaratorListLength();
 
         for (int i = 0; i < RandomGen.getNextInt(listLen) + 1; i++) {
-            VariableDeclarator newVar = new VariableDeclarator(type, scopeTable);
+            VariableDeclarator newVar = new VariableDeclarator(key, scopeTable);
             if (varType.equals("field")) {
                 scopeTable.addField(
-                        type,
+                        key.getType(),
                         new STEntry(newVar.getVariableDeclaratorId(), false)
                 );
             } else {
                 scopeTable.addVariable(
-                        type,
+                        key.getType(),
                         new STEntry(newVar.getVariableDeclaratorId(), false)
                 );
             }

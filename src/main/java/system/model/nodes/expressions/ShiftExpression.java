@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -17,8 +18,8 @@ public class ShiftExpression implements Node {
 
     private AdditiveExpression additiveExpression;
 
-    public ShiftExpression(String type, ScopeTable scopeTable) {
-        this.additiveExpression = new AdditiveExpression(type, scopeTable);
+    ShiftExpression(STKey key, ScopeTable scopeTable) {
+        this.additiveExpression = new AdditiveExpression(key, scopeTable);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package system.model.nodes.literals;
 
+import system.model.STKey;
 import system.model.nodes.Node;
 
 import java.util.Random;
@@ -14,15 +15,14 @@ import java.util.Random;
 public class DecimalNumeral implements Node{
 
     private String digits;
-    private Random rand;
 
-    DecimalNumeral(String type) {
+    DecimalNumeral(STKey key) {
 
-        this.rand = new Random();
+        Random rand = new Random();
 
         if (rand.nextInt(10) > 0) {
 //TODO            this.digits = (new NonZeroDigit()).produce() + (new Digits()).produce();
-            switch (type) {
+            switch (key.getType()) {
                 case "long":
                     this.digits = String.valueOf(rand.nextLong());
                     break;

@@ -1,5 +1,6 @@
 package system.model.nodes.literals;
 
+import system.model.STKey;
 import system.model.nodes.Node;
 
 //literal
@@ -15,17 +16,17 @@ public class Literal implements IPrimaryNoNewArray_lfno_primary{
 
     private ILiteral literal;
 
-    public Literal(String type) {
-        switch (type) {
+    public Literal(STKey key) {
+        switch (key.getType()) {
             case "int":
             case "byte":
             case "short":
             case "long":
-                this.literal = new IntegerLiteral(type);
+                this.literal = new IntegerLiteral(key);
                 break;
 
             case "char": //TODO implement Character Literal
-                this.literal = new IntegerLiteral(type);
+                this.literal = new IntegerLiteral(key);
                 break;
 
             case "boolean":
@@ -34,7 +35,7 @@ public class Literal implements IPrimaryNoNewArray_lfno_primary{
 
             case "double":
             case "float":
-                this.literal = new FloatingPointLiteral(type);
+                this.literal = new FloatingPointLiteral(key);
                 break;
 
             default:

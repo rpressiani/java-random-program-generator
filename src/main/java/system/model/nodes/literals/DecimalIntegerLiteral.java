@@ -1,5 +1,6 @@
 package system.model.nodes.literals;
 
+import system.model.STKey;
 import system.model.nodes.Node;
 
 //DecimalIntegerLiteral
@@ -11,9 +12,9 @@ public class DecimalIntegerLiteral implements Node {
     private DecimalNumeral decimalNumeral;
     private IntegerTypeSuffix integerTypeSuffix;
 
-    DecimalIntegerLiteral(String type) {
-        this.decimalNumeral = new DecimalNumeral(type);
-        this.integerTypeSuffix = new IntegerTypeSuffix(type);
+    DecimalIntegerLiteral(STKey key) {
+        this.decimalNumeral = new DecimalNumeral(key);
+        this.integerTypeSuffix = new IntegerTypeSuffix(key);
     }
 
     @Override

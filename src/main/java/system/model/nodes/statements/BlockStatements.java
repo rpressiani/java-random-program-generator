@@ -1,6 +1,7 @@
 package system.model.nodes.statements;
 
 import system.controller.Main;
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 import utils.RandomGen;
@@ -20,11 +21,11 @@ public class BlockStatements implements Node{
         init(scopeTable);
     }
 
-    BlockStatements(String type, ScopeTable scopeTable) {
+    BlockStatements(STKey key, ScopeTable scopeTable) {
         init(scopeTable);
 
-        if (!type.equals("void")) {
-            this.blockStatementList.add(new BlockStatement(type, scopeTable));
+        if (!key.getType().equals("void")) {
+            this.blockStatementList.add(new BlockStatement(key, scopeTable));
         }
     }
 

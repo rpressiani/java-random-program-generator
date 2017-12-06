@@ -1,5 +1,6 @@
 package system.model.nodes.statements;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 
 //statement
@@ -21,12 +22,8 @@ public class Statement implements IBlockStatement{
 
     private IStatement statement;
 
-//    Statement() {
-//
-//    }
-
-    Statement(String type, ScopeTable scopeTable) {
-        this.statement = new StatementWithoutTrailingSubstatement(scopeTable, type);
+    Statement(STKey key, ScopeTable scopeTable) {
+        this.statement = new StatementWithoutTrailingSubstatement(scopeTable, key);
     }
 
     @Override

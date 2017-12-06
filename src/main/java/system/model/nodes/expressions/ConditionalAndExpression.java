@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -13,8 +14,8 @@ public class ConditionalAndExpression implements Node {
 
     private InclusiveOrExpression inclusiveOrExpression;
 
-    public ConditionalAndExpression(String type, ScopeTable scopeTable) {
-        this.inclusiveOrExpression = new InclusiveOrExpression(type, scopeTable);
+    ConditionalAndExpression(STKey key, ScopeTable scopeTable) {
+        this.inclusiveOrExpression = new InclusiveOrExpression(key, scopeTable);
     }
 
     @Override

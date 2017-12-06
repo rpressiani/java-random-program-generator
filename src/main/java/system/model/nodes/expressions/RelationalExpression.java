@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -21,8 +22,8 @@ public class RelationalExpression implements Node {
 
     private ShiftExpression shiftExpression;
 
-    public RelationalExpression(String type, ScopeTable scopeTable) {
-        this.shiftExpression = new ShiftExpression(type, scopeTable);
+    RelationalExpression(STKey key, ScopeTable scopeTable) {
+        this.shiftExpression = new ShiftExpression(key, scopeTable);
     }
 
     @Override

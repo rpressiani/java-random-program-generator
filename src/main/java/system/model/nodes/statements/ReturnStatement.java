@@ -1,5 +1,6 @@
 package system.model.nodes.statements;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.expressions.Expression;
 
@@ -11,8 +12,8 @@ public class ReturnStatement implements IStatementWithoutTrailingSubstatement {
 
     private String returnStatement;
 
-    ReturnStatement(ScopeTable scopeTable, String type) {
-            this.returnStatement = new Expression(type, scopeTable).produce();
+    ReturnStatement(ScopeTable scopeTable, STKey key) {
+            this.returnStatement = new Expression(key, scopeTable).produce();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -13,8 +14,8 @@ public class Expression implements Node {
 
     private AssignmentExpression assignmentExpression;
 
-    public Expression(String type, ScopeTable scopeTable) {
-        this.assignmentExpression = new AssignmentExpression(type, scopeTable);
+    public Expression(STKey key, ScopeTable scopeTable) {
+        this.assignmentExpression = new AssignmentExpression(key, scopeTable);
     }
 
     public AssignmentExpression getAssignmentExpression() {

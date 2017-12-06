@@ -1,5 +1,6 @@
 package system.model.nodes.expressions;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -16,8 +17,8 @@ public class AdditiveExpression implements Node
 
     private MultiplicativeExpression multiplicativeExpression;
 
-    public AdditiveExpression(String type, ScopeTable scopeTable) {
-        this.multiplicativeExpression = new MultiplicativeExpression(type, scopeTable);
+    AdditiveExpression(STKey key, ScopeTable scopeTable) {
+        this.multiplicativeExpression = new MultiplicativeExpression(key, scopeTable);
     }
 
     @Override

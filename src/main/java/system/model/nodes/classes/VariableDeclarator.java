@@ -4,6 +4,7 @@ package system.model.nodes.classes;
 //        :	variableDeclaratorId ('=' variableInitializer)?
 //        ;
 
+import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 
@@ -13,9 +14,9 @@ public class VariableDeclarator implements Node {
     private VariableDeclaratorId variableDeclaratorId;
     private VariableInitializer variableInitializer;
 
-    VariableDeclarator(String type, ScopeTable scopeTable) {
+    VariableDeclarator(STKey key, ScopeTable scopeTable) {
         this.variableDeclaratorId = new VariableDeclaratorId();
-        this.variableInitializer = new VariableInitializer(type, scopeTable);
+        this.variableInitializer = new VariableInitializer(key, scopeTable);
     }
 
     public String getVariableDeclaratorId() {
