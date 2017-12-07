@@ -22,14 +22,12 @@ public class ConditionalExpression implements Node {
     ConditionalExpression(STKey key, ScopeTable scopeTable) {
         this.unary = (RandomGen.getNextInt(10) != 0);
 
-        if (this.unary) {
-            this.conditionalOrExpression = new ConditionalOrExpression(key, scopeTable);
-        } else {
-            this.conditionalOrExpression = new ConditionalOrExpression(key, scopeTable);
+        this.conditionalOrExpression = new ConditionalOrExpression(key, scopeTable);
+
+        if (!this.unary) {
             this.expression = new Expression(key, scopeTable);
             this.conditionalExpression = new ConditionalExpression(key, scopeTable);
         }
-
     }
 
     @Override
