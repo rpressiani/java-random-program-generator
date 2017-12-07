@@ -10,15 +10,18 @@ package system.model.nodes.statements;
 
 import system.model.STKey;
 import system.model.ScopeTable;
-import system.model.nodes.Node;
+import utils.RandomGen;
 
 public class BlockStatement implements IBlockStatement{
 
     private IBlockStatement statement;
 
     BlockStatement(ScopeTable scopeTable, STKey key) {
-        this.statement = new LocalVariableDeclarationStatement(scopeTable, key);
-//        this.statement = new Statement();
+        if (RandomGen.getNextInt(2) == 1) {
+            this.statement = new LocalVariableDeclarationStatement(scopeTable, key);
+        } else {
+            this.statement = new Statement(key, scopeTable);
+        }
     }
 
     @Override

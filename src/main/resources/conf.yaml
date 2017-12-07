@@ -4,22 +4,21 @@ identifier:
   len: 5  # min len - 2+len for classes, 1+len for others
 
 fields:
-  min: 10
-  max: 20
-#  min: 400
-#  max: 600
+#  min: 10
+#  max: 20
+  min: 400
+  max: 600
 
 methods:
-  min: 5
-  max: 10
+  min: 50
+  max: 100
 #  min: 200
 #  max: 400
 
 statements:
-  min: 1
-  max: 5
-#  min: 100
-#  max: 200
-
+#  min: 15
+#  max: 20
+  min: 100
+  max: 200
 
 variableDeclaratorListLength: 3  # min 1

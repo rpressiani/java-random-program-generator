@@ -24,7 +24,11 @@ public class MethodDeclaration implements IClassMemberDeclaration {
 
         outerScopeTable.addMethod(
                 this.methodHeader.getResult().getType(),
-                new STEntry(this.methodHeader.getMethodDeclarator().getIdentifier().toString(), this.methodModifier.isStatic())
+                new STEntry(
+                        this.methodHeader.getResult().getType(),
+                        this.methodHeader.getMethodDeclarator().getIdentifier().toString(),
+                        this.methodModifier.isStatic()
+                )
         );
     }
 

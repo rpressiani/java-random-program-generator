@@ -23,7 +23,8 @@ public class Statement implements IBlockStatement{
     private IStatement statement;
 
     Statement(STKey key, ScopeTable scopeTable) {
-        this.statement = new StatementWithoutTrailingSubstatement(scopeTable, key);
+//        this.statement = new StatementWithoutTrailingSubstatement(scopeTable, key);
+        this.statement = new IfThenStatement(key, scopeTable);
     }
 
     @Override

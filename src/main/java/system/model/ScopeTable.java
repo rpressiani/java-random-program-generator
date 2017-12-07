@@ -2,10 +2,7 @@ package system.model;
 
 import utils.RandomGen;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ScopeTable {
 
@@ -44,16 +41,34 @@ public class ScopeTable {
         return this.localVariables.get(type);
     }
 
+    private STEntry getRandomType(Map<String, ArrayList<STEntry>> memberType, STKey key) {
+        try {
+            Object[] sel = memberType.entrySet().stream()
+                    .map(Map.Entry::getValue)
+                    .flatMap(Collection::stream)
+                    .filter(m -> m.isStatic() == key.isStatic())
+                    .toArray();
+            return (STEntry) sel[RandomGen.getNextInt(sel.length)];
+        } catch (IllegalArgumentException | NullPointerException e) {
+            return new STEntry(null, null, false);
+        }
+    }
+
     public STEntry getRandomVariable(STKey key) {
+        if (key.getType() == null) return getRandomType(localVariables, key);
+
         try {
             List<STEntry> variables = this.localVariables.get(key.getType());
             return variables.get(RandomGen.getNextInt(variables.size()));
         } catch (NullPointerException e) {
-            return new STEntry(null, false);
+            return new STEntry(null, null, false);
         }
     }
 
+
     public STEntry getRandomMethod(STKey key) {
+        if (key.getType() == null) return getRandomType(methods, key);
+
         try {
             List<STEntry> methods = this.methods.get(key.getType());
             if (key.isStatic()) {
@@ -62,11 +77,13 @@ public class ScopeTable {
                 return methods.get(RandomGen.getNextInt(methods.size()));
             }
         } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {
-            return new STEntry(null, false);
+            return new STEntry(null, null, false);
         }
     }
 
     public STEntry getRandomField(STKey key) {
+        if (key.getType() == null) return getRandomType(fields, key);
+
         try {
             List<STEntry> fields = this.fields.get(key.getType());
             if (key.isStatic()) {
@@ -75,7 +92,7 @@ public class ScopeTable {
                 return fields.get(RandomGen.getNextInt(fields.size()));
             }
         } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {
-            return new STEntry(null, false);
+            return new STEntry(null, null, false);
         }
     }
 
