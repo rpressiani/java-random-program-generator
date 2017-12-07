@@ -22,7 +22,7 @@ public class PostfixExpression implements Node{
     private IPostfixExpression postfixExpression;
 
     PostfixExpression(STKey key, ScopeTable scopeTable) {
-        if (RandomGen.getNextInt(2) == 1) {
+        if (RandomGen.getNextInt(10) == 0) {
             this.postfixExpression = new Primary(key, scopeTable);
         } else {
             this.postfixExpression = new ExpressionName(key, scopeTable);

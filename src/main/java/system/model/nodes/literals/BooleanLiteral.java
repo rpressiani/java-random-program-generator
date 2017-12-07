@@ -12,7 +12,7 @@ public class BooleanLiteral implements ILiteral {
     private String boo;
 
     BooleanLiteral() {
-        if (RandomGen.getNextInt(2) > 1) {
+        if (RandomGen.getNextInt(2) == 0) {
             this.boo = "true";
         } else {
             this.boo = "false";
