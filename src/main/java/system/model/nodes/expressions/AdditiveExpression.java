@@ -17,7 +17,7 @@ public class AdditiveExpression implements Node
 
     private MultiplicativeExpression multiplicativeExpression;
 
-    AdditiveExpression(STKey key, ScopeTable scopeTable) {
+    public AdditiveExpression(STKey key, ScopeTable scopeTable) {
         this.multiplicativeExpression = new MultiplicativeExpression(key, scopeTable);
     }
 

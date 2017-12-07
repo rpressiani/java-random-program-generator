@@ -2,7 +2,7 @@ package system.model.nodes.statements;
 
 import system.model.STKey;
 import system.model.ScopeTable;
-import system.model.nodes.expressions.Expression;
+import system.model.nodes.expressions.AdditiveExpression;
 
 //returnStatement
 //        :	'return' expression? ';'
@@ -13,7 +13,8 @@ public class ReturnStatement implements IStatementWithoutTrailingSubstatement {
     private String returnStatement;
 
     ReturnStatement(ScopeTable scopeTable, STKey key) {
-            this.returnStatement = new Expression(key, scopeTable).produce();
+//        TODO Should be Expression
+        this.returnStatement = new AdditiveExpression(key, scopeTable).produce();
     }
 
     @Override

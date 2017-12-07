@@ -13,11 +13,12 @@ import system.model.nodes.statements.IStatementExpression;
 public class Assignment implements IStatementExpression {
 
     private LeftHandSide leftHandSide;
-    private Expression expression;
+//    TODO Should be Expression
+    private AdditiveExpression expression;
 
     public Assignment(ScopeTable scopeTable) {
         this.leftHandSide = new LeftHandSide(scopeTable);
-        this.expression = new Expression(
+        this.expression = new AdditiveExpression(
                 new STKey(
                         this.leftHandSide.getExpressionName().getExpressionName().getType(),
                         scopeTable.isStaticScope()
