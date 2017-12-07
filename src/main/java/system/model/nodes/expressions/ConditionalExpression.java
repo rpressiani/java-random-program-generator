@@ -10,7 +10,6 @@ import utils.RandomGen;
 //        |	conditionalOrExpression '?' expression ':' conditionalExpression
 //        ;
 
-//TODO conditionalOrExpression '?' expression ':' conditionalExpression
 public class ConditionalExpression implements Node {
 
     private ConditionalOrExpression conditionalOrExpression;

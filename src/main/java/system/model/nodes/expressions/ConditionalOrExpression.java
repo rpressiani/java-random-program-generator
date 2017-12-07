@@ -10,7 +10,6 @@ import utils.RandomGen;
 //        |	conditionalOrExpression '||' conditionalAndExpression
 //        ;
 
-//TODO conditionalOrExpression '||' conditionalAndExpression
 public class ConditionalOrExpression implements Node {
 
     private ConditionalAndExpression conditionalAndExpression;
