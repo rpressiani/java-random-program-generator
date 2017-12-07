@@ -3,6 +3,7 @@ package system.model.nodes.statements;
 import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.expressions.Assignment;
+import utils.RandomGen;
 
 //statementExpression
 //        :	assignment
@@ -19,8 +20,12 @@ public class StatementExpression implements IStatement{
     private IStatementExpression statementExpression;
 
     StatementExpression(STKey key, ScopeTable scopeTable) {
-        this.statementExpression = new MethodInvocation(scopeTable);
-        if (((MethodInvocation) this.statementExpression).getMethodName() == null) {
+        if (RandomGen.getNextInt(2) == 0) {
+            this.statementExpression = new MethodInvocation(scopeTable);
+            if (((MethodInvocation) this.statementExpression).getMethodName() == null) {
+                this.statementExpression = new Assignment(scopeTable);
+            }
+        } else {
             this.statementExpression = new Assignment(scopeTable);
         }
     }

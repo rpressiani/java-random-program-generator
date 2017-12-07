@@ -3,6 +3,7 @@ package system.model.nodes.expressions;
 import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
+import utils.RandomGen;
 
 //conditionalExpression
 //        :	conditionalOrExpression
@@ -13,13 +14,31 @@ import system.model.nodes.Node;
 public class ConditionalExpression implements Node {
 
     private ConditionalOrExpression conditionalOrExpression;
+    private Expression expression;
+    private ConditionalExpression conditionalExpression;
+
+    private boolean unary;
 
     ConditionalExpression(STKey key, ScopeTable scopeTable) {
-        this.conditionalOrExpression = new ConditionalOrExpression(key, scopeTable);
+        this.unary = (RandomGen.getNextInt(10) != 0);
+
+        if (this.unary) {
+            this.conditionalOrExpression = new ConditionalOrExpression(key, scopeTable);
+        } else {
+            this.conditionalOrExpression = new ConditionalOrExpression(key, scopeTable);
+            this.expression = new Expression(key, scopeTable);
+            this.conditionalExpression = new ConditionalExpression(key, scopeTable);
+        }
+
     }
 
     @Override
     public String produce() {
-        return this.verify(conditionalOrExpression.produce());
+        if (this.unary) {
+            return this.verify(conditionalOrExpression.produce());
+        } else {
+            String prod = this.conditionalOrExpression.produce() + " ? " + this.expression.produce() + " : " + this.conditionalExpression.produce();
+            return this.verify(prod);
+        }
     }
 }
