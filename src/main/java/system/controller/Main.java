@@ -29,6 +29,7 @@ public class Main {
         } catch (Exception e) {
             Logger.logError("MAIN", "Generation failed");
             e.printStackTrace();
+            return;
         }
         Logger.log("MAIN", "Generation successful");
 
