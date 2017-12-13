@@ -26,6 +26,12 @@ public class NormalClassDeclaration implements Node {
         this.classBody = new ClassBody(scopeTable);
     }
 
+    public NormalClassDeclaration(String className, ScopeTable scopeTable) {
+        this.identifier = new ClassIdentifier(className);
+        this.scopeTable = scopeTable;
+        this.classBody = new ClassBody(scopeTable);
+    }
+
     @Override
     public String produce() {
         return this.verify("class " + this.identifier.produce() + classBody.produce());

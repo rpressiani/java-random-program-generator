@@ -108,4 +108,12 @@ public class ScopeTable {
     public boolean isStaticScope() {
         return staticScope;
     }
+
+    @Override
+    public String toString() {
+
+        return fields.toString() +" \n " + methods.toString() +" \n" +localVariables.toString();
+    }
+
+
 }

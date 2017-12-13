@@ -23,4 +23,10 @@ public class STEntry {
     public String getType() {
         return type;
     }
+
+    @Override
+    public String toString() {
+
+        return type + ", " + identifier +", "+ _static;
+    }
 }
