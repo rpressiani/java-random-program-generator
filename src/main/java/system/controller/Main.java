@@ -40,10 +40,14 @@ public class Main {
         int maxNumberOfInterfaces = config.getInterfaces().get("max");
         int minNumberOfInterfaces = config.getInterfaces().get("min");
 
+        List<String> interfaceNameList = new ArrayList<>();
+
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfInterfaces-minNumberOfInterfaces) + minNumberOfInterfaces; i++) {
 
             NormalInterfaceDeclaration interf = new NormalInterfaceDeclaration();
             String interfaceName = interf.getIdentifier().produce();
+
+            interfaceNameList.add(interfaceName);
 
             save(interf, basePath + interfaceName +".java");
         }
