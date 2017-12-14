@@ -15,7 +15,7 @@ public class MethodHeader implements Node{
     private Result result;
     private MethodDeclarator methodDeclarator;
 
-    MethodHeader() {
+    public MethodHeader() {
         this.result = new Result();
         this.methodDeclarator = new MethodDeclarator();
     }
