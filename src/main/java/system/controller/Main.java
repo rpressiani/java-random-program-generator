@@ -2,7 +2,6 @@ package system.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import sun.reflect.generics.scope.Scope;
 import system.controller.parser.Parser;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
@@ -15,12 +14,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 public class Main {
 
     public static Config config;
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         initConfig();
         Parser parser = new Parser();
@@ -28,6 +28,8 @@ public class Main {
         new File("generatedSrc/main/java").mkdirs();
 
         int numOfClass = 5;
+        boolean run = true;
+        int timeout = 1000;
         NormalClassDeclaration cl = null;
         String className = "";
         String basePath = "generatedSrc/main/java/";
@@ -73,6 +75,31 @@ public class Main {
             Logger.logError("compiler","Compilation failed");
         }
 
+//        try {
+//            Runtime.getRuntime().exec("java "+basePath+"Main4.class");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        if(run){
+
+            try {
+                System.out.println("Running");
+                executeCommandLine("java "+basePath+"Main4.class",timeout);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            } catch (InterruptedException e) {
+                System.out.println("Interrupt");
+                e.printStackTrace();
+                return;
+            } catch (TimeoutException e) {
+                System.out.println("Timeout");
+                e.printStackTrace();
+                return;
+            }
+            System.out.println("End execution");
+        }
     }
 
     private static void initConfig() {
@@ -94,6 +121,26 @@ public class Main {
             Files.write(f.toPath(), sourceLines);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static int executeCommandLine(final String commandLine, final long timeout) throws IOException, InterruptedException, TimeoutException {
+        Runtime runtime = Runtime.getRuntime();
+        Process process = runtime.exec(commandLine);
+        Worker worker = new Worker(process);
+        worker.start();
+        try {
+            worker.join(timeout);
+            if (worker.exit != null)
+                return worker.exit;
+            else
+                throw new TimeoutException();
+        } catch(InterruptedException ex) {
+            worker.interrupt();
+            Thread.currentThread().interrupt();
+            throw ex;
+        } finally {
+            process.destroy();
         }
     }
 
