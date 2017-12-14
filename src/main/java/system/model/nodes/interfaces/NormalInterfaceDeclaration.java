@@ -13,14 +13,18 @@ public class NormalInterfaceDeclaration implements Node{
     private GenericIdentifier identifier;
     private InterfaceBody interfaceBody;
 
-    NormalInterfaceDeclaration() {
+    public NormalInterfaceDeclaration() {
         this.interfaceModifier = new InterfaceModifier();
         this.identifier = new GenericIdentifier();
         this.interfaceBody = new InterfaceBody();
     }
 
+    public GenericIdentifier getIdentifier() {
+        return identifier;
+    }
+
     @Override
     public String produce() {
-        return this.verify(this.interfaceModifier.produce() + " interface " + this.interfaceBody.produce());
+        return this.verify(this.interfaceModifier.produce() + " interface " + this.identifier.produce() + this.interfaceBody.produce());
     }
 }

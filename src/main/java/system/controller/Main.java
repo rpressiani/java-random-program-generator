@@ -7,6 +7,7 @@ import system.controller.parser.Parser;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 import system.model.nodes.classes.NormalClassDeclaration;
+import system.model.nodes.interfaces.NormalInterfaceDeclaration;
 import utils.Config;
 import utils.Logger;
 import utils.RandomGen;
@@ -16,7 +17,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeoutException;
 
 public class Main {
 
@@ -33,10 +33,24 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String basePath = "generatedSrc/main/java/";
 
+
+        // INTERFACES GENERATION
+        int maxNumberOfInterfaces = config.getInterfaces().get("max");
+        int minNumberOfInterfaces = config.getInterfaces().get("min");
+
+        for (int i = 0; i < RandomGen.getNextInt(maxNumberOfInterfaces-minNumberOfInterfaces) + minNumberOfInterfaces; i++) {
+
+            NormalInterfaceDeclaration interf = new NormalInterfaceDeclaration();
+            String interfaceName = interf.getIdentifier().produce();
+
+            save(interf, basePath + interfaceName +".java");
+        }
+
+        // CLASSES GENERATION
         NormalClassDeclaration cl = null;
         String className = "";
-        String basePath = "generatedSrc/main/java/";
         ScopeTable classScopeTable = null;
         List<String> classNames = new ArrayList<>();
 
