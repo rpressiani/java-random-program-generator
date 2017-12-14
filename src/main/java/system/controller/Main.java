@@ -26,6 +26,13 @@ public class Main {
 
     public static void main(String[] args){
 
+        Long interfaceTime;
+        Long classTime;
+        Long compileTime;
+        Long executionTime;
+        Long totalTime;
+
+        Long start = System.currentTimeMillis();
         initConfig();
         Parser parser = new Parser();
         new File("generatedSrc/out").mkdirs();
@@ -37,7 +44,7 @@ public class Main {
         }
         String basePath = "generatedSrc/main/java/";
 
-
+        Long startTime = System.currentTimeMillis();
         // INTERFACES GENERATION
         int maxNumberOfInterfaces = config.getInterfaces().get("max");
         int minNumberOfInterfaces = config.getInterfaces().get("min");
@@ -61,7 +68,11 @@ public class Main {
             interfaceTables.put(name, table);
         }
 
+        Long endTime = System.currentTimeMillis();
+        interfaceTime = endTime - startTime;
+
         // CLASSES GENERATION
+        startTime = System.currentTimeMillis();
         NormalClassDeclaration cl = null;
         String className = "";
         ScopeTable classScopeTable = null;
@@ -116,16 +127,37 @@ public class Main {
             }
 
         }
+        endTime = System.currentTimeMillis();
+        classTime = endTime - startTime;
+
+        startTime = System.currentTimeMillis();
+
         if (CompileChecker.compileCheck(classNames) == 0) {
+
             Logger.log("compiler", "Compilation successful");
+            endTime = System.currentTimeMillis();
+            compileTime = endTime - startTime;
+
+            startTime = System.currentTimeMillis();
+            String mainClass = className;
+            Runner runner = new Runner(config.isRun(), config.getTimeout());
+            runner.execute(mainClass);
+            endTime = System.currentTimeMillis();
+            executionTime = endTime - startTime;
+            Long end = System.currentTimeMillis();
+            totalTime = end -start;
+
+            Logger.log("Interface generation time", interfaceTime.toString() + " ms");
+            Logger.log("Class generation time", classTime.toString()+ " ms");
+            Logger.log("Compilation time", compileTime.toString()+ " ms");
+            Logger.log("Execution time", executionTime.toString()+ " ms");
+            Logger.log("Total time", totalTime.toString()+ " ms");
         } else {
-            Logger.logError("compiler","Compilation failed");
+            Logger.logError("compiler","Compilation failed \n Exit from random program generator");
+            Logger.log("Interface generation time", interfaceTime.toString() + " ms");
+            Logger.log("Class generation time", classTime.toString()+ " ms");
         }
 
-
-        String mainClass = className;
-        Runner runner = new Runner(config.isRun(), config.getTimeout());
-        runner.execute(mainClass);
     }
 
     private static void initConfig() {
