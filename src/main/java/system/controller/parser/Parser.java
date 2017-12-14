@@ -23,7 +23,6 @@ public class Parser {
     private void parse(File sourceCodePath, ScopeTable scopeTable) {
 
         try {
-            System.out.println("Il path:" + sourceCodePath);
             String code = FileUtils.readFileToString(sourceCodePath);
             CompilationUnit compilationUnit = createCompilationUnit(code);
             parseWithVisitor(compilationUnit, scopeTable);

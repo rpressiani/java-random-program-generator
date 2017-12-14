@@ -29,7 +29,7 @@ public class NormalClassDeclaration implements Node {
     public NormalClassDeclaration(String className, ScopeTable scopeTable) {
         this.identifier = new ClassIdentifier(className);
         this.scopeTable = scopeTable;
-        this.classBody = new ClassBody(scopeTable);
+        this.classBody = new ClassBody(new ScopeTable(scopeTable, true));
     }
 
     @Override

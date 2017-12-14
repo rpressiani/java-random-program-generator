@@ -32,6 +32,7 @@ public class Main {
         String className = "";
         String basePath = "generatedSrc/main/java/";
         ScopeTable classScopeTable = null;
+        List<String> classNames = new ArrayList<>();
 
         for(int i =0; i<numOfClass;i++){
 
@@ -39,6 +40,7 @@ public class Main {
             className = "Main" + i;
             if(cl == null) {
                 className = "Main";
+                classNames.add(className+".java");
                 try {
                     cl = new NormalClassDeclaration(className);
                 } catch (Exception e) {
@@ -47,9 +49,11 @@ public class Main {
                     return;
                 }
             }else{
-                System.out.println("Guardo: " + basePath + oldClassName +".java");
+                classNames.add(className+".java");
                 classScopeTable = parser.getClassScopeTable(new File(basePath + oldClassName +".java"), classScopeTable);
+                System.out.println(classScopeTable);
                 try {
+
                     cl = new NormalClassDeclaration(className, classScopeTable);
                 } catch (Exception e) {
                     Logger.logError("CLASS: "+ className, "Generation failed");
@@ -63,11 +67,11 @@ public class Main {
                 save(cl, basePath + className +".java");
             }
 
-            if (CompileChecker.compileCheck(basePath + className +".java") == 0) {
-                Logger.log("compiler", "Compilation successful");
-            } else {
-                Logger.logError("compiler","Compilation failed");
-            }
+        }
+        if (CompileChecker.compileCheck(classNames) == 0) {
+            Logger.log("compiler", "Compilation successful");
+        } else {
+            Logger.logError("compiler","Compilation failed");
         }
 
     }
@@ -87,7 +91,6 @@ public class Main {
         sourceLines.add(node.produce());
 
         File f = new File(path);
-        System.out.println(f.toPath());
         try {
             Files.write(f.toPath(), sourceLines);
         } catch (IOException e) {
