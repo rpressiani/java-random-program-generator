@@ -2,6 +2,7 @@ group 'com.cs474.giovanni_guido_riccardo'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'application'
 
 sourceCompatibility = 1.8
 
@@ -27,3 +28,5 @@ dependencies {
 
     compile group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
 }
+
+mainClassName = 'system.controller.Main'
