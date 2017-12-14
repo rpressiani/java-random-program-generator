@@ -5,21 +5,21 @@ package system.model.nodes.interfaces;
 //        ;
 
 import system.model.nodes.Node;
-import system.model.nodes.identifiers.GenericIdentifier;
+import system.model.nodes.identifiers.ClassIdentifier;
 
 public class NormalInterfaceDeclaration implements Node{
 
     private InterfaceModifier interfaceModifier;
-    private GenericIdentifier identifier;
+    private ClassIdentifier identifier;
     private InterfaceBody interfaceBody;
 
-    public NormalInterfaceDeclaration() {
+    NormalInterfaceDeclaration() {
         this.interfaceModifier = new InterfaceModifier();
-        this.identifier = new GenericIdentifier();
+        this.identifier = new ClassIdentifier();
         this.interfaceBody = new InterfaceBody();
     }
 
-    public GenericIdentifier getIdentifier() {
+    public ClassIdentifier getIdentifier() {
         return identifier;
     }
 
