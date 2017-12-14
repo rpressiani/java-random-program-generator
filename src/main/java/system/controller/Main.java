@@ -8,7 +8,6 @@ import system.model.ScopeTable;
 import system.model.nodes.Node;
 import system.model.nodes.classes.NormalClassDeclaration;
 import system.model.nodes.interfaces.InterfaceDeclaration;
-import system.model.nodes.interfaces.NormalInterfaceDeclaration;
 import utils.Config;
 import utils.Logger;
 import utils.RandomGen;

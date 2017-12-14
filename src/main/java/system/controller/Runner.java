@@ -21,7 +21,7 @@ public class Runner {
             String outPath = "generatedSrc/out/";
             try {
                 Logger.log("runner", "Running");
-                Logger.log("runner", "java -cp "+outPath+" "+ mainClass);
+                Logger.log("runner", "Executed command: java -cp "+outPath+" "+ mainClass);
                 executeCommandLine("java -cp "+outPath+" "+ mainClass,this.timeout);
                 Logger.log("runner", "End execution");
             } catch (IOException e) {
