@@ -1,15 +1,16 @@
 package system.controller;
 
+import utils.Logger;
+
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 public class Runner {
 
-    boolean run;
-    int timeout;
+    private boolean run;
+    private int timeout;
 
-    public Runner(boolean run, int timeout){
-
+    Runner(boolean run, int timeout){
         this.run = run;
         this.timeout = timeout;
     }
@@ -19,26 +20,21 @@ public class Runner {
         if(this.run){
             String outPath = "generatedSrc/out/";
             try {
-                System.out.println("Running");
-                System.out.println("java -cp "+outPath+" "+ mainClass);
+                Logger.log("runner", "Running");
+                Logger.log("runner", "Executed command: java -cp "+outPath+" "+ mainClass);
                 executeCommandLine("java -cp "+outPath+" "+ mainClass,this.timeout);
-                System.out.println("End execution");
+                Logger.log("runner", "End execution");
             } catch (IOException e) {
                 e.printStackTrace();
-                return;
             } catch (InterruptedException e) {
-                System.out.println("Interrupt");
-                e.printStackTrace();
-                return;
+                Logger.log("runner", "Interrupt");
             } catch (TimeoutException e) {
-                System.out.println("Timeout");
-                e.printStackTrace();
-                return;
+                Logger.log("runner", "Timeout");
             }
         }
     }
 
-    public int executeCommandLine(final String commandLine, final long timeout) throws IOException, InterruptedException, TimeoutException {
+    private int executeCommandLine(final String commandLine, final long timeout) throws IOException, InterruptedException, TimeoutException {
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec(commandLine);
         Worker worker = new Worker(process);

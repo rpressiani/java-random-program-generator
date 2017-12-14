@@ -8,7 +8,6 @@ import system.model.ScopeTable;
 import system.model.nodes.Node;
 import system.model.nodes.classes.NormalClassDeclaration;
 import system.model.nodes.interfaces.InterfaceDeclaration;
-import system.model.nodes.interfaces.NormalInterfaceDeclaration;
 import utils.Config;
 import utils.Logger;
 import utils.RandomGen;
@@ -87,7 +86,7 @@ public class Main {
                 try {
                     cl = new NormalClassDeclaration(className, produceMain);
                 } catch (Exception e) {
-                    Logger.logError("CLASS: "+ className, "Generation failed");
+                    Logger.logError("CLASS GENERATOR", "Generation failed: " + className);
                     e.printStackTrace();
                     return;
                 }
@@ -98,12 +97,12 @@ public class Main {
 
                     cl = new NormalClassDeclaration(className, classScopeTable, produceMain);
                 } catch (Exception e) {
-                    Logger.logError("CLASS: "+ className, "Generation failed");
+                    Logger.logError("CLASS GENERATOR", "Generation failed: " + className);
                     e.printStackTrace();
                     return;
                 }
             }
-            Logger.log("CLASS: "+ className, "Generation successful");
+            Logger.log("CLASS GENERATOR", "Generation successful: " + className);
 
             if (cl != null) {
                 save(cl, basePath + className +".java");
