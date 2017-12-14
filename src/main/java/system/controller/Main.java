@@ -147,15 +147,15 @@ public class Main {
             Long end = System.currentTimeMillis();
             totalTime = end -start;
 
-            Logger.log("Interface generation time", interfaceTime.toString() + " ms");
-            Logger.log("Class generation time", classTime.toString()+ " ms");
-            Logger.log("Compilation time", compileTime.toString()+ " ms");
-            Logger.log("Execution time", executionTime.toString()+ " ms");
-            Logger.log("Total time", totalTime.toString()+ " ms");
+            Logger.log("STATS", "Interface generation time: "+  interfaceTime.toString() + " ms");
+            Logger.log("STATS",  "Class generation time: "+ classTime.toString()+ " ms");
+            Logger.log("STATS", "Compilation time: " + compileTime.toString()+ " ms");
+            Logger.log("STATS", "Execution time: " + executionTime.toString()+ " ms");
+            Logger.log("STATS", "Total time: " + totalTime.toString()+ " ms");
         } else {
             Logger.logError("compiler","Compilation failed \n Exit from random program generator");
-            Logger.log("Interface generation time", interfaceTime.toString() + " ms");
-            Logger.log("Class generation time", classTime.toString()+ " ms");
+            Logger.log("STATS: ", "Interface generation time: " + interfaceTime.toString() + " ms");
+            Logger.log("STATS", "Class generation time: " + classTime.toString()+ " ms");
         }
 
     }
