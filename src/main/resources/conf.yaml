@@ -23,3 +23,5 @@ statements:
   max: 10
 
 variableDeclaratorListLength: 3  # min 1
+
+numberOfClasses: 30

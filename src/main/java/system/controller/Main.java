@@ -27,14 +27,13 @@ public class Main {
 
         new File("generatedSrc/main/java").mkdirs();
 
-        int numOfClass = 5;
         NormalClassDeclaration cl = null;
         String className = "";
         String basePath = "generatedSrc/main/java/";
         ScopeTable classScopeTable = null;
         List<String> classNames = new ArrayList<>();
 
-        for(int i =0; i<numOfClass;i++){
+        for(int i =0; i < config.getNumberOfClasses(); i++){
 
             String oldClassName = className;
             className = "Main" + i;

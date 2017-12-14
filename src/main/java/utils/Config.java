@@ -9,6 +9,7 @@ public class Config {
     private Map<String, Integer> methods;
     private Map<String, Integer> statements;
     private int variableDeclaratorListLength;
+    private int numberOfClasses;
 
     public Map<String, String> getIdentifier() {
         return identifier;
@@ -29,4 +30,9 @@ public class Config {
     public int getVariableDeclaratorListLength() {
         return variableDeclaratorListLength;
     }
+
+    public int getNumberOfClasses() {
+        return numberOfClasses;
+    }
+
 }
