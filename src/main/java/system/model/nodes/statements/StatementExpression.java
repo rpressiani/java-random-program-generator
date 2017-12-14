@@ -26,7 +26,11 @@ public class StatementExpression implements IStatement{
                 this.statementExpression = new Assignment(scopeTable);
             }
         } else {
-            this.statementExpression = new Assignment(scopeTable);
+            try {
+                this.statementExpression = new Assignment(scopeTable);
+            } catch (NullPointerException e) {
+                this.statementExpression = new MethodInvocation(scopeTable);
+            }
         }
     }
 
