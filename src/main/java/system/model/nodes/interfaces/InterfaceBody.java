@@ -16,12 +16,12 @@ public class InterfaceBody implements Node {
     private List<InterfaceMemberDeclaration> interfaceMemberDeclarationList;
 
     InterfaceBody() {
-        int maxNumberOfInterfaces = Main.config.getInterfaces().get("max");
-        int minNumberOfInterfaces = Main.config.getInterfaces().get("min");
+        int maxNumberOfMethods = Main.config.getInterfaces().get("maxMethods");
+        int minNumberOfMethods = Main.config.getInterfaces().get("minMethods");
 
         this.interfaceMemberDeclarationList = new ArrayList<>();
 
-        for (int i = 0; i < RandomGen.getNextInt(maxNumberOfInterfaces-minNumberOfInterfaces) + minNumberOfInterfaces; i++) {
+        for (int i = 0; i < RandomGen.getNextInt(maxNumberOfMethods-minNumberOfMethods) + minNumberOfMethods; i++) {
             this.interfaceMemberDeclarationList.add(new InterfaceMemberDeclaration());
         }
     }

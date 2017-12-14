@@ -4,26 +4,22 @@ identifier:
   len: 5  # min len - 2+len for classes, 1+len for others
 
 fields:
-#  min: 10
-#  max: 20
   min: 4
   max: 6
 
 methods:
   min: 5
   max: 9
-#  min: 200
-#  max: 400
 
 statements:
-#  min: 15
-#  max: 20
   min: 2
   max: 10
 
 interfaces:
   min: 3
   max: 4
+  minMethods: 5
+  maxMethods: 10
 
 classes:
   min: 3
@@ -31,5 +27,5 @@ classes:
 
 variableDeclaratorListLength: 3  # min 1
 
-run: True
+run: True   # True if run generated code, False otherwise
 timeout: 5000   # milliseconds
