@@ -52,7 +52,7 @@ public class Main {
             interfaceNameList.add(interfaceName);
 
             save(interf, basePath + interfaceName +".java");
-            Logger.log("INTERFACE: "+ interfaceName, "Generation successful");
+            Logger.log("INTERFACE GENERATOR", "Generation successful: " + interfaceName);
         }
 
         Map<String, ScopeTable> interfaceTables = new HashMap<>();
