@@ -10,6 +10,8 @@ public class Config {
     private Map<String, Integer> statements;
     private int variableDeclaratorListLength;
     private int numberOfClasses;
+    private boolean run;
+    private int timeout;
 
     public Map<String, String> getIdentifier() {
         return identifier;
@@ -33,6 +35,14 @@ public class Config {
 
     public int getNumberOfClasses() {
         return numberOfClasses;
+    }
+
+    public boolean isRun() {
+        return run;
+    }
+
+    public int getTimeout() {
+        return timeout;
     }
 
 }

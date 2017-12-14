@@ -26,10 +26,7 @@ public class Main {
         Parser parser = new Parser();
 
         new File("generatedSrc/main/java").mkdirs();
-        
-        int numOfClass = 5;
-        boolean run = true;
-        int timeout = 1000;
+
         NormalClassDeclaration cl = null;
         String className = "";
         String basePath = "generatedSrc/main/java/";
@@ -75,30 +72,24 @@ public class Main {
             Logger.logError("compiler","Compilation failed");
         }
 
-//        try {
-//            Runtime.getRuntime().exec("java "+basePath+"Main4.class");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-        if(run){
+        if (config.isRun()) {
 
             try {
-                System.out.println("Running");
-                executeCommandLine("java "+basePath+"Main4.class",timeout);
+                executeCommandLine("java "+basePath+"Main4.class", config.getTimeout());
+                Logger.log("process", "Running");
             } catch (IOException e) {
                 e.printStackTrace();
                 return;
             } catch (InterruptedException e) {
-                System.out.println("Interrupt");
+                Logger.log("process", "Interrupt");
                 e.printStackTrace();
                 return;
             } catch (TimeoutException e) {
-                System.out.println("Timeout");
                 e.printStackTrace();
+                Logger.log("process", "Timeout");
                 return;
             }
-            System.out.println("End execution");
+            Logger.log("process", "End execution");
         }
     }
 
