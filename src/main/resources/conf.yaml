@@ -21,11 +21,15 @@ statements:
   min: 2
   max: 10
 
-variableDeclaratorListLength: 3  # min 1
+interfaces:
+  min: 5
+  max: 10
 
 classes:
   min: 30
   max: 50
+
+variableDeclaratorListLength: 3  # min 1
 
 run: True
 timeout: 5000   # milliseconds

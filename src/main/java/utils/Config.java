@@ -9,6 +9,7 @@ public class Config {
     private Map<String, Integer> methods;
     private Map<String, Integer> statements;
     private Map<String, Integer> classes;
+    private Map<String, Integer> interfaces;
     private int variableDeclaratorListLength;
     private boolean run;
     private int timeout;
@@ -31,6 +32,10 @@ public class Config {
 
     public Map<String, Integer> getClasses() {
         return classes;
+    }
+
+    public Map<String, Integer> getInterfaces() {
+        return interfaces;
     }
 
     public int getVariableDeclaratorListLength() {
