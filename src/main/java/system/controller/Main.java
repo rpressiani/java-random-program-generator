@@ -65,7 +65,13 @@ public class Main {
         NormalClassDeclaration cl = null;
         String className = "";
         ScopeTable classScopeTable = null;
-        List<String> classNames = new ArrayList<>();
+
+        List<String> javaInterfaceNames = new ArrayList<>();
+        for (String name: interfaceNameList) {
+            javaInterfaceNames.add(name + ".java");
+        }
+
+        List<String> classNames = new ArrayList<>(javaInterfaceNames);
 
         int maxNumberOfClasses = config.getClasses().get("max");
         int minNumberOfClasses = config.getClasses().get("min");
@@ -80,22 +86,23 @@ public class Main {
             }
             String oldClassName = className;
             className = "Main" + i;
+
             if(cl == null) {
                 className = "Main";
                 classNames.add(className+".java");
                 try {
-                    cl = new NormalClassDeclaration(className, produceMain);
+                    cl = new NormalClassDeclaration(className, produceMain, interfaceTables);
                 } catch (Exception e) {
                     Logger.logError("CLASS GENERATOR", "Generation failed: " + className);
                     e.printStackTrace();
                     return;
                 }
-            }else{
+            } else {
                 classNames.add(className+".java");
                 classScopeTable = parser.getClassScopeTable(new File(basePath + oldClassName +".java"), classScopeTable);
                 try {
 
-                    cl = new NormalClassDeclaration(className, classScopeTable, produceMain);
+                    cl = new NormalClassDeclaration(className, produceMain, interfaceTables, classScopeTable);
                 } catch (Exception e) {
                     Logger.logError("CLASS GENERATOR", "Generation failed: " + className);
                     e.printStackTrace();

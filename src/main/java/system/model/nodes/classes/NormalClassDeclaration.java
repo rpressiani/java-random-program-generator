@@ -4,37 +4,57 @@ package system.model.nodes.classes;
 //        :	classModifier* 'class' Identifier typeParameters? superclass? superinterfaces? classBody
 //        ;
 
+import system.controller.Main;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 import system.model.nodes.identifiers.ClassIdentifier;
+import utils.RandomGen;
+
+import java.util.Map;
 
 public class NormalClassDeclaration implements Node {
 
     private ClassIdentifier identifier;
     private ClassBody classBody;
     private ScopeTable scopeTable;
+    private SuperInterfaces superInterfaces;
+    private boolean implementsInterface = false;
+    private ScopeTable overriddenMethods = null;
 
-    public NormalClassDeclaration(boolean produceMain) {
-        this.identifier = new ClassIdentifier();
-        this.scopeTable = new ScopeTable();
-        this.classBody = new ClassBody(scopeTable, produceMain);
-    }
+    public NormalClassDeclaration(String className, boolean produceMain, Map<String, ScopeTable> interfaceTables) {
+        if (RandomGen.getNextInt(Main.config.getClasses().get("implementsInterfaceRatio")) == 0) {
+            this.implementsInterface = true;
+            this.superInterfaces = new SuperInterfaces(interfaceTables);
+            this.overriddenMethods = interfaceTables.get(this.superInterfaces.getInterfaceName());
+        }
 
-    public NormalClassDeclaration(String className, boolean produceMain) {
         this.identifier = new ClassIdentifier(className);
         this.scopeTable = new ScopeTable();
-        this.classBody = new ClassBody(scopeTable, produceMain);
+        this.classBody = new ClassBody(scopeTable, produceMain, implementsInterface, this.overriddenMethods);
     }
 
-    public NormalClassDeclaration(String className, ScopeTable scopeTable, boolean produceMain) {
+    public NormalClassDeclaration(String className, boolean produceMain, Map<String, ScopeTable> interfaceTables, ScopeTable scopeTable) {
+        if (RandomGen.getNextInt(Main.config.getClasses().get("implementsInterfaceRatio")) == 0) {
+            this.implementsInterface = true;
+            this.superInterfaces = new SuperInterfaces(interfaceTables);
+            this.overriddenMethods = interfaceTables.get(this.superInterfaces.getInterfaceName());
+        }
+
         this.identifier = new ClassIdentifier(className);
         this.scopeTable = scopeTable;
-        this.classBody = new ClassBody(new ScopeTable(scopeTable, true), produceMain);
+        this.classBody = new ClassBody(new ScopeTable(scopeTable, true), produceMain, implementsInterface, this.overriddenMethods);
     }
 
     @Override
     public String produce() {
-        return this.verify("class " + this.identifier.produce() + classBody.produce());
+        StringBuilder b = new StringBuilder();
+        b.append("class ").append(this.identifier.produce());
+        if (implementsInterface) {
+            b.append(" ").append(this.superInterfaces.produce());
+        }
+        b.append(classBody.produce());
+
+        return this.verify(b.toString());
     }
 
 }

@@ -41,6 +41,12 @@ public class ScopeTable {
         return this.localVariables.get(type);
     }
 
+    public List<STEntry> getMethods() {
+        List<STEntry> flatMethods = new ArrayList<>();
+        methods.values().stream().forEach(x -> x.stream().forEach(y -> flatMethods.add(y)));
+        return flatMethods;
+    }
+
     private STEntry getRandomType(Map<String, ArrayList<STEntry>> memberType, STKey key) {
         try {
             Object[] sel = memberType.entrySet().stream()
@@ -64,7 +70,6 @@ public class ScopeTable {
             return new STEntry(null, null, false);
         }
     }
-
 
     public STEntry getRandomMethod(STKey key) {
         if (key.getType() == null) return getRandomType(methods, key);

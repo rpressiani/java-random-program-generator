@@ -5,6 +5,7 @@ package system.model.nodes.classes;
 //        ;
 
 import system.controller.Main;
+import system.model.STEntry;
 import system.model.STKey;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
@@ -15,10 +16,13 @@ import java.util.List;
 
 public class ClassBody implements Node {
 
+    private final boolean implementsInterface;
+    private final ScopeTable overriddenMethods;
     private boolean produceMain;
 
     private String mainMethod;
     private List<ClassBodyDeclaration> classBodyDeclarations;
+    private List<OverriddenMethod> overriddenMethodList;
 
     private int minNumberOfFields = Main.config.getFields().get("min");
     private int maxNumberOfFields = Main.config.getFields().get("max");
@@ -26,7 +30,9 @@ public class ClassBody implements Node {
     private int minNumberOfMethods = Main.config.getMethods().get("min");
     private int maxNumberOfMethods = Main.config.getMethods().get("max");
 
-    ClassBody(ScopeTable scopeTable, boolean produceMain) {
+    ClassBody(ScopeTable scopeTable, boolean produceMain, boolean implementsInterface, ScopeTable overriddenMethods) {
+        this.implementsInterface = implementsInterface;
+        this.overriddenMethods = overriddenMethods;
         //TODO hardcoded main method
         this.classBodyDeclarations = new ArrayList<>();
         this.produceMain = produceMain;
@@ -39,8 +45,6 @@ public class ClassBody implements Node {
             this.mainMethod = "public static void main(String[] args)" +
                     mainMethodBody.produce();
         }
-//        this.mainMethod = "public static void main(String[] args)" +
-//        mainMethodBody.produce();
 
     }
 
@@ -50,6 +54,14 @@ public class ClassBody implements Node {
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfFields-minNumberOfFields) + minNumberOfFields; i++) {
             this.classBodyDeclarations.add(new ClassBodyDeclaration("field", scopeTable));
         }
+
+        if (this.implementsInterface) {
+            this.overriddenMethodList = new ArrayList<>();
+            for (STEntry method : this.overriddenMethods.getMethods()) {
+                this.overriddenMethodList.add(new OverriddenMethod(method, scopeTable));
+            }
+        }
+
         // GENERATE METHODS
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfMethods-minNumberOfMethods) + minNumberOfMethods; i++) {
             this.classBodyDeclarations.add(new ClassBodyDeclaration("method", scopeTable));
@@ -62,6 +74,11 @@ public class ClassBody implements Node {
         builder.append("{");
         for (ClassBodyDeclaration dec:this.classBodyDeclarations) {
             builder.append(dec.produce());
+        }
+        if (this.implementsInterface) {
+            for (OverriddenMethod method: overriddenMethodList) {
+                builder.append(method.produce());
+            }
         }
         if(this.produceMain) {
             builder.append(this.mainMethod);
