@@ -21,6 +21,6 @@ public class Block implements Node{
 
     @Override
     public String produce() {
-        return this.verify("{" + "System.out.println(\"method\");" + blockStatements.produce() + "}");
+        return this.verify("{" + blockStatements.produce() + "}");
     }
 }

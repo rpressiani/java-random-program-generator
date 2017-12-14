@@ -25,8 +25,6 @@ public class Main {
 
         initConfig();
         Parser parser = new Parser();
-
-        new File("generatedSrc/main/java").mkdirs();
         new File("generatedSrc/out").mkdirs();
         try {
             FileUtils.cleanDirectory(new File("generatedSrc/main/java"));
@@ -35,9 +33,6 @@ public class Main {
             e.printStackTrace();
         }
 
-        int numOfClass = 5;
-        boolean run = true;
-        int timeout = 1000;
         NormalClassDeclaration cl = null;
         String className = "";
         String basePath = "generatedSrc/main/java/";
@@ -88,14 +83,9 @@ public class Main {
             Logger.logError("compiler","Compilation failed");
         }
 
-//        try {
-//            Runtime.getRuntime().exec("java "+basePath+"Main4.class");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
         String mainClass = className;
-        Runner runner = new Runner(run, timeout);
+        Runner runner = new Runner(config.isRun(), config.getTimeout());
         runner.execute(mainClass);
     }
 

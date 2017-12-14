@@ -24,4 +24,7 @@ statements:
 
 variableDeclaratorListLength: 3  # min 1
 
-numberOfClasses: 10
+numberOfClasses: 30
+
+run: True
+timeout: 5000   # milliseconds
