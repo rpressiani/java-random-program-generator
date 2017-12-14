@@ -19,9 +19,9 @@ statements:
 #  min: 15
 #  max: 20
 # TODO: 1
-  min: 2
-  max: 10
+  min: 400
+  max: 600
 
 variableDeclaratorListLength: 3  # min 1
 
-numberOfClasses: 30
+numberOfClasses: 10

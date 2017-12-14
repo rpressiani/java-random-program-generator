@@ -2,6 +2,7 @@ package system.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import org.apache.commons.io.FileUtils;
 import system.controller.parser.Parser;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
@@ -26,7 +27,14 @@ public class Main {
         Parser parser = new Parser();
 
         new File("generatedSrc/main/java").mkdirs();
-        
+        new File("generatedSrc/out").mkdirs();
+        try {
+            FileUtils.cleanDirectory(new File("generatedSrc/main/java"));
+            FileUtils.cleanDirectory(new File("generatedSrc/out"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         int numOfClass = 5;
         boolean run = true;
         int timeout = 1000;
@@ -38,13 +46,18 @@ public class Main {
 
         for(int i =0; i < config.getNumberOfClasses(); i++){
 
+            boolean produceMain = false;
+            if(i == (config.getNumberOfClasses()-1)){
+
+                produceMain = true;
+            }
             String oldClassName = className;
             className = "Main" + i;
             if(cl == null) {
                 className = "Main";
                 classNames.add(className+".java");
                 try {
-                    cl = new NormalClassDeclaration(className);
+                    cl = new NormalClassDeclaration(className, produceMain);
                 } catch (Exception e) {
                     Logger.logError("CLASS: "+ className, "Generation failed");
                     e.printStackTrace();
@@ -55,7 +68,7 @@ public class Main {
                 classScopeTable = parser.getClassScopeTable(new File(basePath + oldClassName +".java"), classScopeTable);
                 try {
 
-                    cl = new NormalClassDeclaration(className, classScopeTable);
+                    cl = new NormalClassDeclaration(className, classScopeTable, produceMain);
                 } catch (Exception e) {
                     Logger.logError("CLASS: "+ className, "Generation failed");
                     e.printStackTrace();
@@ -81,25 +94,9 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
-        if(run){
-
-            try {
-                System.out.println("Running");
-                executeCommandLine("java "+basePath+"Main4.class",timeout);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return;
-            } catch (InterruptedException e) {
-                System.out.println("Interrupt");
-                e.printStackTrace();
-                return;
-            } catch (TimeoutException e) {
-                System.out.println("Timeout");
-                e.printStackTrace();
-                return;
-            }
-            System.out.println("End execution");
-        }
+        String mainClass = className;
+        Runner runner = new Runner(run, timeout);
+        runner.execute(mainClass);
     }
 
     private static void initConfig() {
@@ -121,26 +118,6 @@ public class Main {
             Files.write(f.toPath(), sourceLines);
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    public static int executeCommandLine(final String commandLine, final long timeout) throws IOException, InterruptedException, TimeoutException {
-        Runtime runtime = Runtime.getRuntime();
-        Process process = runtime.exec(commandLine);
-        Worker worker = new Worker(process);
-        worker.start();
-        try {
-            worker.join(timeout);
-            if (worker.exit != null)
-                return worker.exit;
-            else
-                throw new TimeoutException();
-        } catch(InterruptedException ex) {
-            worker.interrupt();
-            Thread.currentThread().interrupt();
-            throw ex;
-        } finally {
-            process.destroy();
         }
     }
 
