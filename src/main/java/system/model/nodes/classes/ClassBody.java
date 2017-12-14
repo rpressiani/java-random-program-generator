@@ -15,6 +15,8 @@ import java.util.List;
 
 public class ClassBody implements Node {
 
+    private boolean produceMain;
+
     private String mainMethod;
     private List<ClassBodyDeclaration> classBodyDeclarations;
 
@@ -24,16 +26,21 @@ public class ClassBody implements Node {
     private int minNumberOfMethods = Main.config.getMethods().get("min");
     private int maxNumberOfMethods = Main.config.getMethods().get("max");
 
-    ClassBody(ScopeTable scopeTable) {
+    ClassBody(ScopeTable scopeTable, boolean produceMain) {
         //TODO hardcoded main method
         this.classBodyDeclarations = new ArrayList<>();
+        this.produceMain = produceMain;
         init(scopeTable);
 
         // new STKey is related to the main method in order to get only static variable from the scopetable
         MethodBody mainMethodBody = new MethodBody(new STKey("void", true), new ScopeTable(scopeTable, true));
 
-        this.mainMethod = "public static void main(String[] args)" +
-                mainMethodBody.produce();
+        if(this.produceMain) {
+            this.mainMethod = "public static void main(String[] args)" +
+                    mainMethodBody.produce();
+        }
+//        this.mainMethod = "public static void main(String[] args)" +
+//        mainMethodBody.produce();
 
     }
 
@@ -56,7 +63,9 @@ public class ClassBody implements Node {
         for (ClassBodyDeclaration dec:this.classBodyDeclarations) {
             builder.append(dec.produce());
         }
-        builder.append(this.mainMethod);
+        if(this.produceMain) {
+            builder.append(this.mainMethod);
+        }
         builder.append("}");
 
         return this.verify(builder.toString());
