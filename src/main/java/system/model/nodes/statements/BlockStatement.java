@@ -18,9 +18,15 @@ public class BlockStatement implements IBlockStatement{
 
     BlockStatement(ScopeTable scopeTable, STKey key) {
         if (RandomGen.getNextInt(2) == 1) {
-            this.statement = new LocalVariableDeclarationStatement(scopeTable, key);
+            if (scopeTable.isStaticScope() &&
+                    (scopeTable.getRandomField(new STKey(null, true)).getIdentifier() == null ||
+                            scopeTable.getRandomMethod(new STKey(null, true)).getIdentifier() == null)) {
+                this.statement = new LocalVariableDeclarationStatement(scopeTable, key);
+            } else {
+                this.statement = new Statement(key, scopeTable);
+            }
         } else {
-            this.statement = new Statement(key, scopeTable);
+            this.statement = new LocalVariableDeclarationStatement(scopeTable, key);
         }
     }
 

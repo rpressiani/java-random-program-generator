@@ -16,7 +16,7 @@ public class Literal implements IPrimaryNoNewArray_lfno_primary{
 
     private ILiteral literal;
 
-    public Literal(STKey key) {
+    public Literal(STKey key) throws NullPointerException {
         switch (key.getType()) {
             case "int":
             case "byte":
