@@ -32,8 +32,7 @@ public class MethodHeader implements Node{
     public String produce() {
         String b = result.produce() +
                 " " +
-                methodDeclarator.produce() +
-                " ";
+                methodDeclarator.produce();
         return this.verify(b);
     }
 }
