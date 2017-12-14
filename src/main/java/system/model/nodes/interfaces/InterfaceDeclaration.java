@@ -16,13 +16,13 @@ public class InterfaceDeclaration implements Node {
         this.normalInterfaceDeclaration = new NormalInterfaceDeclaration();
     }
 
+    public NormalInterfaceDeclaration getNormalInterfaceDeclaration() {
+        return normalInterfaceDeclaration;
+    }
+
     @Override
     public String produce() {
         return this.verify(this.normalInterfaceDeclaration.produce());
     }
 
-    public static void main(String[] args) {
-        NormalInterfaceDeclaration normalClassDeclaration = new NormalInterfaceDeclaration();
-        System.out.println(normalClassDeclaration.produce());
-    }
 }

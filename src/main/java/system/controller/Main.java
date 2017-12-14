@@ -7,6 +7,7 @@ import system.controller.parser.Parser;
 import system.model.ScopeTable;
 import system.model.nodes.Node;
 import system.model.nodes.classes.NormalClassDeclaration;
+import system.model.nodes.interfaces.InterfaceDeclaration;
 import system.model.nodes.interfaces.NormalInterfaceDeclaration;
 import utils.Config;
 import utils.Logger;
@@ -44,8 +45,8 @@ public class Main {
 
         for (int i = 0; i < RandomGen.getNextInt(maxNumberOfInterfaces-minNumberOfInterfaces) + minNumberOfInterfaces; i++) {
 
-            NormalInterfaceDeclaration interf = new NormalInterfaceDeclaration();
-            String interfaceName = interf.getIdentifier().produce();
+            InterfaceDeclaration interf = new InterfaceDeclaration();
+            String interfaceName = interf.getNormalInterfaceDeclaration().getIdentifier().produce();
 
             interfaceNameList.add(interfaceName);
 
