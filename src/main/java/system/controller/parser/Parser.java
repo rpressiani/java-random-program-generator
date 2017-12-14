@@ -58,4 +58,29 @@ public class Parser {
         parse(file, scopeTable);
         return classScopeTable;
     }
+
+    public ScopeTable getClassScopeTable(File file) {
+
+        parse(file);
+        return classScopeTable;
+    }
+
+    private void parse(File sourceCodePath) {
+
+        try {
+            String code = FileUtils.readFileToString(sourceCodePath);
+            CompilationUnit compilationUnit = createCompilationUnit(code);
+            parseWithVisitor(compilationUnit);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void parseWithVisitor(CompilationUnit compilationUnit) {
+
+        MyVisitor myVisitor = new MyVisitor(compilationUnit);
+        compilationUnit.accept(myVisitor);
+        classScopeTable = myVisitor.getScopeTable();
+    }
 }

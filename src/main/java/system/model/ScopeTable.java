@@ -112,7 +112,7 @@ public class ScopeTable {
     @Override
     public String toString() {
 
-        return fields.toString() +" \n " + methods.toString() +" \n" +localVariables.toString();
+        return "Fields: " + fields.toString() +" \n " + "Methods: "  +methods.toString() +" \n" +"Variables: " +localVariables.toString();
     }
 
 

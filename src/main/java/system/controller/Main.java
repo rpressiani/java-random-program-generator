@@ -17,7 +17,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
 
@@ -51,6 +53,13 @@ public class Main {
             interfaceNameList.add(interfaceName);
 
             save(interf, basePath + interfaceName +".java");
+            Logger.log("INTERFACE: "+ interfaceName, "Generation successful");
+        }
+
+        Map<String, ScopeTable> interfaceTables = new HashMap<>();
+        for(String name: interfaceNameList){
+            ScopeTable table = parser.getClassScopeTable(new File(basePath + name +".java"));
+            interfaceTables.put(name, table);
         }
 
         // CLASSES GENERATION

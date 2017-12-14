@@ -51,7 +51,6 @@ public class CompileChecker {
         } );
         for(File c: compiled) {
             c.renameTo(new File(outputDir+"/"+c.getName()));
-            System.out.println(c.getName());
         }
 //        myFile.renameTo(new File("/the/new/place/newName.file"));
 

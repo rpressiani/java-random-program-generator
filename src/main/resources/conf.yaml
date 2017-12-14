@@ -22,12 +22,12 @@ statements:
   max: 10
 
 interfaces:
-  min: 5
-  max: 10
+  min: 3
+  max: 4
 
 classes:
-  min: 30
-  max: 50
+  min: 3
+  max: 4
 
 variableDeclaratorListLength: 3  # min 1
 

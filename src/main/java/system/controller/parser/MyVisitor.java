@@ -16,6 +16,8 @@ public class MyVisitor extends ASTVisitor {
     boolean insideMethod = false;
     private String className;
 
+    boolean isInterface = false;
+
     public MyVisitor(CompilationUnit compilationUnit, ScopeTable scopeTable) {
 
         this.compilationUnit = compilationUnit;
@@ -24,6 +26,13 @@ public class MyVisitor extends ASTVisitor {
         } else {
             this.scopeTable = scopeTable;
         }
+    }
+
+    public MyVisitor(CompilationUnit compilationUnit) {
+
+        this.compilationUnit = compilationUnit;
+        this.scopeTable = new ScopeTable();
+        this.isInterface = true;
     }
 
     //DONE
@@ -37,9 +46,6 @@ public class MyVisitor extends ASTVisitor {
     @Override
     public boolean visit(TypeDeclaration node) {
         className = node.getName().toString();
-        if (node.isInterface()) {
-            return false;
-        }
         if (isAbstract(node)) {
             return false;
         }
@@ -66,9 +72,13 @@ public class MyVisitor extends ASTVisitor {
     public boolean visit(MethodDeclaration node) {
 
         insideMethod = true;
-        if(!isPrivate(node.modifiers()) && isStatic(node.modifiers()) && !node.getName().toString().contentEquals("main")) {
+        if(isInterface){
             String returnType = node.getReturnType2().toString();
-            STEntry stEntry = new STEntry(returnType, className+"."+node.getName().toString(), isStatic(node.modifiers()));
+            STEntry stEntry = new STEntry(returnType, node.getName().toString(), isStatic(node.modifiers()));
+            scopeTable.addMethod(returnType, stEntry);
+        } else if(!isPrivate(node.modifiers()) && isStatic(node.modifiers()) && !node.getName().toString().contentEquals("main")) {
+            String returnType = node.getReturnType2().toString();
+            STEntry stEntry = new STEntry(returnType, className + "." + node.getName().toString(), isStatic(node.modifiers()));
             scopeTable.addMethod(returnType, stEntry);
         }
         return super.visit(node);
