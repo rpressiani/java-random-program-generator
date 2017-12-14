@@ -26,7 +26,7 @@ public class Main {
         Parser parser = new Parser();
 
         new File("generatedSrc/main/java").mkdirs();
-
+        
         int numOfClass = 5;
         boolean run = true;
         int timeout = 1000;
@@ -36,7 +36,7 @@ public class Main {
         ScopeTable classScopeTable = null;
         List<String> classNames = new ArrayList<>();
 
-        for(int i =0; i<numOfClass;i++){
+        for(int i =0; i < config.getNumberOfClasses(); i++){
 
             String oldClassName = className;
             className = "Main" + i;
