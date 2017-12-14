@@ -8,8 +8,8 @@ public class Config {
     private Map<String, Integer> fields;
     private Map<String, Integer> methods;
     private Map<String, Integer> statements;
+    private Map<String, Integer> classes;
     private int variableDeclaratorListLength;
-    private int numberOfClasses;
     private boolean run;
     private int timeout;
 
@@ -29,12 +29,12 @@ public class Config {
         return statements;
     }
 
-    public int getVariableDeclaratorListLength() {
-        return variableDeclaratorListLength;
+    public Map<String, Integer> getClasses() {
+        return classes;
     }
 
-    public int getNumberOfClasses() {
-        return numberOfClasses;
+    public int getVariableDeclaratorListLength() {
+        return variableDeclaratorListLength;
     }
 
     public boolean isRun() {

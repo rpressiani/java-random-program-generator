@@ -8,6 +8,7 @@ import system.model.nodes.Node;
 import system.model.nodes.classes.NormalClassDeclaration;
 import utils.Config;
 import utils.Logger;
+import utils.RandomGen;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +34,10 @@ public class Main {
         ScopeTable classScopeTable = null;
         List<String> classNames = new ArrayList<>();
 
-        for(int i =0; i < config.getNumberOfClasses(); i++){
+        int maxNumberOfClasses = config.getClasses().get("max");
+        int minNumberOfClasses = config.getClasses().get("min");
+
+        for(int i = 0; i < RandomGen.getNextInt(maxNumberOfClasses-minNumberOfClasses) + minNumberOfClasses; i++){
 
             String oldClassName = className;
             className = "Main" + i;

@@ -18,13 +18,14 @@ methods:
 statements:
 #  min: 15
 #  max: 20
-# TODO: 1
   min: 2
   max: 10
 
 variableDeclaratorListLength: 3  # min 1
 
-numberOfClasses: 30
+classes:
+  min: 30
+  max: 50
 
 run: True
 timeout: 5000   # milliseconds
