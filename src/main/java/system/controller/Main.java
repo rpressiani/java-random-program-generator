@@ -51,7 +51,6 @@ public class Main {
             }else{
                 classNames.add(className+".java");
                 classScopeTable = parser.getClassScopeTable(new File(basePath + oldClassName +".java"), classScopeTable);
-                System.out.println(classScopeTable);
                 try {
 
                     cl = new NormalClassDeclaration(className, classScopeTable);

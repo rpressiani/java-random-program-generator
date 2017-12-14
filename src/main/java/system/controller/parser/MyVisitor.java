@@ -110,7 +110,6 @@ public class MyVisitor extends ASTVisitor {
             String returnType = node.getType().toString();
             for (Object o : node.fragments()) {
                 STEntry stEntry = new STEntry(returnType, className+"."+getLeftSide(o.toString()), isStatic(node.modifiers()));
-                System.out.println(stEntry);
                 scopeTable.addField(returnType, stEntry);
             }
         }
