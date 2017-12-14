@@ -42,11 +42,12 @@ public class Main {
 
         int maxNumberOfClasses = config.getClasses().get("max");
         int minNumberOfClasses = config.getClasses().get("min");
+        int numOfClasses = RandomGen.getNextInt(maxNumberOfClasses-minNumberOfClasses) + minNumberOfClasses;
 
-        for(int i = 0; i < RandomGen.getNextInt(maxNumberOfClasses-minNumberOfClasses) + minNumberOfClasses; i++){
+        for(int i = 0; i < numOfClasses; i++){
 
             boolean produceMain = false;
-            if(i == (config.getNumberOfClasses()-1)){
+            if(i == (numOfClasses - 1)){
 
                 produceMain = true;
             }
