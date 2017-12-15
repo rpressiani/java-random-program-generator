@@ -26,8 +26,8 @@ fields:
 # min:  minimum number of statements per method
 # max:  maximum number of statements per method
 statements:
-  min: 400
-  max: 600
+  min: 40
+  max: 60
 
 # Configuration settings for interfaces
 # The implementation will take a random generated value between min and max

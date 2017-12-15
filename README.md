@@ -10,6 +10,10 @@
 
 Project of Object Oriented Languages and Environments 
 
+To run the project:
+
+    gradle run
+
 ### README outline
 
 Below the outline of the README is reported:

@@ -4,7 +4,6 @@ package system.controller.parser;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.*;
-
 import system.model.ScopeTable;
 
 import java.io.File;
