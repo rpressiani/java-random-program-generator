@@ -67,7 +67,6 @@ public class MyVisitor extends ASTVisitor {
         return false;
     }
 
-    //TODO: la notazione punto va implementata
     @Override
     public boolean visit(MethodDeclaration node) {
 
