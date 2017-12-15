@@ -127,4 +127,23 @@ We have also implemented a simple timing for the entire program execution. At th
 
 ## Analysis
 
+## Output example
+
+	[INTERFACE GENERATOR] Generation successful: Q7BaxSem
+	[INTERFACE GENERATOR] Generation successful: X1xJ0x
+	[INTERFACE GENERATOR] Generation successful: Ov5hWhOL0
+	[CLASS GENERATOR] Generation successful: Main
+	[CLASS GENERATOR] Generation successful: Main1
+	[CLASS GENERATOR] Generation successful: Main2
+	[CLASS GENERATOR] Generation successful: Main3
+	[COMPILER] Compilation successful
+	[RUNNER] Running
+	[RUNNER] Executed command: java -cp generatedSrc/out/ Main3
+	[RUNNER] End execution
+	[STATS] Interface generation time: 1361 ms
+	[STATS] Class generation time: 464 ms
+	[STATS] Compilation time: 1002 ms
+	[STATS] Execution time: 192 ms
+	[STATS] Total time: 3928 ms
+
 
