@@ -4,6 +4,9 @@ import utils.RandomGen;
 
 import java.util.*;
 
+/**
+ * This class is the ScopeTable of the program. It contains three main parameters from which values are used to generate the source code.
+ */
 public class ScopeTable {
 
     private Map<String, ArrayList<STEntry>> fields;

@@ -5,6 +5,10 @@ import utils.Logger;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
+/**
+ * This class is used to run the program from the command line.
+ * The source code will be executed only if required by the configuration file.
+ */
 public class Runner {
 
     private boolean run;

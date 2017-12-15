@@ -11,6 +11,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * This class is used to initialize the parsing of the specified source code
+ */
 public class Parser {
 
     private ScopeTable classScopeTable;

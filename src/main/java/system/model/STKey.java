@@ -1,5 +1,8 @@
 package system.model;
 
+/**
+ * This class is used by the model as the key of the ScopeTable class
+ */
 public class STKey {
 
     private String type;

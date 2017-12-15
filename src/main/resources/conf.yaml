@@ -22,7 +22,6 @@ methods:
 fields:
   min: 4
   max: 6
-tatements
 # The implementation will take a random generated value between min and max
 # min:  minimum number of statements per method
 # max:  maximum number of statements per method

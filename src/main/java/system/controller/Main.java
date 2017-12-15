@@ -20,6 +20,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Main class
+ */
 public class Main {
 
     public static Config config;
@@ -36,6 +39,7 @@ public class Main {
         initConfig();
         Parser parser = new Parser();
         new File("generatedSrc/out").mkdirs();
+        new File("generatedSrc/main/java").mkdirs();
         try {
             FileUtils.cleanDirectory(new File("generatedSrc/main/java"));
             FileUtils.cleanDirectory(new File("generatedSrc/out"));

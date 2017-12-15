@@ -1,5 +1,8 @@
 package system.model;
 
+/**
+ * This class is the entry of the ScopeTable
+ */
 public class STEntry {
 
     private String type;

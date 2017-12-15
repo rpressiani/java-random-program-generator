@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * https://stackoverflow.com/questions/2946338/how-do-i-programmatically-compile-and-instantiate-a-java-class
+ * This class is used to compile and move the compiled source code in the out directory.
  */
 public class CompileChecker {
 
@@ -26,10 +26,16 @@ public class CompileChecker {
 
     }
 
+    /**
+     * This method compiles all the file contained in fileNames
+     *
+     * @param fileNames the file list to compile
+     * @return 0 if the compilation is successful
+     */
     public static int compileCheck(List<String> fileNames) {
 
         List<String> toCompile = new ArrayList<>();
-        for(String fileName: fileNames) {
+        for (String fileName : fileNames) {
             File sourceDir = new File("./generatedSrc/main/java");
             File sourceFile = new File(sourceDir, fileName);
             toCompile.add(sourceFile.getPath());
@@ -45,12 +51,13 @@ public class CompileChecker {
         // return 0 for success; nonzero otherwise
         int result = compiler.run(null, null, null, stockArr);
         File sourceDir = new File("./generatedSrc/main/java");
-        File[] compiled =  sourceDir.listFiles(new FilenameFilter() {
-            public boolean accept(File dir, String filename)
-            { return filename.endsWith(".class"); }
-        } );
-        for(File c: compiled) {
-            c.renameTo(new File(outputDir+"/"+c.getName()));
+        File[] compiled = sourceDir.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String filename) {
+                return filename.endsWith(".class");
+            }
+        });
+        for (File c : compiled) {
+            c.renameTo(new File(outputDir + "/" + c.getName()));
         }
 //        myFile.renameTo(new File("/the/new/place/newName.file"));
 

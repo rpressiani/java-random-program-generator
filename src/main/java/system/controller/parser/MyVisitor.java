@@ -6,7 +6,9 @@ import system.model.ScopeTable;
 
 import java.util.List;
 
-
+/**
+ * Implementation of the Visitor pattern for the java code parsing step
+ */
 public class MyVisitor extends ASTVisitor {
 
     CompilationUnit compilationUnit;
@@ -49,10 +51,6 @@ public class MyVisitor extends ASTVisitor {
         if (isAbstract(node)) {
             return false;
         }
-
-//        qua forse serve una cosa a parte per le classi perchè vanno dichiarate
-//        STEntry stEntry = new STEntry();
-//        scopeTable.addVariable(node.getName(), );
         return super.visit(node);
     }
 
