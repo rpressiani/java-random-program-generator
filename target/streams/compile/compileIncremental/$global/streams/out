@@ -1,0 +1,5 @@
+[0m[[0m[0mdebug[0m] [0m[0mFull compilation, no sources in previous analysis.[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll sources are invalidated.[0m
+[0m[[0m[0mdebug[0m] [0m[0mRecompiling all 106 sources: invalidated sources (106) exceeded 50.0% of all sources[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling 106 Java sources to C:\Users\musci\Documents\Object\Project\riccardo_pressiani_guido_muscioni_giovanni_agugini_bassi_prj\target\scala-2.12\classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mAttempting to call com.sun.tools.javac.api.JavacTool@752c0b4c directly...[0m
