@@ -121,6 +121,10 @@ The configuration file contains two parameter that are used to ensure the execut
 
 The implementation is contained in the Runner class. We have decided to set a timeout as if the user ask, in the configuration file, for a very high number of classes or interfaces or statements, the generated code could execute for hours. Thus the code is launched using a time defined worker that end the computation after the timeout setted in the configuration file has elapsed.
 
+### Time execution analysis
+
+We have also implemented a simple timing for the entire program execution. At the end of the execution the program will print the statistics for the just finished execution. All the time are shown in milliseconds.
+
 ## Analysis
 
 
