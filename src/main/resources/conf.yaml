@@ -12,8 +12,8 @@ methods:
   max: 9
 
 statements:
-  min: 2
-  max: 10
+  min: 400
+  max: 600
 
 interfaces:
   min: 3
@@ -22,8 +22,8 @@ interfaces:
   maxMethods: 10
 
 classes:
-  min: 3
-  max: 10
+  min: 20
+  max: 30
   implementsInterfaceRatio: 2   # 1 class out of implementsInterfaceRatio implements an interface
 
 variableDeclaratorListLength: 3  # min 1

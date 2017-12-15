@@ -129,23 +129,41 @@ We have also implemented a simple timing for the entire program execution. At th
 
 ## Analysis
 
+We have used the Java Monitoring Tools to retrieve some useful data about the execution of our program. In particular we cheked that the garbage collector handles correctly the elimination of unreferred objects.
+
+![Alt text](img/jvm.png)
+![Alt text](img/visualGC.png)
+
+The two figures above show the main view of the Java Visual VM and the visual Garbage Collector plugin. All the different tasks that our implemention does during the execution are clearly visible in the dashboard. In particular, looking at visualGC, the last two peaks from the Eden Space refers to the compilation and the execution.
+
+The output example is derived from the same execution. The timeout has been reached and that can be also seen looking at the Eden Space. 
+
 ## Output example
 
-	[INTERFACE GENERATOR] Generation successful: Q7BaxSem
-	[INTERFACE GENERATOR] Generation successful: X1xJ0x
-	[INTERFACE GENERATOR] Generation successful: Ov5hWhOL0
+	[INTERFACE GENERATOR] Generation successful: RRrjkfe
+	[INTERFACE GENERATOR] Generation successful: J2X3w8
+	[INTERFACE GENERATOR] Generation successful: KvkS4d0W
 	[CLASS GENERATOR] Generation successful: Main
 	[CLASS GENERATOR] Generation successful: Main1
 	[CLASS GENERATOR] Generation successful: Main2
 	[CLASS GENERATOR] Generation successful: Main3
+	[CLASS GENERATOR] Generation successful: Main4
+	[CLASS GENERATOR] Generation successful: Main5
+                         [...]
+	[CLASS GENERATOR] Generation successful: Main17
+	[CLASS GENERATOR] Generation successful: Main18
+	[CLASS GENERATOR] Generation successful: Main19
+	[CLASS GENERATOR] Generation successful: Main20
+	[CLASS GENERATOR] Generation successful: Main21
+	[CLASS GENERATOR] Generation successful: Main22
 	[COMPILER] Compilation successful
 	[RUNNER] Running
-	[RUNNER] Executed command: java -cp generatedSrc/out/ Main3
-	[RUNNER] End execution
-	[STATS] Interface generation time: 1361 ms
-	[STATS] Class generation time: 464 ms
-	[STATS] Compilation time: 1002 ms
-	[STATS] Execution time: 192 ms
-	[STATS] Total time: 3928 ms
+	[RUNNER] Executed command: java -cp generatedSrc/out/ Main22
+	[RUNNER] Timeout
+	[STATS] Interface generation time: 1761 ms
+	[STATS] Class generation time: 51224 ms
+	[STATS] Compilation time: 7500 ms
+	[STATS] Execution time: 5030 ms
+	[STATS] Total time: 66821 ms
 
 
