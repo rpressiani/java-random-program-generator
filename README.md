@@ -2,9 +2,9 @@
 
 ## Team
 
-### Giovanni Agugini Bassi UIN: 652620943
+### Giovanni Agugini Bassi UIN: 659013265
 
-### Guido Muscioni UIN: 652620943
+### Guido Muscioni UIN: 652520943
 
 ### Riccardo Pressiani UIN: 652620943
 
@@ -39,27 +39,20 @@ The following section explains the design choices, the architecture and the impl
 The architecture of our project is based on the Model-Controller pattern. In particular, the Model contains the data structure that allows the source code creation and the Controller contains the logic for the program creation and all the task we want to perform on the generated code.
 
 The following figure shows the main package organization of our project, thus the system package, that contains the Model-Controller pattern and the utils package.
-<div style="text-align:center">
-<img src="architecture/System.png" alt="Drawing" style="width: 500px;"/>
-</div>
+
+![Alt text](architecture/System.png)
 
 The model contains the data structures that handle the java grammar and allows the source code generation. The ScopeTable class is a class used to saved the variables, fields and methods that can be reused by other methods through the entire generated source.
 
 The core component of the Model is contained in the package nodes. This package has all the classes needed to implement the considered grammar. Each class extends the node interface to ensure a hierarchy that allows a better code organization.
 
 The following two images shows the class diagram for both the two package mentioned before, coupled with the modules dependecies.
-<div style="text-align:center">
-<img src="architecture/Model.png" alt="Drawing" style="width: 700px;"/>
-</div>
-<div style="text-align:center">
-<img src="architecture/Nodes.png" alt="Drawing" style="width: 700px;"/>
-</div>
+![Alt text](architecture/Model.png)
+![Alt text](architecture/Nodes.png)
 
 Regarding the controller, the following image shows the class diagram. The package contains the Main class, thus is the entry point for our implementation. The package parser and the classes that are connected to the Main are explained in the next sections.
 
-<div style="text-align:center">
-<img src="architecture/Controller.png" alt="Drawing" style="width: 700px;"/>
-</div>
+![Alt text](architecture/Controller.png)
 
 ## Considered grammar
 
